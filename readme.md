@@ -18,27 +18,27 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
   - Visual Studio 2017
   - [Resharper](https://www.jetbrains.com/resharper/)
 
-2. 数据库
+- 数据库
   - Sql Server
   - Mysql
   - PostgreSQL
 
-3. 设计工具
+- 设计工具
   - PowerDesigner 16.5
   - XMind
 
-4. SDK及Runtime
+- SDK及Runtime
   - 当前SDK 64位版本：[Sdk v2.2.104](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.104-windows-x64-installer)，开发机器安装
   - 当前Runtime 64位版本：[Runtime v2.2.2](https://dotnet.microsoft.com/download/thank-you/dotnet-runtime-2.2.2-windows-hosting-bundle-installer)，服务器安装
 
-5. 集成
+- 集成
   - [Identity](https://docs.microsoft.com/zh-cn/aspnet/core/security/authentication/identity?tabs=visual-studio%2Caspnetcore2x)
   - [Identity Server](https://identityserver4.readthedocs.io/en/release/)
 
-6. 应用框架
+- 应用框架
   - [Util](https://github.com/dotnetcore/Util)
 
-7. UI
+- UI
   - [Ng-Zorro](https://ng.ant.design)
 
 ## 作者
