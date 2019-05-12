@@ -15,8 +15,8 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
 ## 开发环境及类库依赖
 
 1. 开发工具： 
-  - Visual Studio 2017
-  - [Resharper](https://www.jetbrains.com/resharper/)
+    - Visual Studio 2017
+    - [Resharper](https://www.jetbrains.com/resharper/)
 
 2. 数据库
   - Sql Server
@@ -39,9 +39,7 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
   - [Util](https://github.com/dotnetcore/Util)
 
 7. UI
-  - [Angular 7](https://angular.cn/)
   - [Ng-Zorro](https://ng.ant.design)
-  - [Ng-Alain](https://ng-alain.github.io/ng-alain/)
 
 ## 作者
 
