@@ -8,6 +8,10 @@
 
 GreatWall是一个.net core平台下的权限管理系统，使用Util应用框架开发。
 
+## 功能列表
+
+待定
+
 ## 开发环境及类库依赖
 
 1. 开发工具： 
@@ -28,18 +32,16 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
   - 当前Runtime 64位版本：[Runtime v2.2.2](https://dotnet.microsoft.com/download/thank-you/dotnet-runtime-2.2.2-windows-hosting-bundle-installer)，服务器安装
 
 5. 集成
-    - [Identity](https://docs.microsoft.com/zh-cn/aspnet/core/security/authentication/identity?tabs=visual-studio%2Caspnetcore2x)
-    - [Identity Server](https://identityserver4.readthedocs.io/en/release/)
+  - [Identity](https://docs.microsoft.com/zh-cn/aspnet/core/security/authentication/identity?tabs=visual-studio%2Caspnetcore2x)
+  - [Identity Server](https://identityserver4.readthedocs.io/en/release/)
 
 6. 应用框架
-    - [Util](https://github.com/dotnetcore/Util)
+  - [Util](https://github.com/dotnetcore/Util)
 
 7. UI
-  - 脚本框架
-    - [Angular 7](https://angular.cn/)
-  - 组件库
-    - [Ng-Zorro](https://ng.ant.design)
-    - [Ng-Alain](https://ng-alain.github.io/ng-alain/)
+  - [Angular 7](https://angular.cn/)
+  - [Ng-Zorro](https://ng.ant.design)
+  - [Ng-Alain](https://ng-alain.github.io/ng-alain/)
 
 ## 作者
 
@@ -60,8 +62,6 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
 ## 免责申明
 
 - 虽然我们对代码已经进行高度审查，并用于自己的项目中，但依然可能存在某些未知的BUG，如果你的生产系统蒙受损失，Util团队不会对此负责。
-
-- 出于成本的考虑，我们不会对已发布的API保持兼容，每当更新代码时，请注意该问题。
 
 ## 开源地址
 
