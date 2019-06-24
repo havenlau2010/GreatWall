@@ -1,0 +1,15 @@
+/.vs
+/output
+/src/GreatWall.Admin/obj
+/src/GreatWall.Admin/bin
+/src/GreatWall.AuthenticationServer/bin
+/src/GreatWall.AuthenticationServer/obj
+/src/GreatWall.Data/bin
+/src/GreatWall.Data/obj
+/src/GreatWall.Domain/bin
+/src/GreatWall.Domain/obj
+/src/GreatWall.Infrastructure/bin
+/src/GreatWall.Infrastructure/obj
+/src/GreatWall.Service/bin
+/src/GreatWall.Service/obj
+/*.user
