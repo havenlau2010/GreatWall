@@ -3,7 +3,7 @@ using GreatWall.Service.Dtos;
 using GreatWall.Service.Queries;
 using Util.Webs.Controllers;
 
-namespace GreatWall.Apis {
+namespace GreatWall.Apis.Systems {
     /// <summary>
     /// 应用程序控制器
     /// </summary>

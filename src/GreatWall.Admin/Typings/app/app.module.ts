@@ -24,7 +24,7 @@ import { FrameworkModule } from './framework.module';
 import { util,UploadService } from '../util';
 
 //通用服务
-import { TestUploadService } from "../common/services/test-upload.service";
+import { LocalUploadService } from "../common/services/local-upload.service";
 
 //路由模块
 import { AppRoutingModule } from './app-routing.module';
@@ -66,7 +66,7 @@ export function startupServiceFactory( startupService: StartupService ) {
             multi: true,
         },
         { provide: NZ_ICONS, useValue: icons },
-        { provide: UploadService, useClass: TestUploadService }
+        { provide: UploadService, useClass: LocalUploadService }
     ],
     bootstrap: [AppComponent],
 } )

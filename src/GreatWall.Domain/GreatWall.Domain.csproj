@@ -24,7 +24,7 @@ GreatWall.Domain是GreatWall权限管理系统的业务层。
   
 
   <ItemGroup>
-    <PackageReference Include="Util.Core" Version="1.8.8" />
+    <PackageReference Include="Util.Core" Version="1.8.9" />
   </ItemGroup>
 
 </Project>
