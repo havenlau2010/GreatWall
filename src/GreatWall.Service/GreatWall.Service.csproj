@@ -26,10 +26,7 @@ GreatWall.Service是GreatWall权限管理系统的服务层。</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\" />
-    <Folder Include="Dtos\" />
-    <Folder Include="Implements\" />
-    <Folder Include="Queries\" />
+    <PackageReference Include="Util.Applications" Version="1.8.8" />
   </ItemGroup>
 
 </Project>

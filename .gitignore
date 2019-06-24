@@ -13,3 +13,4 @@
 /src/GreatWall.Service/bin
 /src/GreatWall.Service/obj
 /*.user
+/src/GreatWall.Admin/node_modules
