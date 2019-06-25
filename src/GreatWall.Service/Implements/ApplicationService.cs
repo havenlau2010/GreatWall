@@ -9,7 +9,6 @@ using Util.Applications;
 using Util.Datas.Queries;
 using Util.Domains.Repositories;
 using Util.Exceptions;
-using Util.Security.Properties;
 
 namespace GreatWall.Service.Implements {
     /// <summary>
@@ -57,14 +56,14 @@ namespace GreatWall.Service.Implements {
         /// 抛出编码重复异常
         /// </summary>
         private void ThrowCodeRepeatException( string code ) {
-            throw new Warning( string.Format( SecurityResource.DuplicateApplicationCode, code ) );
+            throw new Warning( string.Format( GreatWallResource.DuplicateApplicationCode, code ) );
         }
 
         /// <summary>
         /// 抛出名称重复异常
         /// </summary>
         private void ThrowNameRepeatException( string name ) {
-            throw new Warning( string.Format( SecurityResource.DuplicateApplicationName, name ) );
+            throw new Warning( string.Format( GreatWallResource.DuplicateApplicationName, name ) );
         }
 
         /// <summary>

@@ -21,10 +21,17 @@ GreatWall.Domain是GreatWall权限管理系统的业务层。
     <DocumentationFile>..\..\output\release\netstandard2.0\GreatWall.Domain.xml</DocumentationFile>
   </PropertyGroup>
 
-  
+  <ItemGroup>
+    <ProjectReference Include="..\GreatWall.Infrastructure\01-GreatWall.Infrastructure.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Core" Version="1.8.9" />
+    <Compile Update="Models/Application.*.cs">
+      <DependentUpon>Application.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Models/User.*.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

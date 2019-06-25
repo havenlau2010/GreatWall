@@ -3,6 +3,7 @@ using System.IO;
 using GreatWall.Data;
 using GreatWall.Data.UnitOfWorks.SqlServer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +37,12 @@ namespace GreatWall {
         /// 配置服务
         /// </summary>
         public IServiceProvider ConfigureServices( IServiceCollection services ) {
+            //配置Cookie策略
+            services.Configure<CookiePolicyOptions>( options => {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            } );
+
             //注册Razor视图解析路径
             services.AddRazorViewLocationExpander();
 
