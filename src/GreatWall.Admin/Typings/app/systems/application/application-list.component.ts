@@ -9,7 +9,7 @@ import { ApplicationViewModel } from './model/application-view-model';
  */
 @Component({
     selector: 'application-list',
-    templateUrl: !env.dev() ? './html/application-index.component.html' : '/view/systems/application'
+    templateUrl: !env.dev() ? './html/index.component.html' : '/view/systems/application'
 })
 export class ApplicationListComponent extends TableQueryComponentBase<ApplicationViewModel, ApplicationQuery>  {
     /**

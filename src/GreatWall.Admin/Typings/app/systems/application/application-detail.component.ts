@@ -8,7 +8,7 @@ import { ApplicationViewModel } from './model/application-view-model';
  */
 @Component({
     selector: 'application-detail',
-    templateUrl: !env.dev() ? './html/application-detail.component.html' : '/view/systems/application/detail'
+    templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/application/detail'
 })
 export class ApplicationDetailComponent extends EditComponentBase<ApplicationViewModel> {
     /**

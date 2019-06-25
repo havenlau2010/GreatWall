@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using GreatWall.Data;
 using GreatWall.Data.UnitOfWorks.SqlServer;
+using GreatWall.Service.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -54,6 +55,9 @@ namespace GreatWall {
 
             //添加EF工作单元
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
+
+            //添加权限服务
+            services.AddPermission( t => { t.Lockout.MaxFailedAccessAttempts = 2; } );
 
             //添加Swagger
             services.AddSwaggerGen( options => {

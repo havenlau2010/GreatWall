@@ -39,7 +39,6 @@ namespace GreatWall.Apis.Tests {
                         Children = {
                             new MenuInfo {
                                 Text = "默认页",
-                                Icon = "anticon anticon-dashboard",
                                 Link = "/dashboard/v1",
                             }
                         }
@@ -58,8 +57,18 @@ namespace GreatWall.Apis.Tests {
                 Children = {
                     new MenuInfo {
                         Text = "应用程序",
-                        Icon = "cloud",
+                        Icon = "anticon anticon-database",
                         Link = "/systems/application"
+                    },
+                    new MenuInfo {
+                        Text = "用户",
+                        Icon = "anticon anticon-user",
+                        Link = "/systems/user"
+                    },
+                    new MenuInfo {
+                        Text = "角色",
+                        Icon = "anticon anticon-team",
+                        Link = "/systems/role"
                     }
                 }
             };

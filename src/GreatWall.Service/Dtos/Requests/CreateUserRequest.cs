@@ -22,9 +22,9 @@ namespace GreatWall.Service.Dtos.Requests {
         /// <summary>
         /// 安全手机
         /// </summary>
-        [StringLength( 64, ErrorMessage = "安全手机输入过长，不能超过64位" )]
-        [Phone]
-        [Display( Name = "手机" )]
+        [StringLength( 64 )]
+        [Phone()]
+        [Display( Name = "手机号" )]
         public string PhoneNumber { get; set; }
         /// <summary>
         /// 密码
@@ -34,16 +34,5 @@ namespace GreatWall.Service.Dtos.Requests {
         [DataType( DataType.Password )]
         [Display( Name = "密码" )]
         public string Password { get; set; }
-        /// <summary>
-        /// 启用
-        /// </summary>
-        [Display( Name = "启用" )]
-        public bool? Enabled { get; set; }
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [StringLength( 500 )]
-        [Display( Name = "备注" )]
-        public string Remark { get; set; }
     }
 }

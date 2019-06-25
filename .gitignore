@@ -16,4 +16,4 @@
 /src/GreatWall.Admin/node_modules
 /src/GreatWall.Admin/wwwroot/dist
 /src/GreatWall.Admin/Typings/app/home/dashboard/html
-/src/GreatWall.Admin/Typings/app/systems/application/html
+/src/GreatWall.Admin/Typings/app/systems/**/html

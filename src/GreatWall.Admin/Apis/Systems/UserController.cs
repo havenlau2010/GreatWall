@@ -2,6 +2,7 @@
 using GreatWall.Service.Abstractions;
 using Util.Webs.Controllers;
 using GreatWall.Service.Dtos;
+using GreatWall.Service.Dtos.Requests;
 using GreatWall.Service.Queries;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,16 @@ namespace GreatWall.Apis.Systems {
         /// 用户服务
         /// </summary>
         public IUserService UserService { get; }
+
+        /// <summary>
+        /// 创建用户
+        /// </summary>
+        /// <param name="request">用户</param>
+        [HttpPost]
+        public virtual async Task<IActionResult> CreateAsync( [FromBody] CreateUserRequest request ) {
+            var id = await UserService.CreateAsync( request );
+            return Success( id );
+        }
 
         /// <summary>
         /// 删除
