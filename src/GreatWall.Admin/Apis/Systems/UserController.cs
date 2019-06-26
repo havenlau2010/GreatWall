@@ -27,7 +27,7 @@ namespace GreatWall.Apis.Systems {
         /// <summary>
         /// 创建用户
         /// </summary>
-        /// <param name="request">用户</param>
+        /// <param name="request">创建用户参数</param>
         [HttpPost]
         public virtual async Task<IActionResult> CreateAsync( [FromBody] CreateUserRequest request ) {
             var id = await UserService.CreateAsync( request );
@@ -35,7 +35,7 @@ namespace GreatWall.Apis.Systems {
         }
 
         /// <summary>
-        /// 删除
+        /// 删除用户
         /// </summary>
         /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
         [HttpPost( "delete" )]

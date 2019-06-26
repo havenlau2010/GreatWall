@@ -1,6 +1,9 @@
-﻿using GreatWall.Service.Abstractions;
+﻿using System.Threading.Tasks;
+using GreatWall.Service.Abstractions;
 using GreatWall.Service.Dtos;
+using GreatWall.Service.Dtos.Requests;
 using GreatWall.Service.Queries;
+using Microsoft.AspNetCore.Mvc;
 using Util.Webs.Controllers;
 
 namespace GreatWall.Apis.Systems {
@@ -20,5 +23,35 @@ namespace GreatWall.Apis.Systems {
         /// 角色服务
         /// </summary>
         public IRoleService RoleService { get; }
+
+        /// <summary>
+        /// 创建角色
+        /// </summary>
+        /// <param name="request">创建角色参数</param>
+        [HttpPost]
+        public virtual async Task<IActionResult> CreateAsync( [FromBody] CreateRoleRequest request ) {
+            var id = await RoleService.CreateAsync( request );
+            return Success( id );
+        }
+
+        /// <summary>
+        /// 修改角色
+        /// </summary>
+        /// <param name="request">修改角色参数</param>
+        [HttpPut]
+        public virtual async Task<IActionResult> UpdateAsync( [FromBody] UpdateRoleRequest request ) {
+            await RoleService.UpdateAsync( request );
+            return Success();
+        }
+
+        /// <summary>
+        /// 删除角色
+        /// </summary>
+        /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
+        [HttpPost( "delete" )]
+        public virtual async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
+            await RoleService.DeleteAsync( ids );
+            return Success();
+        }
     }
 }

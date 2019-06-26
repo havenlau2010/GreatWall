@@ -49,7 +49,10 @@ namespace GreatWall.Service.Implements {
         /// </summary>
         /// <param name="param">查询参数</param>
         protected override IQueryBase<User> CreateQuery( UserQuery param ) {
-            return new Query<User>( param );
+            return new Query<User>( param )
+                .WhereIfNotEmpty( t => t.UserName.Contains( param.UserName ) )
+                .WhereIfNotEmpty( t => t.PhoneNumber.Contains( param.PhoneNumber ) )
+                .WhereIfNotEmpty( t => t.Email.Contains( param.Email ) );
         }
 
         /// <summary>

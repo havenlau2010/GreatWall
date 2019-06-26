@@ -1,4 +1,5 @@
-﻿using Util.Helpers;
+﻿using Util;
+using Util.Helpers;
 
 namespace GreatWall.Domain.Models {
     /// <summary>
@@ -10,7 +11,16 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         public override void Init() {
             base.Init();
+            InitType();
             InitPinYin();
+        }
+
+        /// <summary>
+        /// 初始化类型
+        /// </summary>
+        public void InitType() {
+            if ( Type.IsEmpty() )
+                Type = "Role";
         }
 
         /// <summary>

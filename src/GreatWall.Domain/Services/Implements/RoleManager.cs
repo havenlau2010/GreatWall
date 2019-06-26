@@ -12,13 +12,13 @@ namespace GreatWall.Domain.Services.Implements {
     /// <summary>
     /// 角色服务
     /// </summary>
-    public abstract class RoleManager : DomainServiceBase, IRoleManager {
+    public class RoleManager : DomainServiceBase, IRoleManager {
         /// <summary>
         /// 初始化角色服务
         /// </summary>
         /// <param name="roleManager">Identity角色服务</param>
         /// <param name="repository">角色仓储</param>
-        protected RoleManager( RoleManager<Role> roleManager, IRoleRepository repository ) {
+        public RoleManager( RoleManager<Role> roleManager, IRoleRepository repository ) {
             Manager = roleManager;
             Repository = repository;
         }
@@ -79,8 +79,9 @@ namespace GreatWall.Domain.Services.Implements {
         /// 修改角色验证
         /// </summary>
         /// <param name="role">角色</param>
-        protected virtual Task ValidateUpdate( Role role ) {
-            return Task.CompletedTask;
+        protected async Task ValidateUpdate( Role role ) {
+            if( await Repository.ExistsAsync( t => t.Id != role.Id && t.Code == role.Code ) )
+                ThrowDuplicateCodeException( role.Code );
         }
     }
 }

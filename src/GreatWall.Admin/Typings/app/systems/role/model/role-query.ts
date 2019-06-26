@@ -40,8 +40,4 @@ export class RoleQuery extends QueryParameter {
      * 结束创建时间
      */
     endCreationTime;
-    /**
-     * 创建人编号
-     */
-    creatorId;
 }

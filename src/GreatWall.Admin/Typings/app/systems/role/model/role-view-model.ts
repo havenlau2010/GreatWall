@@ -33,10 +33,6 @@ export class RoleViewModel extends TreeViewModel {
      */
     creationTime;
     /**
-     * 创建人编号
-     */
-    creatorId;
-    /**
      * 版本号
      */
     version;

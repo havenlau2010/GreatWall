@@ -25,4 +25,13 @@ export class RoleEditComponent extends EditComponentBase<RoleViewModel> {
     protected getBaseUrl() {
         return "role";
     }
+
+    /**
+     * 创建模型
+     */
+    createModel() {
+        let result = new RoleViewModel();
+        result.enabled = true;
+        return result;
+    }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Util.Ui.Data;
+using System.Runtime.Serialization;
+using Util.Applications.Dtos;
 
-namespace GreatWall.Service.Dtos {
+namespace GreatWall.Service.Dtos.Requests {
     /// <summary>
-    /// 角色数据传输对象
+    /// 创建角色参数
     /// </summary>
-    public class RoleDto : TreeDto<RoleDto> {
+    public class CreateRoleRequest : RequestBase {
         /// <summary>
         /// 角色编码
         /// </summary>
@@ -14,6 +15,7 @@ namespace GreatWall.Service.Dtos {
         [StringLength( 256 )]
         [Display( Name = "角色编码" )]
         public string Code { get; set; }
+
         /// <summary>
         /// 角色名称
         /// </summary>
@@ -21,38 +23,31 @@ namespace GreatWall.Service.Dtos {
         [StringLength( 256 )]
         [Display( Name = "角色名称" )]
         public string Name { get; set; }
+
+        /// <summary>
+        /// 父角色标识
+        /// </summary>
+        [DataMember]
+        public Guid? ParentId { get; set; }
+
+        /// <summary>
+        /// 启用
+        /// </summary>
+        [Display( Name = "启用" )]
+        public bool? Enabled { get; set; }
+
         /// <summary>
         /// 角色类型
         /// </summary>
         [StringLength( 80 )]
         [Display( Name = "角色类型" )]
         public string Type { get; set; }
-        /// <summary>
-        /// 管理员
-        /// </summary>
-        [Display( Name = "管理员" )]
-        public bool? IsAdmin { get; set; }
+
         /// <summary>
         /// 备注
         /// </summary>
         [StringLength( 500 )]
         [Display( Name = "备注" )]
         public string Remark { get; set; }
-        /// <summary>
-        /// 拼音简码
-        /// </summary>
-        [StringLength( 200 )]
-        [Display( Name = "拼音简码" )]
-        public string PinYin { get; set; }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        [Display( Name = "创建时间" )]
-        public DateTime? CreationTime { get; set; }
-        /// <summary>
-        /// 版本号
-        /// </summary>
-        [Display( Name = "版本号" )]
-        public Byte[] Version { get; set; }
     }
 }

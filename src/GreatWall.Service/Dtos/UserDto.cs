@@ -14,10 +14,10 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "用户名" )]
         public string UserName { get; set; }
         /// <summary>
-        /// 安全邮箱
+        /// 电子邮箱
         /// </summary>
         [StringLength( 256 )]
-        [Display( Name = "安全邮箱" )]
+        [Display( Name = "电子邮箱" )]
         public string Email { get; set; }
         /// <summary>
         /// 邮箱已确认
@@ -25,10 +25,10 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "邮箱已确认" )]
         public bool? EmailConfirmed { get; set; }
         /// <summary>
-        /// 安全手机
+        /// 手机号
         /// </summary>
         [StringLength( 64 )]
-        [Display( Name = "安全手机" )]
+        [Display( Name = "手机号" )]
         public string PhoneNumber { get; set; }
         /// <summary>
         /// 手机已确认
