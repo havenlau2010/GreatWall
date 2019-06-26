@@ -21,11 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-GreatWall.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-GreatWall.Data", "src\GreatWall.Data\02-GreatWall.Data.csproj", "{2B84E01C-A914-4AB2-B787-AC7D310A687E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreatWall.Domain", "src\GreatWall.Domain\GreatWall.Domain.csproj", "{EEE91754-0AE3-4942-97EE-D499E1A48D52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreatWall.Domain", "src\GreatWall.Domain\GreatWall.Domain.csproj", "{EEE91754-0AE3-4942-97EE-D499E1A48D52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreatWall.Admin", "src\GreatWall.Admin\GreatWall.Admin.csproj", "{B6A8AEB2-A843-493F-8E96-E66D17BBA593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreatWall.Admin", "src\GreatWall.Admin\GreatWall.Admin.csproj", "{B6A8AEB2-A843-493F-8E96-E66D17BBA593}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreatWall.AuthenticationServer", "src\GreatWall.AuthenticationServer\GreatWall.AuthenticationServer.csproj", "{467DE447-168E-4DAF-A6EC-1E1AF017593A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreatWall.AuthenticationServer", "src\GreatWall.AuthenticationServer\GreatWall.AuthenticationServer.csproj", "{467DE447-168E-4DAF-A6EC-1E1AF017593A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreatWall.Api", "src\GreatWall.Api\GreatWall.Api.csproj", "{E00B58E9-67AC-44A5-9EDA-573A83281D82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{467DE447-168E-4DAF-A6EC-1E1AF017593A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{467DE447-168E-4DAF-A6EC-1E1AF017593A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{467DE447-168E-4DAF-A6EC-1E1AF017593A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00B58E9-67AC-44A5-9EDA-573A83281D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E00B58E9-67AC-44A5-9EDA-573A83281D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00B58E9-67AC-44A5-9EDA-573A83281D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E00B58E9-67AC-44A5-9EDA-573A83281D82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{EEE91754-0AE3-4942-97EE-D499E1A48D52} = {CBF8C535-700E-4CCA-9D3D-0AE2AD5797C3}
 		{B6A8AEB2-A843-493F-8E96-E66D17BBA593} = {925D2DC3-65AE-4900-873B-0A17A72BF3F8}
 		{467DE447-168E-4DAF-A6EC-1E1AF017593A} = {925D2DC3-65AE-4900-873B-0A17A72BF3F8}
+		{E00B58E9-67AC-44A5-9EDA-573A83281D82} = {925D2DC3-65AE-4900-873B-0A17A72BF3F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE6817E3-6D3F-4D4F-ADF5-8D9454C60106}

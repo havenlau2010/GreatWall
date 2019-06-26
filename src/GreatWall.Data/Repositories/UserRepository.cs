@@ -227,7 +227,7 @@ namespace GreatWall.Data.Repositories {
         public Task<int> IncrementAccessFailedCountAsync( User user, CancellationToken cancellationToken ) {
             ValidateUser( user, cancellationToken );
             user.AccessFailedCount++;
-            return Task.FromResult( user.AccessFailedCount );
+            return Task.FromResult( user.AccessFailedCount.SafeValue() );
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace GreatWall.Data.Repositories {
         /// <param name="cancellationToken">取消令牌</param>
         public Task<int> GetAccessFailedCountAsync( User user, CancellationToken cancellationToken ) {
             ValidateUser( user, cancellationToken );
-            return Task.FromResult( user.AccessFailedCount );
+            return Task.FromResult( user.AccessFailedCount.SafeValue() );
         }
 
         /// <summary>

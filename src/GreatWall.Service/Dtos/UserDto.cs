@@ -36,9 +36,9 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "手机已确认" )]
         public bool? PhoneNumberConfirmed { get; set; }
         /// <summary>
-        /// 启用两阶段认证
+        /// 启用两步认证
         /// </summary>
-        [Display( Name = "启用两阶段认证" )]
+        [Display( Name = "启用两步认证" )]
         public bool? TwoFactorEnabled { get; set; }
         /// <summary>
         /// 启用

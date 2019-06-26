@@ -1,80 +1,74 @@
-using System;
+ï»¿using System;
+using System.IO;
 using GreatWall.Data;
 using GreatWall.Data.UnitOfWorks.SqlServer;
 using GreatWall.Service.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using Util;
 using Util.Datas.Ef;
 using Util.Logs.Extensions;
-using Util.Ui.Extensions;
 using Util.Webs.Extensions;
 
 namespace GreatWall {
     /// <summary>
-    /// Æô¶¯ÅäÖÃ
+    /// å¯åŠ¨é…ç½®
     /// </summary>
     public class Startup {
         /// <summary>
-        /// ³õÊ¼»¯Æô¶¯ÅäÖÃ
+        /// åˆå§‹åŒ–å¯åŠ¨é…ç½®
         /// </summary>
-        /// <param name="configuration">ÅäÖÃ</param>
+        /// <param name="configuration">é…ç½®</param>
         public Startup( IConfiguration configuration ) {
             Configuration = configuration;
         }
 
         /// <summary>
-        /// ÅäÖÃ
+        /// é…ç½®
         /// </summary>
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// ÅäÖÃ·şÎñ
+        /// é…ç½®æœåŠ¡
         /// </summary>
         public IServiceProvider ConfigureServices( IServiceCollection services ) {
-            //ÅäÖÃCookie²ßÂÔ
-            services.Configure<CookiePolicyOptions>( options => {
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            } );
+            //æ·»åŠ ApiæœåŠ¡
+            services.AddMvc().SetCompatibilityVersion( CompatibilityVersion.Version_2_2 );
 
-            //×¢²áRazorÊÓÍ¼½âÎöÂ·¾¶
-            services.AddRazorViewLocationExpander();
-
-            //Ìí¼ÓMvc·şÎñ
-            services.AddMvc().SetCompatibilityVersion( CompatibilityVersion.Version_2_2 ).AddRazorPageConventions();
-
-            //Ìí¼ÓNLogÈÕÖ¾²Ù×÷
+            //æ·»åŠ NLogæ—¥å¿—æ“ä½œ
             services.AddNLog();
 
-            //Ìí¼ÓEF¹¤×÷µ¥Ôª
+            //æ·»åŠ EFå·¥ä½œå•å…ƒ
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
 
-            //Ìí¼ÓÈ¨ÏŞ·şÎñ
+            //æ·»åŠ æƒé™æœåŠ¡
             services.AddPermission( t => { t.Lockout.MaxFailedAccessAttempts = 2; } );
 
-            //Ìí¼ÓUtil»ù´¡ÉèÊ©·şÎñ
+            //æ·»åŠ Swagger
+            services.AddSwaggerGen( options => {
+                options.SwaggerDoc( "v1", new Info { Title = "GreatWall Api", Version = "v1" } );
+                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "GreatWall.Api.xml" ) );
+            } );
+
+            //æ·»åŠ UtilåŸºç¡€è®¾æ–½æœåŠ¡
             return services.AddUtil();
         }
 
         /// <summary>
-        /// ÅäÖÃ¿ª·¢»·¾³ÇëÇó¹ÜµÀ
+        /// é…ç½®å¼€å‘ç¯å¢ƒè¯·æ±‚ç®¡é“
         /// </summary>
         public void ConfigureDevelopment( IApplicationBuilder app ) {
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
-            app.UseWebpackDevMiddleware( new WebpackDevMiddlewareOptions {
-                HotModuleReplacement = true
-            } );
+            app.UseSwaggerX();
             CommonConfig( app );
         }
 
         /// <summary>
-        /// ÅäÖÃÉú²ú»·¾³ÇëÇó¹ÜµÀ
+        /// é…ç½®ç”Ÿäº§ç¯å¢ƒè¯·æ±‚ç®¡é“
         /// </summary>
         public void ConfigureProduction( IApplicationBuilder app ) {
             app.UseExceptionHandler( "/Home/Error" );
@@ -82,22 +76,13 @@ namespace GreatWall {
         }
 
         /// <summary>
-        /// ¹«¹²ÅäÖÃ
+        /// å…¬å…±é…ç½®
         /// </summary>
         private void CommonConfig( IApplicationBuilder app ) {
             app.UseErrorLog();
             app.UseStaticFiles();
             app.UseAuthentication();
-            ConfigRoute( app );
-        }
-
-        /// <summary>
-        /// Â·ÓÉÅäÖÃ,Ö§³ÖÇøÓò
-        /// </summary>
-        private void ConfigRoute( IApplicationBuilder app ) {
-            app.UseMvc( routes => {
-                routes.MapSpaFallbackRoute( "spa-fallback", new { controller = "Home", action = "Index" } );
-            } );
+            app.UseMvc();
         }
     }
 }

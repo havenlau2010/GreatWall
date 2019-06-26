@@ -17,3 +17,5 @@
 /src/GreatWall.Admin/wwwroot/dist
 /src/GreatWall.Admin/Typings/app/home/dashboard/html
 /src/GreatWall.Admin/Typings/app/systems/**/html
+/src/GreatWall.Api/bin
+/src/GreatWall.Api/obj

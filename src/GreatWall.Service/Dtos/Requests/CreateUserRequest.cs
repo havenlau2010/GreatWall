@@ -23,7 +23,7 @@ namespace GreatWall.Service.Dtos.Requests {
         /// 安全手机
         /// </summary>
         [StringLength( 64 )]
-        [Phone()]
+        [Phone]
         [Display( Name = "手机号" )]
         public string PhoneNumber { get; set; }
         /// <summary>
