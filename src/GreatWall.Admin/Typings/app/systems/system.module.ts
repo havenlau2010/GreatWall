@@ -4,24 +4,32 @@ import { SystemRoutingModule } from './system-routing.module';
 import { ApplicationListComponent } from './application/application-list.component';
 import { ApplicationEditComponent } from './application/application-edit.component';
 import { ApplicationDetailComponent } from './application/application-detail.component';
+import { ApplicationSelectComponent } from './application/application-select.component';
 import { UserListComponent } from './user/user-list.component';
 import { UserCreateComponent } from './user/user-create.component';
 import { UserDetailComponent } from './user/user-detail.component';
 import { RoleListComponent } from './role/role-list.component';
 import { RoleEditComponent } from './role/role-edit.component';
 import { RoleDetailComponent } from './role/role-detail.component';
+import { ModuleListComponent } from './module/module-list.component';
+import { ModuleEditComponent } from './module/module-edit.component';
+import { ModuleDetailComponent } from './module/module-detail.component';
 
 /**
  * 系统模块
  */
 @NgModule( {
     declarations: [
-        ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent,
+        ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent, ApplicationSelectComponent,
         UserListComponent, UserCreateComponent, UserDetailComponent,
         RoleListComponent, RoleEditComponent, RoleDetailComponent,
+        ModuleListComponent, ModuleEditComponent, ModuleDetailComponent
     ],
     imports: [
         FrameworkModule, SystemRoutingModule
+    ],
+    entryComponents: [
+        ApplicationEditComponent, ApplicationDetailComponent
     ]
 } )
 export class SystemModule {

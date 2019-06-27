@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Util.Ui.Angular.AntDesign" Version="1.9.0.1" />
+    <PackageReference Include="Util.Ui.Angular.AntDesign" Version="1.9.0.4" />
   </ItemGroup>
 
   <ItemGroup>

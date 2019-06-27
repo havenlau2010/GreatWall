@@ -1,0 +1,8 @@
+﻿@page
+@model ApplicationDto
+@*表单*@
+<util-card title="应用程序">
+    <util-menu mode="Inline">
+        <util-menu-item ng-for="let item of list" on-click="click(item)">{{item.name}}</util-menu-item>
+    </util-menu>
+</util-card>

@@ -4,7 +4,7 @@ using Util.Ui.Data;
 
 namespace GreatWall.Service.Dtos {
     /// <summary>
-    /// 角色数据传输对象
+    /// 角色参数
     /// </summary>
     public class RoleDto : TreeDto<RoleDto> {
         /// <summary>

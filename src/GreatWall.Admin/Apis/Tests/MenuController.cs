@@ -69,6 +69,11 @@ namespace GreatWall.Apis.Tests {
                         Text = "角色",
                         Icon = "anticon anticon-team",
                         Link = "/systems/role"
+                    },
+                    new MenuInfo {
+                        Text = "模块",
+                        Icon = "anticon anticon-menu-fold",
+                        Link = "/systems/module"
                     }
                 }
             };

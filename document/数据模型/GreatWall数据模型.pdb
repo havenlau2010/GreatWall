@@ -4081,8 +4081,9 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:ObjectID>E42F872D-7BA3-431D-962B-2387D066D9A3</a:ObjectID>
 <a:CreationDate>1561283279</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1561283279</a:ModificationDate>
+<a:ModificationDate>1561457471</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
+<a:Sort>0</a:Sort>
 <c:Column>
 <o:Column Ref="o43"/>
 </c:Column>
@@ -4986,13 +4987,13 @@ LABL 0 新宋体,8,N</a:FontList>
 </o:Column>
 <o:Column Id="o118">
 <a:ObjectID>35DBE81D-1F9A-4383-BBE5-E4D59638C251</a:ObjectID>
-<a:Name>父编号( ParentId )</a:Name>
+<a:Name>父标识( ParentId )</a:Name>
 <a:Code>ParentId</a:Code>
 <a:CreationDate>1561289549</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1561289549</a:ModificationDate>
+<a:ModificationDate>1561532751</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
-<a:Comment>父编号</a:Comment>
+<a:Comment>父标识</a:Comment>
 <a:DataType>uniqueidentifier</a:DataType>
 </o:Column>
 <o:Column Id="o119">
@@ -5001,12 +5002,11 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Code>Path</a:Code>
 <a:CreationDate>1561289549</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1561289549</a:ModificationDate>
+<a:ModificationDate>1561532789</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
 <a:Comment>路径</a:Comment>
 <a:DataType>nvarchar(800)</a:DataType>
 <a:Length>800</a:Length>
-<a:Column.Mandatory>1</a:Column.Mandatory>
 </o:Column>
 <o:Column Id="o120">
 <a:ObjectID>AB68D584-B1E0-4F4F-8EF6-E8C4FF6E7400</a:ObjectID>
@@ -5014,11 +5014,10 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Code>Level</a:Code>
 <a:CreationDate>1561289549</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1561289893</a:ModificationDate>
+<a:ModificationDate>1561532789</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
 <a:Comment>层级</a:Comment>
 <a:DataType>int</a:DataType>
-<a:Column.Mandatory>1</a:Column.Mandatory>
 </o:Column>
 <o:Column Id="o121">
 <a:ObjectID>D2E70B1E-E126-41EA-9627-ECFED625242F</a:ObjectID>
@@ -5038,12 +5037,11 @@ LABL 0 新宋体,8,N</a:FontList>
 <a:Code>PinYin</a:Code>
 <a:CreationDate>1561289549</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1561289549</a:ModificationDate>
+<a:ModificationDate>1561532704</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
 <a:Comment>拼音简码</a:Comment>
 <a:DataType>nvarchar(200)</a:DataType>
 <a:Length>200</a:Length>
-<a:Column.Mandatory>1</a:Column.Mandatory>
 </o:Column>
 <o:Column Id="o123">
 <a:ObjectID>8C1989A7-A28D-4A98-92E2-69114098FD44</a:ObjectID>

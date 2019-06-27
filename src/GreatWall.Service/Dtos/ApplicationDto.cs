@@ -4,7 +4,7 @@ using Util.Applications.Dtos;
 
 namespace GreatWall.Service.Dtos {
     /// <summary>
-    /// 应用程序数据传输对象
+    /// 应用程序参数
     /// </summary>
     public class ApplicationDto : DtoBase {
         /// <summary>

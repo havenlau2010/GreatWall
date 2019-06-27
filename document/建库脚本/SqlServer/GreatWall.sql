@@ -1274,3 +1274,387 @@ go
 
 create clustered index cls_idx_creationtime on Systems.Role (CreationTime DESC)
 go
+
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Systems.Resource') and o.name = 'FK_Resource_Application')
+alter table Systems.Resource
+   drop constraint FK_Resource_Application
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('Systems.Resource')
+            and   name  = 'cls_idx_sortid'
+            and   indid > 0
+            and   indid < 255)
+   drop index Systems.Resource.cls_idx_sortid
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('Systems.Resource')
+            and   type = 'U')
+   drop table Systems.Resource
+go
+
+/*==============================================================*/
+/* Table: Resource                                              */
+/*==============================================================*/
+create table Systems.Resource (
+   ResourceId           uniqueidentifier     not null,
+   ApplicationId        uniqueidentifier     null,
+   Uri                  nvarchar(300)        null,
+   Name                 nvarchar(200)        not null,
+   Type                 int                  not null,
+   ParentId             uniqueidentifier     null,
+   Path                 nvarchar(800)        null,
+   Level                int                  null,
+   Remark               nvarchar(500)        null,
+   PinYin               nvarchar(200)        null,
+   Enabled              bit                  not null,
+   SortId               int                  null,
+   Extend               nvarchar(max)        null,
+   CreationTime         datetime             null,
+   CreatorId            uniqueidentifier     null,
+   LastModificationTime datetime             null,
+   LastModifierId       uniqueidentifier     null,
+   IsDeleted            bit                  not null,
+   Version              timestamp            null,
+   constraint PK_RESOURCE primary key nonclustered (ResourceId)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('Systems.Resource') and minor_id = 0)
+begin 
+   execute sp_dropextendedproperty 'MS_Description',  
+   'schema', 'Systems', 'table', 'Resource' 
+ 
+end 
+
+
+execute sp_addextendedproperty 'MS_Description',  
+   '资源', 
+   'schema', 'Systems', 'table', 'Resource'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ResourceId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'ResourceId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '资源标识',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'ResourceId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ApplicationId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'ApplicationId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '应用程序标识',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'ApplicationId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Uri')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Uri'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '资源标识',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Uri'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Name')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Name'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '资源名称',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Name'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Type')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Type'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '资源类型',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Type'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ParentId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'ParentId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '父标识',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'ParentId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Path')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Path'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '路径',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Path'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Level')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Level'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '层级',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Level'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Remark')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Remark'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '备注',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Remark'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PinYin')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'PinYin'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '拼音简码',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'PinYin'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Enabled')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Enabled'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '启用',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Enabled'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'SortId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'SortId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '排序号',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'SortId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Extend')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Extend'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '扩展',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Extend'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CreationTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'CreationTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '创建时间',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'CreationTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CreatorId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'CreatorId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '创建人编号',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'CreatorId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'LastModificationTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'LastModificationTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后修改时间',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'LastModificationTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'LastModifierId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'LastModifierId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后修改人编号',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'LastModifierId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'IsDeleted')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'IsDeleted'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '是否删除',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'IsDeleted'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Resource')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Version')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Version'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '版本号',
+   'schema', 'Systems', 'table', 'Resource', 'column', 'Version'
+go
+
+/*==============================================================*/
+/* Index: cls_idx_sortid                                        */
+/*==============================================================*/
+
+
+
+
+create clustered index cls_idx_sortid on Systems.Resource (SortId ASC)
+go
+
+alter table Systems.Resource
+   add constraint FK_Resource_Application foreign key (ApplicationId)
+      references Systems.Application (ApplicationId)
+go
