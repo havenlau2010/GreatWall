@@ -2,11 +2,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { ApplicationListComponent } from './application/application-list.component';
 import { UserListComponent } from './user/user-list.component';
-import { UserCreateComponent } from './user/user-create.component';
-import { UserDetailComponent } from './user/user-detail.component';
 import { RoleListComponent } from './role/role-list.component';
-import { RoleEditComponent } from './role/role-edit.component';
-import { RoleDetailComponent } from './role/role-detail.component';
 import { ModuleListComponent } from './module/module-list.component';
 import { ModuleEditComponent } from './module/module-edit.component';
 import { ModuleDetailComponent } from './module/module-detail.component';
@@ -17,22 +13,8 @@ const routes: Routes = [
         path: '',
         children: [
             { path: 'application', component: ApplicationListComponent },
-            {
-                path: 'user',
-                children: [
-                    { path: '', component: UserListComponent },
-                    { path: 'create', component: UserCreateComponent },
-                    { path: 'detail/:id', component: UserDetailComponent }
-                ]
-            },
-            {
-                path: 'role', children: [
-                    { path: '', component: RoleListComponent },
-                    { path: 'create', component: RoleEditComponent },
-                    { path: 'edit/:id', component: RoleEditComponent },
-                    { path: 'detail/:id', component: RoleDetailComponent }
-                ]
-            },
+            { path: 'user', component: UserListComponent },
+            { path: 'role', component: RoleListComponent },
             {
                 path: 'module', children: [
                     { path: '', component: ModuleListComponent },

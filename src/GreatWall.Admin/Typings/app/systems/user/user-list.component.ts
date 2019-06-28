@@ -3,6 +3,8 @@ import { env } from '../../env';
 import { TableQueryComponentBase } from '../../../util';
 import { UserQuery } from './model/user-query';
 import { UserViewModel } from './model/user-view-model';
+import { UserCreateComponent } from './user-create.component';
+import { UserDetailComponent } from './user-detail.component';
 
 /**
  * 用户列表页
@@ -18,5 +20,26 @@ export class UserListComponent extends TableQueryComponentBase<UserViewModel, Us
      */
     constructor(injector: Injector) {
         super(injector);
+    }
+
+    /**
+     * 获取创建弹出框组件
+     */
+    getCreateDialogComponent() {
+        return UserCreateComponent;
+    }
+
+    /**
+     * 获取详情弹出框组件
+     */
+    getDetailDialogComponent() {
+        return UserDetailComponent;
+    }
+
+    /**
+     * 获取创建弹出层宽度
+     */
+    getCreateDialogWidth() {
+        return "30%";
     }
 }

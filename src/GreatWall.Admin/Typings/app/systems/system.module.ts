@@ -29,7 +29,9 @@ import { ModuleDetailComponent } from './module/module-detail.component';
         FrameworkModule, SystemRoutingModule
     ],
     entryComponents: [
-        ApplicationEditComponent, ApplicationDetailComponent
+        ApplicationEditComponent, ApplicationDetailComponent,
+        UserCreateComponent, UserDetailComponent,
+        RoleEditComponent, RoleDetailComponent,
     ]
 } )
 export class SystemModule {
