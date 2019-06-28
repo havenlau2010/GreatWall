@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { EditDialogComponentBase } from '../../../util';
+import { DialogEditComponentBase } from '../../../util';
 import { UserViewModel } from './model/user-view-model';
 
 /**
@@ -10,7 +10,7 @@ import { UserViewModel } from './model/user-view-model';
     selector: 'user-detail',
     templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/user/detail'
 })
-export class UserDetailComponent extends EditDialogComponentBase<UserViewModel> {
+export class UserDetailComponent extends DialogEditComponentBase<UserViewModel> {
     /**
      * 初始化用户详情页
      * @param injector 注入器

@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { EditDialogComponentBase } from '../../../util';
+import { DialogEditComponentBase } from '../../../util';
 import { RoleViewModel } from './model/role-view-model';
 
 /**
@@ -10,7 +10,7 @@ import { RoleViewModel } from './model/role-view-model';
     selector: 'role-detail',
     templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/role/detail'
 })
-export class RoleDetailComponent extends EditDialogComponentBase<RoleViewModel> {
+export class RoleDetailComponent extends DialogEditComponentBase<RoleViewModel> {
     /**
      * 初始化角色详情页
      * @param injector 注入器

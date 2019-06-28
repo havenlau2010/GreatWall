@@ -3,7 +3,7 @@ using Util.Applications.Dtos;
 
 namespace GreatWall.Service.Dtos.Requests {
     /// <summary>
-    /// 创建用户请求参数
+    /// 创建用户参数
     /// </summary>
     public class CreateUserRequest : RequestBase {
         /// <summary>

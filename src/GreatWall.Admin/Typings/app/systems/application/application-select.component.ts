@@ -44,11 +44,21 @@ export class ApplicationSelectComponent extends ComponentBase implements OnInit 
      * 加载应用程序列表
      */
     loadApplications() {
-        this.util.webapi.get<ApplicationViewModel[]>( "/api/application/all" ).handle( {
+        this.util.webapi.get<ApplicationViewModel[]>( "/api/application/all" ).loading().handle( {
             ok: result => {
                 this.list = result;
+                this.selectApplication();
             }
         } );
+    }
+
+    /**
+     * 选择当前应用程序
+     */
+    private selectApplication() {
+        if ( !this.list || this.list.length === 0 )
+            return;
+        this.click( this.list[0] );
     }
 
     /**

@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { EditDialogComponentBase } from '../../../util';
+import { DialogEditComponentBase } from '../../../util';
 import { CreateUserViewModel } from './model/create-user-view-model';
 
 /**
@@ -10,7 +10,7 @@ import { CreateUserViewModel } from './model/create-user-view-model';
     selector: 'user-edit',
     templateUrl: !env.dev() ? './html/create.component.html' : '/view/systems/user/create'
 })
-export class UserCreateComponent extends EditDialogComponentBase<CreateUserViewModel> {
+export class UserCreateComponent extends DialogEditComponentBase<CreateUserViewModel> {
     /**
      * 初始化用户创建页
      * @param injector 注入器

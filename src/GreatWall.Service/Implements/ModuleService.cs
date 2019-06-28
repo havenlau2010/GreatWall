@@ -1,40 +1,54 @@
-﻿using GreatWall.Data;
-using GreatWall.Data.Pos;
-using GreatWall.Data.Stores.Abstractions;
+﻿using System;
+using System.Threading.Tasks;
+using GreatWall.Data;
 using GreatWall.Domain.Repositories;
+using GreatWall.Domain.Services.Abstractions;
 using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Queries;
-using Util.Applications.Trees;
-using Util.Datas.Queries;
-using Util.Domains.Repositories;
+using GreatWall.Service.Dtos.Extensions;
+using GreatWall.Service.Dtos.Requests;
+using Util;
+using Util.Applications;
 
 namespace GreatWall.Service.Implements {
     /// <summary>
     /// 模块服务
     /// </summary>
-    public class ModuleService : TreeServiceBase<ResourcePo, ModuleDto, ResourceQuery>, IModuleService {
+    public class ModuleService : ServiceBase, IModuleService {
         /// <summary>
         /// 初始化模块服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="moduleRepository">模块仓储</param>
-        public ModuleService( IGreatWallUnitOfWork unitOfWork, IResourcePoStore resourceStore, IModuleRepository moduleRepository )
-            : base( unitOfWork, resourceStore ) {
-     
+        /// <param name="moduleManager">模块服务</param>
+        public ModuleService( IGreatWallUnitOfWork unitOfWork, IModuleRepository moduleRepository,IModuleManager moduleManager ) {
+            UnitOfWork = unitOfWork;
+            ModuleRepository = moduleRepository;
+            ModuleManager = moduleManager;
         }
-        
+
         /// <summary>
-        /// 资源仓储
+        /// 工作单元
         /// </summary>
-        public IModuleRepository ResourceRepository { get; set; }
-        
+        public IGreatWallUnitOfWork UnitOfWork { get; set; }
         /// <summary>
-        /// 创建查询对象
+        /// 模块仓储
         /// </summary>
-        /// <param name="param">查询参数</param>
-        protected override IQueryBase<ResourcePo> CreateQuery( ResourceQuery param ) {
-            return new Query<ResourcePo>( param );
+        public IModuleRepository ModuleRepository { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public IModuleManager ModuleManager { get; set; }
+
+        /// <summary>
+        /// 创建模块
+        /// </summary>
+        /// <param name="request">创建模块参数</param>
+        public async Task<Guid> CreateAsync( CreateModuleRequest request ) {
+            request.CheckNull( nameof( request ) );
+            var module = request.ToModule();
+            await ModuleManager.CreateAsync( module );
+            await UnitOfWork.CommitAsync();
+            return module.Id;
         }
     }
 }

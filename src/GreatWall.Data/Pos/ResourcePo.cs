@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using GreatWall.Domain.Enums;
+using GreatWall.Domain.Models;
 using Util.Datas.Persistence;
 using Util.Domains;
 using Util.Domains.Auditing;
@@ -57,5 +59,10 @@ namespace GreatWall.Data.Pos{
         /// 是否删除
         /// </summary>  
         public bool IsDeleted { get; set; }
+        /// <summary>
+        /// 应用程序
+        /// </summary>
+        [ForeignKey( "ApplicationId" )]
+        public Application Application { get; set; }
     }
 }

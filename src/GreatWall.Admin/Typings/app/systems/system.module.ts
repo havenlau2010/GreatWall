@@ -14,6 +14,7 @@ import { RoleDetailComponent } from './role/role-detail.component';
 import { ModuleListComponent } from './module/module-list.component';
 import { ModuleEditComponent } from './module/module-edit.component';
 import { ModuleDetailComponent } from './module/module-detail.component';
+import { ModuleSelectComponent } from './module/module-select.component';
 
 /**
  * 系统模块
@@ -23,7 +24,7 @@ import { ModuleDetailComponent } from './module/module-detail.component';
         ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent, ApplicationSelectComponent,
         UserListComponent, UserCreateComponent, UserDetailComponent,
         RoleListComponent, RoleEditComponent, RoleDetailComponent,
-        ModuleListComponent, ModuleEditComponent, ModuleDetailComponent
+        ModuleListComponent, ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
     ],
     imports: [
         FrameworkModule, SystemRoutingModule
@@ -32,6 +33,7 @@ import { ModuleDetailComponent } from './module/module-detail.component';
         ApplicationEditComponent, ApplicationDetailComponent,
         UserCreateComponent, UserDetailComponent,
         RoleEditComponent, RoleDetailComponent,
+        ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
     ]
 } )
 export class SystemModule {

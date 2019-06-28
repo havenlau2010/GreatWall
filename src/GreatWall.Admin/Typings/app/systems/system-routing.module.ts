@@ -4,8 +4,6 @@ import { ApplicationListComponent } from './application/application-list.compone
 import { UserListComponent } from './user/user-list.component';
 import { RoleListComponent } from './role/role-list.component';
 import { ModuleListComponent } from './module/module-list.component';
-import { ModuleEditComponent } from './module/module-edit.component';
-import { ModuleDetailComponent } from './module/module-detail.component';
 
 //路由配置
 const routes: Routes = [
@@ -15,14 +13,7 @@ const routes: Routes = [
             { path: 'application', component: ApplicationListComponent },
             { path: 'user', component: UserListComponent },
             { path: 'role', component: RoleListComponent },
-            {
-                path: 'module', children: [
-                    { path: '', component: ModuleListComponent },
-                    { path: 'create', component: ModuleEditComponent },
-                    { path: 'edit/:id', component: ModuleEditComponent },
-                    { path: 'detail/:id', component: ModuleDetailComponent }
-                ]
-            }
+            { path: 'module', component: ModuleListComponent }
         ]
     }
 ];

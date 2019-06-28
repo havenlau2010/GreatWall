@@ -1,9 +1,10 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { TableQueryComponentBase } from '../../../util';
+import { TreeTableQueryComponentBase } from '../../../util';
 import { ModuleQuery } from './model/module-query';
 import { ModuleViewModel } from './model/module-view-model';
 import { ApplicationViewModel } from "../application/model/application-view-model";
+import { ModuleEditComponent } from './module-edit.component';
 
 /**
  * 模块列表页
@@ -12,7 +13,7 @@ import { ApplicationViewModel } from "../application/model/application-view-mode
     selector: 'module-list',
     templateUrl: !env.dev() ? './html/index.component.html' : '/view/systems/module'
 } )
-export class ModuleListComponent extends TableQueryComponentBase<ModuleViewModel, ModuleQuery>  {
+export class ModuleListComponent extends TreeTableQueryComponentBase<ModuleViewModel, ModuleQuery>  {
     /**
      * 当前应用程序
      */
@@ -35,5 +36,33 @@ export class ModuleListComponent extends TableQueryComponentBase<ModuleViewModel
         this.selectedApplication = application;
         this.queryParam.applicationId = application.id;
         this.query();
+    }
+
+    /**
+     * 获取创建弹出层组件
+     */
+    getCreateDialogComponent() {
+        return ModuleEditComponent;
+    }
+
+    /**
+     * 获取创建弹出层数据
+     */
+    protected getCreateDialogData( parent? ) {
+        return {
+            parent: parent,
+            applicationId: this.selectedApplication.id,
+            applicationName: this.selectedApplication.name
+        }
+    }
+
+    /**
+     * 创建弹出框打开前回调函数
+     */
+    onCreateBeforeOpen() {
+        if ( this.selectedApplication.id )
+            return true;
+        this.util.message.warn( "请选择应用程序" );
+        return false;
     }
 }

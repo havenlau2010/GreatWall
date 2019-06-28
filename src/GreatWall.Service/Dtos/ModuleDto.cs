@@ -18,18 +18,18 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "应用程序" )]
         public string ApplicationName { get; set; }
         /// <summary>
-        /// 模块地址
-        /// </summary>
-        [StringLength( 300 )]
-        [Display( Name = "模块地址" )]
-        public string Url { get; set; }
-        /// <summary>
         /// 模块名称
         /// </summary>
         [Required(ErrorMessage = "模块名称不能为空" )]
         [StringLength( 200 )]
         [Display( Name = "模块名称" )]
         public string Name { get; set; }
+        /// <summary>
+        /// 模块地址
+        /// </summary>
+        [StringLength( 300 )]
+        [Display( Name = "模块地址" )]
+        public string Url { get; set; }
         /// <summary>
         /// 备注
         /// </summary>

@@ -1,9 +1,9 @@
-﻿import { QueryParameter } from '../../../../util';
+﻿import { TreeQueryParameter } from '../../../../util';
 
 /**
  * 模块查询参数
  */
-export class ModuleQuery extends QueryParameter {
+export class ModuleQuery extends TreeQueryParameter {
     /**
      * 标识
      */
