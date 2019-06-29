@@ -29,6 +29,16 @@ export class ModuleListComponent extends TreeTableQueryComponentBase<ModuleViewM
     }
 
     /**
+     * 创建查询参数
+     */
+    protected createQuery() {
+        let result = new ModuleQuery();
+        if ( this.selectedApplication )
+            result.applicationId = this.selectedApplication.id;
+        return result;
+    }
+
+    /**
      * 选择应用程序
      * @param application 应用程序
      */

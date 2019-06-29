@@ -7,8 +7,8 @@
     @*查询表单*@
     @await Html.PartialAsync( "Index.Query" )
     @*表格*@
-    <util-tree-table id="tableModule" [checkedKeys]="checkedIds" show-checkbox="true" multiple="false" 
-                     query-param="queryParam" base-url="module" sort="CreationTime desc" expand-all="true">
+    <util-tree-table id="tableModule" show-checkbox="true" multiple="false" query-param="queryParam" base-url="module"
+                     sort="CreationTime desc" expand-all="true" checked-keys="checkedIds">
         <util-tree-table-column for="Name"></util-tree-table-column>
         <util-tree-table-column for="ApplicationName"></util-tree-table-column>
         <util-tree-table-column for="Url"></util-tree-table-column>

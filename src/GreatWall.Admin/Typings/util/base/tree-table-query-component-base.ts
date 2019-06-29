@@ -105,12 +105,14 @@ export abstract class TreeTableQueryComponentBase<TViewModel extends TreeViewMod
 
     /**
      * 删除
-     * @param id 标识
      * @param button 按钮
+     * @param id 标识
      */
-    delete( id?, button?) {
-        //id = this.table.getId( id );
-        //this.table.delete( id, null, null, button );
+    delete( button?, id? ) {
+        this.table.delete( {
+            button: button,
+            ids: id
+        } );
     }
 
     /**
@@ -128,22 +130,6 @@ export abstract class TreeTableQueryComponentBase<TViewModel extends TreeViewMod
      * 刷新完成后操作
      */
     protected refreshAfter = ( data: PagerList<TViewModel> ) => {
-    }
-
-    /**
-     * 选中实体
-     */
-    select() {
-        let selection = null;
-        if ( !selection || selection.length === 0 ) {
-            this.util.dialog.close( new TreeViewModel() );
-            return;
-        }
-        if ( selection.length === 1 ) {
-            this.util.dialog.close( selection[0] );
-            return;
-        }
-        this.util.dialog.close( selection );
     }
 
     /**

@@ -84,7 +84,7 @@ export class Table<T extends IKey> implements OnInit {
     /**
      * 复选框选中的标识列表
      */
-    @Input() checkedKeys: string[];
+    @Input() checkedKeys: string | string[];
     /**
      * 查询参数变更事件
      */
