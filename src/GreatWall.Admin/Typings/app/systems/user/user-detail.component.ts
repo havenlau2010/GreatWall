@@ -25,4 +25,11 @@ export class UserDetailComponent extends DialogEditComponentBase<UserViewModel> 
     protected getBaseUrl() {
         return "user";
     }
+
+    /**
+     * 是否远程加载
+     */
+    isRequestLoad() {
+        return false;
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GreatWall.Service.Dtos;
 using GreatWall.Service.Dtos.Requests;
 using Util.Applications;
 using Util.Aspects;
@@ -15,5 +16,10 @@ namespace GreatWall.Service.Abstractions {
         /// </summary>
         /// <param name="request">创建模块参数</param>
         Task<Guid> CreateAsync( [NotNull] [Valid] CreateModuleRequest request );
+        /// <summary>
+        /// 修改模块
+        /// </summary>
+        /// <param name="request">模块参数</param>
+        Task UpdateAsync( [NotNull] [Valid] ModuleDto request );
     }
 }

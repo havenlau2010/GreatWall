@@ -60,7 +60,7 @@ namespace GreatWall.Service.Implements {
         /// 过滤
         /// </summary>
         protected override IQueryable<ResourcePo> Filter( IQueryable<ResourcePo> queryable, ResourceQuery parameter ) {
-            return base.Filter( queryable, parameter ).Include( t => t.Application );
+            return base.Filter( queryable, parameter ).Include( t => t.Application ).Include( t => t.Parent );
         }
 
         /// <summary>

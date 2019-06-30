@@ -25,4 +25,11 @@ export class RoleDetailComponent extends DialogEditComponentBase<RoleViewModel> 
     protected getBaseUrl() {
         return "role";
     }
+
+    /**
+     * 是否远程加载
+     */
+    isRequestLoad() {
+        return false;
+    }
 }

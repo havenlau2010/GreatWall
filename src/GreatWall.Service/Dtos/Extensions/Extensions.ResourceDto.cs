@@ -21,6 +21,8 @@ namespace GreatWall.Service.Dtos.Extensions {
             var extend = Json.ToObject<ModuleExtend>( po.Extend );
             result.Icon = extend?.Icon;
             result.Expanded = extend?.Expanded;
+            if( po.Parent != null )
+                result.ParentName = po.Parent.Name;
             if( po.Application != null )
                 result.ApplicationName = po.Application.Name;
             return result;

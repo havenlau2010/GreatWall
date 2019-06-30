@@ -25,4 +25,11 @@ export class ModuleDetailComponent extends EditComponentBase<ModuleViewModel> {
     protected getBaseUrl() {
         return "module";
     }
+
+    /**
+     * 是否远程加载
+     */
+    isRequestLoad() {
+        return false;
+    }
 }

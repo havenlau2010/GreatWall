@@ -64,5 +64,10 @@ namespace GreatWall.Data.Pos{
         /// </summary>
         [ForeignKey( "ApplicationId" )]
         public Application Application { get; set; }
+        /// <summary>
+        /// 父资源
+        /// </summary>
+        [ForeignKey( "ParentId" )]
+        public ResourcePo Parent { get; set; }
     }
 }

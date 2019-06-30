@@ -20,6 +20,10 @@ export class ApplicationSelectComponent extends ComponentBase implements OnInit 
      */
     selected: ApplicationViewModel;
     /**
+     * 加载状态
+     */
+    loading;
+    /**
      * 单击事件
      */
     @Output() onClick = new EventEmitter<ApplicationViewModel>();
@@ -44,11 +48,13 @@ export class ApplicationSelectComponent extends ComponentBase implements OnInit 
      * 加载应用程序列表
      */
     loadApplications() {
-        this.util.webapi.get<ApplicationViewModel[]>( "/api/application/all" ).loading().handle( {
+        this.util.webapi.get<ApplicationViewModel[]>( "/api/application/all" ).handle( {
+            before: () => this.loading = true,
             ok: result => {
                 this.list = result;
                 this.selectApplication();
-            }
+            },
+            complete: () => this.loading = false
         } );
     }
 

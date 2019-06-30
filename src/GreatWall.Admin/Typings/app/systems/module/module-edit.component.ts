@@ -30,20 +30,20 @@ export class ModuleEditComponent extends DialogTreeEditComponentBase<ModuleViewM
     }
 
     /**
+     * 初始化
+     */
+    ngOnInit() {
+        super.ngOnInit();
+        this.model.applicationId = this.applicationId;
+    }
+
+    /**
      * 创建模型
      */
     createModel() {
         let result = new ModuleViewModel();
         result.enabled = true;
         return result;
-    }
-
-    /**
-     * 初始化
-     */
-    ngOnInit() {
-        super.ngOnInit();
-        this.model.applicationId = this.applicationId;
     }
 
     /**
@@ -63,7 +63,14 @@ export class ModuleEditComponent extends DialogTreeEditComponentBase<ModuleViewM
     /**
      * 获取选择框数据
      */
-    protected getSelectDialogData( parent? ) {
-        return { applicationId: this.applicationId, data: parent };
+    protected getSelectDialogData() {
+        return { applicationId: this.applicationId, data: this.parent };
+    }
+
+    /**
+     * 是否请求加载
+     */
+    isRequestLoad() {
+        return false;
     }
 }

@@ -25,4 +25,11 @@ export class ApplicationDetailComponent extends DialogEditComponentBase<Applicat
     protected getBaseUrl() {
         return "application";
     }
+
+    /**
+     * 是否远程加载
+     */
+    isRequestLoad() {
+        return false;
+    }
 }

@@ -34,5 +34,15 @@ namespace GreatWall.Apis.Systems {
             var id = await ModuleService.CreateAsync( request );
             return Success( id );
         }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync( [FromBody] ModuleDto request ) {
+            await ModuleService.UpdateAsync( request );
+            return Success();
+        }
     }
 }

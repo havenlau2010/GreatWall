@@ -18,17 +18,16 @@
         </util-column>
         @*表格*@
         <util-column span="18">
-            <util-tree-table id="tableModule" show-checkbox="true" query-param="queryParam" base-url="module" 
+            <util-tree-table id="tableModule" show-checkbox="true" query-param="queryParam" base-url="module"
                              sort="CreationTime desc" auto-load="false" expand-all="true" show-pagination="false">
                 <util-tree-table-column for="Name"></util-tree-table-column>
-                <util-tree-table-column for="ApplicationName"></util-tree-table-column>
                 <util-tree-table-column for="Url"></util-tree-table-column>
                 <util-tree-table-column for="Enabled"></util-tree-table-column>
                 <util-tree-table-column title="操作">
                     <util-button class="mr-sm" color="Primary" shape="Circle" icon="Plus" tooltip="创建下级模块" on-click="openCreateDialog(row)"></util-button>
-                    <util-a class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" bind-link="['edit',row.id]"></util-a>
+                    <util-button class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" on-click="openEditDialog(row)"></util-button>
                     <util-button class="mr-sm" color="Danger" shape="Circle" icon="Delete" tooltip="删除" on-click="delete(null,row.id)"></util-button>
-                    <util-a shape="Circle" icon="Eye" tooltip="详情" bind-link="['detail',row.id]"></util-a>
+                    <util-button shape="Circle" icon="Eye" tooltip="详情" on-click="openDetailDialog(row)"></util-button>
                 </util-tree-table-column>
             </util-tree-table>
         </util-column>
