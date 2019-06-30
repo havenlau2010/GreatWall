@@ -1658,3 +1658,91 @@ alter table Systems.Resource
    add constraint FK_Resource_Application foreign key (ApplicationId)
       references Systems.Application (ApplicationId)
 go
+
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Systems.UserRole') and o.name = 'FK_UserRole_Role')
+alter table Systems.UserRole
+   drop constraint FK_UserRole_Role
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Systems.UserRole') and o.name = 'FK_UserRole_User')
+alter table Systems.UserRole
+   drop constraint FK_UserRole_User
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('Systems.UserRole')
+            and   type = 'U')
+   drop table Systems.UserRole
+go
+
+/*==============================================================*/
+/* Table: UserRole                                              */
+/*==============================================================*/
+create table Systems.UserRole (
+   RoleId               uniqueidentifier     not null,
+   UserId               uniqueidentifier     not null,
+   constraint PK_USERROLE primary key (RoleId, UserId)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('Systems.UserRole') and minor_id = 0)
+begin 
+   execute sp_dropextendedproperty 'MS_Description',  
+   'schema', 'Systems', 'table', 'UserRole' 
+ 
+end 
+
+
+execute sp_addextendedproperty 'MS_Description',  
+   '用户角色', 
+   'schema', 'Systems', 'table', 'UserRole'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.UserRole')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RoleId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'UserRole', 'column', 'RoleId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '角色标识',
+   'schema', 'Systems', 'table', 'UserRole', 'column', 'RoleId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.UserRole')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'UserId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'UserRole', 'column', 'UserId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '用户标识',
+   'schema', 'Systems', 'table', 'UserRole', 'column', 'UserId'
+go
+
+alter table Systems.UserRole
+   add constraint FK_UserRole_Role foreign key (RoleId)
+      references Systems.Role (RoleId)
+go
+
+alter table Systems.UserRole
+   add constraint FK_UserRole_User foreign key (UserId)
+      references Systems."User" (UserId)
+go
