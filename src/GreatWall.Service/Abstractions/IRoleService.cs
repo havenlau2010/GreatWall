@@ -23,9 +23,14 @@ namespace GreatWall.Service.Abstractions {
         /// <param name="request">修改角色参数</param>
         Task UpdateAsync( [NotNull] [Valid] UpdateRoleRequest request );
         /// <summary>
-        /// 添加用户列表到角色
+        /// 添加用户到角色
         /// </summary>
         /// <param name="request">用户角色参数</param>
         Task AddUsersToRoleAsync( UserRoleRequest request );
+        /// <summary>
+        /// 从角色移除用户
+        /// </summary>
+        /// <param name="request">用户角色参数</param>
+        Task RemoveUsersFromRoleAsync( UserRoleRequest request );
     }
 }

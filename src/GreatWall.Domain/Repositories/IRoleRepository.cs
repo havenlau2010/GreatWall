@@ -20,5 +20,10 @@ namespace GreatWall.Domain.Repositories {
         /// </summary>
         /// <param name="userRoles">用户角色列表</param>
         Task AddUserRolesAsync( IEnumerable<UserRole> userRoles );
+        /// <summary>
+        /// 从角色移除用户
+        /// </summary>
+        /// <param name="userRoles">用户角色列表</param>
+        void RemoveUserRoles( IEnumerable<UserRole> userRoles );
     }
 }

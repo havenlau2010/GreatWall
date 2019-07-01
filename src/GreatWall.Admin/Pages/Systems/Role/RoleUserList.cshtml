@@ -6,7 +6,7 @@
     @await Html.PartialAsync( "~/Pages/Systems/User/Index.Query.cshtml" )
     @*工具按钮*@
     <util-button class="mr-sm" color="Primary" icon="UserAdd" text="添加用户到角色" on-click="openSelectDialog()"></util-button>
-    <util-button id="btnDelete" color="Danger" icon="UserDelete" text="从角色移除用户" on-click=""></util-button>
+    <util-button id="btnDelete" color="Danger" icon="UserDelete" text="从角色移除用户" on-click="removeUsersFromRole(btnDelete)"></util-button>
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
         当前角色: <strong class="text-primary mx-md">{{data.name}}</strong>

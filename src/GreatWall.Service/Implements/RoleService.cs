@@ -81,11 +81,20 @@ namespace GreatWall.Service.Implements {
         }
 
         /// <summary>
-        /// 添加用户列表到角色
+        /// 添加用户到角色
         /// </summary>
         /// <param name="request">用户角色参数</param>
         public async Task AddUsersToRoleAsync( UserRoleRequest request ) {
             await RoleManager.AddUsersToRoleAsync( request.RoleId, request.UserIds.ToGuidList() );
+            await UnitOfWork.CommitAsync();
+        }
+
+        /// <summary>
+        /// 从角色移除用户
+        /// </summary>
+        /// <param name="request">用户角色参数</param>
+        public async Task RemoveUsersFromRoleAsync( UserRoleRequest request ) {
+            await RoleManager.RemoveUsersFromRoleAsync( request.RoleId, request.UserIds.ToGuidList() );
             await UnitOfWork.CommitAsync();
         }
     }

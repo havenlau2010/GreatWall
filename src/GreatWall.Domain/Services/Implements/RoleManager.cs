@@ -88,7 +88,7 @@ namespace GreatWall.Domain.Services.Implements {
         }
 
         /// <summary>
-        /// 添加用户列表到角色
+        /// 添加用户到角色
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
@@ -105,7 +105,20 @@ namespace GreatWall.Domain.Services.Implements {
         /// 创建用户角色列表
         /// </summary>
         private List<UserRole> CreateUserRoles( Guid roleId, List<Guid> userIds ) {
-            return userIds.Select( userId => new UserRole( userId, roleId ) ).ToList();
+            return userIds.Where( id => id.IsEmpty() == false ).Select( userId => new UserRole( userId, roleId ) ).ToList();
+        }
+
+        /// <summary>
+        /// 从角色移除用户
+        /// </summary>
+        /// <param name="roleId">角色标识</param>
+        /// <param name="userIds">用户标识列表</param>
+        public Task RemoveUsersFromRoleAsync( Guid roleId, List<Guid> userIds ) {
+            if( roleId.IsEmpty() || userIds == null )
+                return Task.CompletedTask;
+            var userRoles = CreateUserRoles( roleId, userIds );
+            RoleRepository.RemoveUserRoles( userRoles );
+            return Task.CompletedTask;
         }
     }
 }

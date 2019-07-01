@@ -60,7 +60,7 @@ export class RoleUserListComponent extends TableQueryComponentBase<UserViewModel
                 return false;
             },
             onClose: result => {
-                if ( result === "ok" )
+                if ( result )
                     this.query();
             }
         } );
@@ -71,15 +71,33 @@ export class RoleUserListComponent extends TableQueryComponentBase<UserViewModel
      */
     select( userIds ) {
         if ( !userIds ) {
-            this.util.message.warn( "请选择需要添加到角色的用户" );
+            this.util.message.warn( "请选择用户" );
             return;
         }
         this.util.form.submit( {
             url: "/api/role/AddUsersToRole",
             data: { roleId: this.getRoleId(), userIds: userIds },
             confirm: `确定将选中的用户添加到角色?`,
+            closeDialog: true
+        } );
+    }
+
+    /**
+     * 从角色移除用户
+     */
+    removeUsersFromRole( btn? ) {
+        let userIds = this.getCheckedIds();
+        if ( !userIds ) {
+            this.util.message.warn( "请选择待移除的用户" );
+            return;
+        }
+        this.util.form.submit( {
+            url: "/api/role/RemoveUsersFromRole",
+            data: { roleId: this.getRoleId(), userIds: userIds },
+            button: btn,
+            confirm: `确定从角色移除用户?`,
             ok: () => {
-                this.util.dialog.close( "ok" );
+                this.query();
             }
         } );
     }

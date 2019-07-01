@@ -160,5 +160,13 @@ namespace GreatWall.Data.Repositories {
         public async Task AddUserRolesAsync( IEnumerable<UserRole> userRoles ) {
             await UnitOfWork.Set<UserRole>().AddRangeAsync( userRoles );
         }
+
+        /// <summary>
+        /// 从角色移除用户
+        /// </summary>
+        /// <param name="userRoles">用户角色列表</param>
+        public void RemoveUserRoles( IEnumerable<UserRole> userRoles ) {
+            UnitOfWork.Set<UserRole>().RemoveRange( userRoles );
+        }
     }
 }

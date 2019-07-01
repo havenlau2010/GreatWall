@@ -4,6 +4,7 @@ using GreatWall.Service.Dtos;
 using GreatWall.Service.Dtos.Requests;
 using GreatWall.Service.Queries;
 using Microsoft.AspNetCore.Mvc;
+using Util;
 using Util.Webs.Controllers;
 
 namespace GreatWall.Apis.Systems {
@@ -60,6 +61,15 @@ namespace GreatWall.Apis.Systems {
         [HttpPost( "AddUsersToRole" )]
         public async Task<IActionResult> AddUsersToRoleAsync( [FromBody] UserRoleRequest request ) {
             await RoleService.AddUsersToRoleAsync( request );
+            return Success();
+        }
+
+        /// <summary>
+        /// 从角色移除用户
+        /// </summary>
+        [HttpPost( "RemoveUsersFromRole" )]
+        public async Task<IActionResult> RemoveUsersFromRole( [FromBody] UserRoleRequest request ) {
+            await RoleService.RemoveUsersFromRoleAsync( request );
             return Success();
         }
     }
