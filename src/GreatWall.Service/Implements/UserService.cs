@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GreatWall.Data;
 using GreatWall.Domain.Models;
@@ -8,6 +9,7 @@ using GreatWall.Service.Abstractions;
 using GreatWall.Service.Dtos;
 using GreatWall.Service.Dtos.Requests;
 using GreatWall.Service.Queries;
+using Util;
 using Util.Applications;
 using Util.Datas.Queries;
 using Util.Domains.Repositories;
@@ -53,6 +55,17 @@ namespace GreatWall.Service.Implements {
                 .WhereIfNotEmpty( t => t.UserName.Contains( param.UserName ) )
                 .WhereIfNotEmpty( t => t.PhoneNumber.Contains( param.PhoneNumber ) )
                 .WhereIfNotEmpty( t => t.Email.Contains( param.Email ) );
+        }
+
+        /// <summary>
+        /// 过滤查询
+        /// </summary>
+        protected override IQueryable<User> Filter( IQueryable<User> queryable, UserQuery parameter ) {
+            if( parameter.RoleId != null )
+                return UserRepository.FilterByRole( queryable, parameter.RoleId.SafeValue() );
+            if( parameter.ExceptRoleId != null )
+                return UserRepository.FilterByRole( queryable, parameter.ExceptRoleId.SafeValue(), true );
+            return queryable;
         }
 
         /// <summary>

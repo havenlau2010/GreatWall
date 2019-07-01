@@ -5,6 +5,7 @@ import { RoleQuery } from './model/role-query';
 import { RoleViewModel } from './model/role-view-model';
 import { RoleEditComponent } from './role-edit.component';
 import { RoleDetailComponent } from './role-detail.component';
+import { RoleUserListComponent } from './role-user-list.component';
 
 /**
  * 角色列表页
@@ -34,5 +35,18 @@ export class RoleListComponent extends TableQueryComponentBase<RoleViewModel, Ro
      */
     getDetailDialogComponent() {
         return RoleDetailComponent;
+    }
+
+    /**
+     * 打开用户设置弹出框
+     */
+    openUserDialog( role ) {
+        this.util.dialog.open( {
+            component: RoleUserListComponent,
+            data: { data: role },
+            showOk:false,
+            disableClose: true,
+            width: "60%"
+        } );
     }
 }

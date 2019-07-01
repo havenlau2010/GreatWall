@@ -124,6 +124,15 @@ namespace GreatWall {
         }
         
         /// <summary>
+        ///   查找类似 无效的应用程序 的本地化字符串。
+        /// </summary>
+        public static string InvalidApplication {
+            get {
+                return ResourceManager.GetString("InvalidApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 电子邮件无效或密码不正确 的本地化字符串。
         /// </summary>
         public static string InvalidEmailOrPassword {
@@ -241,6 +250,15 @@ namespace GreatWall {
         }
         
         /// <summary>
+        ///   查找类似 请选择角色 的本地化字符串。
+        /// </summary>
+        public static string RoleIsEmpty {
+            get {
+                return ResourceManager.GetString("RoleIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 您的帐户已被冻结，请联系管理员 的本地化字符串。
         /// </summary>
         public static string UserIsDisabled {
@@ -255,6 +273,15 @@ namespace GreatWall {
         public static string UserNameIsEmpty {
             get {
                 return ResourceManager.GetString("UserNameIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 至少选择一个用户 的本地化字符串。
+        /// </summary>
+        public static string UsersIsEmpty {
+            get {
+                return ResourceManager.GetString("UsersIsEmpty", resourceCulture);
             }
         }
     }

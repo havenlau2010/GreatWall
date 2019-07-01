@@ -9,6 +9,14 @@ export class UserQuery extends QueryParameter {
      */
     userId;
     /**
+    * 角色编号
+    */
+    roleId;
+    /**
+     * 排除的角色标识
+     */
+    exceptRoleId;
+    /**
      * 用户名
      */
     userName;

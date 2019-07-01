@@ -26,9 +26,6 @@ GreatWall.Domain是GreatWall权限管理系统的业务层。
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Models/Application.*.cs">
-      <DependentUpon>Application.cs</DependentUpon>
-    </Compile>
     <Compile Update="Models/User.*.cs">
       <DependentUpon>User.cs</DependentUpon>
     </Compile>

@@ -1,8 +1,12 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using GreatWall.Domain.Models;
 using GreatWall.Domain.Repositories;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Util;
 using Util.Datas.Ef.Core;
 
@@ -138,6 +142,23 @@ namespace GreatWall.Data.Repositories {
         public async Task<Role> FindByNameAsync( string normalizedRoleName, CancellationToken cancellationToken ) {
             cancellationToken.ThrowIfCancellationRequested();
             return await SingleAsync( r => r.NormalizedName == normalizedRoleName, cancellationToken );
+        }
+
+        /// <summary>
+        /// 获取已添加的用户标识列表
+        /// </summary>
+        /// <param name="roleId">角色标识</param>
+        /// <param name="userIds">用户标识列表</param>
+        public async Task<List<Guid>> GetExistsUserIdsAsync( Guid roleId, List<Guid> userIds ) {
+            return await UnitOfWork.Set<UserRole>().Where( t => t.RoleId == roleId && userIds.Contains( t.UserId ) ).Select( t => t.UserId ).ToListAsync();
+        }
+
+        /// <summary>
+        /// 添加用户角色列表
+        /// </summary>
+        /// <param name="userRoles">用户角色列表</param>
+        public async Task AddUserRolesAsync( IEnumerable<UserRole> userRoles ) {
+            await UnitOfWork.Set<UserRole>().AddRangeAsync( userRoles );
         }
     }
 }

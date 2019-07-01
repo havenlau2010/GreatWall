@@ -79,5 +79,14 @@ namespace GreatWall.Service.Implements {
             await RoleManager.UpdateAsync( entity );
             await UnitOfWork.CommitAsync();
         }
+
+        /// <summary>
+        /// 添加用户列表到角色
+        /// </summary>
+        /// <param name="request">用户角色参数</param>
+        public async Task AddUsersToRoleAsync( UserRoleRequest request ) {
+            await RoleManager.AddUsersToRoleAsync( request.RoleId, request.UserIds.ToGuidList() );
+            await UnitOfWork.CommitAsync();
+        }
     }
 }

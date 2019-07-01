@@ -12,7 +12,17 @@ namespace GreatWall.Service.Queries {
         /// </summary>
         [Display(Name="用户标识")]
         public Guid? UserId { get; set; }
-        
+
+        /// <summary>
+        /// 角色标识
+        /// </summary>
+        public Guid? RoleId { get; set; }
+
+        /// <summary>
+        /// 排除的角色标识
+        /// </summary>
+        public Guid? ExceptRoleId { get; set; }
+
         private string _userName = string.Empty;
         /// <summary>
         /// 用户名

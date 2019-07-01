@@ -53,5 +53,14 @@ namespace GreatWall.Apis.Systems {
             await RoleService.DeleteAsync( ids );
             return Success();
         }
+
+        /// <summary>
+        /// 添加用户列表到角色
+        /// </summary>
+        [HttpPost( "AddUsersToRole" )]
+        public async Task<IActionResult> AddUsersToRoleAsync( [FromBody] UserRoleRequest request ) {
+            await RoleService.AddUsersToRoleAsync( request );
+            return Success();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GreatWall.Domain.Models;
@@ -391,6 +392,24 @@ namespace GreatWall.Data.Repositories {
             ValidateUser( user, cancellationToken );
             user.PhoneNumberConfirmed = confirmed;
             return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// 过滤角色
+        /// </summary>
+        /// <param name="queryable">查询对象</param>
+        /// <param name="roleId">角色标识</param>
+        /// <param name="except">是否排除该角色的用户列表</param>
+        public IQueryable<User> FilterByRole( IQueryable<User> queryable, Guid roleId, bool except = false ) {
+            if( roleId.IsEmpty() )
+                return queryable;
+            var selectedUsers = from user in queryable
+                join userRole in UnitOfWork.Set<UserRole>() on user.Id equals userRole.UserId
+                where userRole.RoleId == roleId
+                select user;
+            if( except )
+                return queryable.Except( selectedUsers );
+            return selectedUsers;
         }
     }
 }
