@@ -1,7 +1,7 @@
 ﻿import { ViewModel } from '../../../../util';
 
 /**
- * 创建用户视图模型
+ * 创建用户参数
  */
 export class CreateUserViewModel extends ViewModel {
     /**

@@ -1,7 +1,7 @@
 ﻿import { ViewModel } from '../../../../util';
 
 /**
- * 应用程序视图模型
+ * 应用程序参数
  */
 export class ApplicationViewModel extends ViewModel {
     /**

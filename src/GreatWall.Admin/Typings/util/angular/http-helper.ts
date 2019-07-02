@@ -227,7 +227,7 @@ export class HttpRequest<T> {
             if ( !this.body.hasOwnProperty( key ) )
                 continue;;
             let value = this.getValue( this.body[key] );
-            if ( !value ) {
+            if ( value === undefined || value === null || value === '' ) {
                 delete this.body[key];
                 continue;;
             }

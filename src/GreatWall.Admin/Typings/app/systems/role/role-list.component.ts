@@ -6,6 +6,7 @@ import { RoleViewModel } from './model/role-view-model';
 import { RoleEditComponent } from './role-edit.component';
 import { RoleDetailComponent } from './role-detail.component';
 import { RoleUserListComponent } from './role-user-list.component';
+import { PermissionComponent } from './permission.component';
 
 /**
  * 角色列表页
@@ -47,6 +48,22 @@ export class RoleListComponent extends TableQueryComponentBase<RoleViewModel, Ro
             showOk:false,
             disableClose: true,
             width: "60%"
+        } );
+    }
+
+    /**
+     * 打开权限设置弹出框
+     */
+    openPermissionDialog( role ) {
+        this.util.dialog.open( {
+            component: PermissionComponent,
+            data: { role: role },
+            disableClose: true,
+            width: "80%",
+            onOk: instance => {
+                instance.save();
+                return false;
+            },
         } );
     }
 }

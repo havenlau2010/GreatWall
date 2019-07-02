@@ -10,15 +10,18 @@ namespace GreatWall.Service.Queries {
         /// <summary>
         /// 标识
         /// </summary>
-        [Display(Name="标识")]
         public Guid? ResourceId { get; set; }
 
         /// <summary>
         /// 应用程序标识
         /// </summary>
-        [Display(Name="应用程序标识")]
         public Guid? ApplicationId { get; set; }
-        
+
+        /// <summary>
+        /// 角色标识
+        /// </summary>
+        public Guid? RoleId { get; set; }
+
         private string _uri = string.Empty;
         /// <summary>
         /// 资源标识

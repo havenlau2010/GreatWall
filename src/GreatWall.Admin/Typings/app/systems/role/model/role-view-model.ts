@@ -1,7 +1,7 @@
 ﻿import { TreeViewModel } from '../../../../util';
 
 /**
- * 角色视图模型
+ * 角色参数
  */
 export class RoleViewModel extends TreeViewModel {
     /**

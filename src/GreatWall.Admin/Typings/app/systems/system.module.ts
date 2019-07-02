@@ -13,6 +13,7 @@ import { RoleEditComponent } from './role/role-edit.component';
 import { RoleDetailComponent } from './role/role-detail.component';
 import { RoleUserListComponent } from './role/role-user-list.component';
 import { SelectUserListComponent } from './role/select-user-list.component';
+import { PermissionComponent } from './role/permission.component';
 import { ModuleListComponent } from './module/module-list.component';
 import { ModuleEditComponent } from './module/module-edit.component';
 import { ModuleDetailComponent } from './module/module-detail.component';
@@ -25,7 +26,8 @@ import { ModuleSelectComponent } from './module/module-select.component';
     declarations: [
         ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent, ApplicationSelectComponent,
         UserListComponent, UserCreateComponent, UserDetailComponent,
-        RoleListComponent, RoleEditComponent, RoleDetailComponent, RoleUserListComponent, SelectUserListComponent,
+        RoleListComponent, RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
+        SelectUserListComponent, PermissionComponent,
         ModuleListComponent, ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
     ],
     imports: [
@@ -34,7 +36,8 @@ import { ModuleSelectComponent } from './module/module-select.component';
     entryComponents: [
         ApplicationEditComponent, ApplicationDetailComponent,
         UserCreateComponent, UserDetailComponent,
-        RoleEditComponent, RoleDetailComponent, RoleUserListComponent, SelectUserListComponent,
+        RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
+        SelectUserListComponent, PermissionComponent,
         ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
     ]
 } )

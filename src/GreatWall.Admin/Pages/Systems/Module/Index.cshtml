@@ -9,7 +9,7 @@
     <util-button id="btnDelete" color="Danger" icon="Delete" text="删除" on-click="delete(btnDelete)"></util-button>
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
-        当前应用程序：<strong class="text-primary mx-md"> {{selectedApplication.name?selectedApplication.name:'请选择'}}</strong>
+        当前应用程序：<strong class="text-primary mx-md"> {{selectedApplication.name}}</strong>
     </util-alert>
     <util-row gutter="24">
         @*应用程序导航列表*@

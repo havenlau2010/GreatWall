@@ -13,6 +13,10 @@ export class ModuleQuery extends TreeQueryParameter {
      */
     applicationId;
     /**
+     * 角色标识
+     */
+    roleId;
+    /**
      * 资源标识
      */
     uri;

@@ -1,7 +1,7 @@
 ﻿import { TreeViewModel } from '../../../../util';
 
 /**
- * 模块视图模型
+ * 模块参数
  */
 export class ModuleViewModel extends TreeViewModel {
     /**

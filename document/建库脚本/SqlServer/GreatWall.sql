@@ -1746,3 +1746,263 @@ alter table Systems.UserRole
    add constraint FK_UserRole_User foreign key (UserId)
       references Systems."User" (UserId)
 go
+
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Systems.Permission') and o.name = 'FK_Permission_Resource')
+alter table Systems.Permission
+   drop constraint FK_Permission_Resource
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Systems.Permission') and o.name = 'FK_Permission_Role')
+alter table Systems.Permission
+   drop constraint FK_Permission_Role
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('Systems.Permission')
+            and   name  = 'cls_idx_creationtime'
+            and   indid > 0
+            and   indid < 255)
+   drop index Systems.Permission.cls_idx_creationtime
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('Systems.Permission')
+            and   type = 'U')
+   drop table Systems.Permission
+go
+
+/*==============================================================*/
+/* Table: Permission                                            */
+/*==============================================================*/
+create table Systems.Permission (
+   PermissionId         uniqueidentifier     not null,
+   RoleId               uniqueidentifier     not null,
+   ResourceId           uniqueidentifier     not null,
+   IsDeny               bit                  not null,
+   Sign                 nvarchar(256)        null,
+   CreationTime         datetime             null,
+   CreatorId            uniqueidentifier     null,
+   LastModificationTime datetime             null,
+   LastModifierId       uniqueidentifier     null,
+   IsDeleted            bit                  not null,
+   Version              timestamp            null,
+   constraint PK_PERMISSION primary key nonclustered (PermissionId)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('Systems.Permission') and minor_id = 0)
+begin 
+   execute sp_dropextendedproperty 'MS_Description',  
+   'schema', 'Systems', 'table', 'Permission' 
+ 
+end 
+
+
+execute sp_addextendedproperty 'MS_Description',  
+   '权限', 
+   'schema', 'Systems', 'table', 'Permission'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PermissionId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'PermissionId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '权限标识',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'PermissionId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RoleId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'RoleId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '角色标识',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'RoleId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ResourceId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'ResourceId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '资源标识',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'ResourceId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'IsDeny')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'IsDeny'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '拒绝',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'IsDeny'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Sign')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'Sign'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '签名',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'Sign'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CreationTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'CreationTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '创建时间',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'CreationTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CreatorId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'CreatorId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '创建人',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'CreatorId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'LastModificationTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'LastModificationTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后修改时间',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'LastModificationTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'LastModifierId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'LastModifierId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后修改人',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'LastModifierId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'IsDeleted')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'IsDeleted'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '是否删除',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'IsDeleted'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Permission')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Version')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Permission', 'column', 'Version'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '版本号',
+   'schema', 'Systems', 'table', 'Permission', 'column', 'Version'
+go
+
+/*==============================================================*/
+/* Index: cls_idx_creationtime                                  */
+/*==============================================================*/
+
+
+
+
+create clustered index cls_idx_creationtime on Systems.Permission (CreationTime DESC)
+go
+
+alter table Systems.Permission
+   add constraint FK_Permission_Resource foreign key (ResourceId)
+      references Systems.Resource (ResourceId)
+go
+
+alter table Systems.Permission
+   add constraint FK_Permission_Role foreign key (RoleId)
+      references Systems.Role (RoleId)
+go
