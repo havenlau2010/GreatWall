@@ -3,7 +3,7 @@
 <page-header title="选择用户" [autoBreadcrumb]="false"></page-header>
 <util-card show-border="false">
     @*查询表单*@
-    @await Html.PartialAsync( "~/Pages/Systems/User/Index.Query.cshtml" )
+    <partial name="~/Pages/Systems/User/Index.Query.cshtml" />
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
         当前角色: <strong class="text-primary mx-md">{{data.name}}</strong>

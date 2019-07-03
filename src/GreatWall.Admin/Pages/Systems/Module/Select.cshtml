@@ -5,10 +5,11 @@
 @*表单*@
 <util-card show-border="false">
     @*查询表单*@
-    @await Html.PartialAsync( "Index.Query" )
+    <partial name="Index.Query" />
     @*表格*@
     <util-tree-table id="tableModule" show-checkbox="true" multiple="false" query-param="queryParam" base-url="module"
-                     sort="CreationTime desc" expand-all="true" checked-keys="checkedIds" show-pagination="false">
+                     sort="CreationTime desc" expand-all="true" checked-keys="checkedIds" show-pagination="false"
+                     scroll-height="400">
         <util-tree-table-column for="Name"></util-tree-table-column>
         <util-tree-table-column for="ApplicationName"></util-tree-table-column>
         <util-tree-table-column for="Url"></util-tree-table-column>

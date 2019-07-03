@@ -64,7 +64,7 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
 
 ## 开源地址
 
-https://github.com/UtilCore/GreatWall
+https://github.com/Util-Core/GreatWall
 
 ## License
 
