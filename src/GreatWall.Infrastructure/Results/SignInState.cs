@@ -12,7 +12,7 @@
         /// </summary>
         Failed,
         /// <summary>
-        /// 需要两阶段认证
+        /// 需要两步认证
         /// </summary>
         TwoFactor
     }

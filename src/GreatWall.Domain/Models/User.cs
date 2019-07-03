@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Claims;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using GreatWall.Encryptors;
 using Util;
 using Util.Exceptions;
@@ -94,46 +92,6 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         public string GetSafePassword() {
             return GetEncryptor().Decrypt( SafePassword );
-        }
-
-        /// <summary>
-        /// 获取声明列表
-        /// </summary>
-        public virtual List<Claim> GetClaims() {
-            return _claims;
-        }
-
-        /// <summary>
-        /// 添加声明
-        /// </summary>
-        /// <param name="claim">声明</param>
-        public void AddClaim( Claim claim ) {
-            if( claim == null )
-                return;
-            if( claim.Value.IsEmpty() )
-                return;
-            if( _claims.Exists( t => t.Type.SafeString().ToLower() == claim.Type.SafeString().ToLower() ) )
-                return;
-            _claims.Add( claim );
-        }
-
-        /// <summary>
-        /// 添加声明
-        /// </summary>
-        /// <param name="type">声明类型</param>
-        /// <param name="value">值</param>
-        public void AddClaim( string type, string value ) {
-            if( type.IsEmpty() || value.IsEmpty() )
-                return;
-            AddClaim( new Claim( type, value ) );
-        }
-
-        /// <summary>
-        /// 添加用户声明
-        /// </summary>
-        public virtual void AddUserClaims() {
-            AddClaim( Util.Security.Claims.ClaimTypes.Mobile, PhoneNumber );
-            AddClaim( Util.Security.Claims.ClaimTypes.Email, Email );
         }
     }
 }
