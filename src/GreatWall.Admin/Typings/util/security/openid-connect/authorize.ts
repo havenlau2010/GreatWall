@@ -31,7 +31,7 @@ export class Authorize implements CanActivate {
         await this.loadSessionAsync();
         if (this.session && this.session.isAuthenticated)
             return true;
-        this.authService.login();
+        this.authService.login(state.url);
         return false;
     }
 

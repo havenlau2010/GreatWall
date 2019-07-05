@@ -74,6 +74,7 @@ namespace GreatWall.Service.Implements {
         /// <param name="request">创建用户参数</param>
         public async Task<Guid> CreateAsync( CreateUserRequest request ) {
             var user = request.MapTo<User>();
+            user.Enabled = true;
             await UserManager.CreateAsync( user, request.Password );
             await UnitOfWork.CommitAsync();
             return user.Id;

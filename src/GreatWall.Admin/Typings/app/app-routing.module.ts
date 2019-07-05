@@ -2,6 +2,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutDefaultComponent } from './home/layout/default/default.component';
 import { DashboardV1Component } from './home/dashboard/v1.component';
+import { LoginCallbackComponent } from "./login-callback.component";
 
 //路由配置
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
         component: LayoutDefaultComponent,
         children: [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
+            { path: 'callback', component: LoginCallbackComponent },
             { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard/v1', component: DashboardV1Component },
             { path: 'systems', loadChildren: "./systems/system.module#SystemModule" }
