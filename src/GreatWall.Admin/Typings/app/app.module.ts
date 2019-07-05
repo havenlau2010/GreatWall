@@ -21,7 +21,7 @@ const icons: IconDefinition[] = Object.keys(AllIcons).map(key => AllIcons[key]);
 
 //框架模块
 import { FrameworkModule } from './framework.module';
-import { util,UploadService } from '../util';
+import { util, UploadService, createOidcProviders,OidcAuthorizeConfig } from '../util';
 
 //通用服务
 import { LocalUploadService } from "../common/services/local-upload.service";
@@ -35,6 +35,9 @@ import { HomeModule } from "./home/home.module";
 //根组件
 import { AppComponent } from './app.component';
 
+//登录回调
+import { LoginCallbackComponent } from "./login-callback.component";
+
 //启动服务
 import { StartupService } from "./home/startup/startup.service";
 
@@ -47,7 +50,7 @@ export function startupServiceFactory( startupService: StartupService ) {
  * 应用根模块
  */
 @NgModule( {
-    declarations: [AppComponent],
+    declarations: [AppComponent, LoginCallbackComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -58,6 +61,7 @@ export function startupServiceFactory( startupService: StartupService ) {
         AppRoutingModule
     ],
     providers: [
+        createOidcProviders(),
         StartupService,
         {
             provide: APP_INITIALIZER,
@@ -66,7 +70,8 @@ export function startupServiceFactory( startupService: StartupService ) {
             multi: true,
         },
         { provide: NZ_ICONS, useValue: icons },
-        { provide: UploadService, useClass: LocalUploadService }
+        { provide: UploadService, useClass: LocalUploadService },
+        { provide: OidcAuthorizeConfig, useFactory: getAuthorizeConfig }
     ],
     bootstrap: [AppComponent],
 } )
@@ -78,4 +83,15 @@ export class AppModule {
     constructor( injector: Injector ) {
         util.ioc.injector = injector;
     }
+}
+
+/**
+ * 获取授权配置
+ */
+export function getAuthorizeConfig() {
+    let result = new OidcAuthorizeConfig();
+    result.authority = "http://localhost:10080",
+    result.clientId = "test1";
+    result.scope = "openid profile user_api api";
+    return result;
 }

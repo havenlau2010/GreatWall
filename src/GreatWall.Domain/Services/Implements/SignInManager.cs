@@ -36,13 +36,10 @@ namespace GreatWall.Domain.Services.Implements {
         /// <param name="password">密码</param>
         /// <param name="isPersistent">cookie是否持久保留,设置为false,当关闭浏览器则cookie失效</param>
         /// <param name="lockoutOnFailure">达到登录失败次数是否锁定</param>
-        public async Task<SignInResult> SignInAsync( User user, string password, bool isPersistent,bool lockoutOnFailure ) {
+        public async Task<SignInResult> SignInAsync( User user, string password, bool isPersistent, bool lockoutOnFailure ) {
             if( user == null )
-                throw new Warning( GreatWallResource.InvalidAccountOrPassword );
-            var result = await PasswordSignIn( user, password, isPersistent, lockoutOnFailure );
-            if( result.State == SignInState.Failed )
-                throw new Warning( GreatWallResource.InvalidAccountOrPassword );
-            return result;
+                return new SignInResult( SignInState.Failed,null, GreatWallResource.InvalidAccountOrPassword );
+            return await PasswordSignIn( user, password, isPersistent, lockoutOnFailure );
         }
 
         /// <summary>
@@ -51,14 +48,14 @@ namespace GreatWall.Domain.Services.Implements {
         private async Task<SignInResult> PasswordSignIn( User user, string password, bool isPersistent, bool lockoutOnFailure ) {
             var signInResult = await IdentitySignInManager.PasswordSignInAsync( user, password, isPersistent, lockoutOnFailure );
             if( signInResult.IsNotAllowed )
-                throw new Warning( GreatWallResource.UserIsDisabled );
+                return new SignInResult( SignInState.Failed, null, GreatWallResource.UserIsDisabled );
             if( signInResult.IsLockedOut )
-                throw new Warning( GreatWallResource.LoginFailLock );
+                return new SignInResult( SignInState.Failed, null, GreatWallResource.LoginFailLock );
             if( signInResult.Succeeded )
-                return new SignInResult( SignInState.Succeeded,user.Id.SafeString() );
+                return new SignInResult( SignInState.Succeeded, user.Id.SafeString() );
             if( signInResult.RequiresTwoFactor )
                 return new SignInResult( SignInState.TwoFactor, user.Id.SafeString() );
-            return new SignInResult( SignInState.Failed, string.Empty );
+            return new SignInResult( SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword );
         }
 
         /// <summary>

@@ -19,3 +19,4 @@
 /src/GreatWall.Admin/Typings/app/systems/**/html
 /src/GreatWall.Api/bin
 /src/GreatWall.Api/obj
+/src/GreatWall.AuthenticationServer/tempkey.rsa

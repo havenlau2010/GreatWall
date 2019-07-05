@@ -22,8 +22,7 @@ namespace GreatWall.Data.Pos.Extensions {
             var result = po.MapTo( new Module( po.Id, po.Path, po.Level ) );
             result.Url = po.Uri;
             var extend = Json.ToObject<ModuleExtend>( po.Extend );
-            result.Icon = extend?.Icon;
-            result.Expanded = extend?.Expanded;
+            extend.MapTo( result );
             return result;
         }
 
