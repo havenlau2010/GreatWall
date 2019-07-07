@@ -58,7 +58,8 @@ namespace GreatWall.Tests.NgAlain {
                 Id = Id,
                 Name = Title,
                 Level = 1,
-                Enabled = false
+                Enabled = false,
+                Url = "/a/b"
             };
         }
 
@@ -84,7 +85,9 @@ namespace GreatWall.Tests.NgAlain {
                 Name = Title3,
                 Icon = "a",
                 Level = 1,
-                Enabled = false
+                Enabled = false,
+                Url = "http://localhost/a/b",
+                External = true
             };
         }
 
@@ -123,6 +126,7 @@ namespace GreatWall.Tests.NgAlain {
             var node = result.First();
             Assert.Equal( Id, node.Id );
             Assert.Equal( Title, node.Text );
+            Assert.Equal( "/a/b", node.Link );
         }
 
         /// <summary>
@@ -165,6 +169,7 @@ namespace GreatWall.Tests.NgAlain {
             Assert.Equal( Id3, root2.Id );
             Assert.Equal( Title3, root2.Text );
             Assert.Equal( "a", root2.Icon );
+            Assert.Equal( "http://localhost/a/b", root2.ExternalLink );
 
             //子节点
             Assert.Single( root.Children );

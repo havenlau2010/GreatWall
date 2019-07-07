@@ -1,4 +1,5 @@
-﻿using Util.Helpers;
+﻿using Util;
+using Util.Helpers;
 
 namespace GreatWall.Domain.Models {
     /// <summary>
@@ -18,6 +19,17 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         public void InitPinYin() {
             PinYin = String.PinYin( Name );
+        }
+
+        /// <summary>
+        /// 是否外部地址
+        /// </summary>
+        public bool IsExternalUrl() {
+            if ( Url.IsEmpty() )
+                return false;
+            if ( Url.StartsWith( "http" ) )
+                return true;
+            return false;
         }
     }
 }

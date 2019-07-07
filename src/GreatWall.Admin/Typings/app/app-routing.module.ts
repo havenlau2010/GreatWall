@@ -10,8 +10,8 @@ const routes: Routes = [
     {
         path: '',
         component: LayoutDefaultComponent,
-        //canActivate: [Authorize],
-        //canActivateChild: [Authorize],
+        canActivate: [Authorize],
+        canActivateChild: [Authorize],
         children: [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },

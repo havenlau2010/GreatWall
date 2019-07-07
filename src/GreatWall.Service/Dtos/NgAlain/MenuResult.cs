@@ -62,9 +62,12 @@ namespace GreatWall.Service.Dtos.NgAlain {
             var result = new MenuInfo {
                 Id = dto.Id,
                 Text = dto.Name,
-                Icon = dto.Icon,
-                Link = dto.Url
+                Icon = dto.Icon
             };
+            if ( dto.External )
+                result.ExternalLink = dto.Url;
+            else
+                result.Link = dto.Url;
             return result;
         }
 

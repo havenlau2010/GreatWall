@@ -11,6 +11,7 @@ namespace GreatWall.Service.Dtos.NgAlain {
         /// </summary>
         public MenuInfo() {
             Children = new List<MenuInfo>();
+            Group = true;
         }
 
         /// <summary>
@@ -29,6 +30,14 @@ namespace GreatWall.Service.Dtos.NgAlain {
         /// 链接
         /// </summary>
         public string Link { get; set; }
+        /// <summary>
+        /// 外部链接
+        /// </summary>
+        public string ExternalLink { get; set; }
+        /// <summary>
+        /// 链接目标
+        /// </summary>
+        public string Target { get; set; }
         /// <summary>
         /// 国际化
         /// </summary>

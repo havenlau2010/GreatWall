@@ -20,7 +20,7 @@ export class StartupService {
      * 加载配置
      */
     load() {
-        return util.webapi.get( '/api/menu' ).handle( {
+        return util.webapi.get( '/api/home' ).handle( {
             ok: ( result: any ) => {
                 this.settingService.setApp( result.app );
                 this.settingService.setUser( result.user );

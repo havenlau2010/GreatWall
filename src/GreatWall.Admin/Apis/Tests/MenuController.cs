@@ -30,8 +30,6 @@ namespace GreatWall.Apis.Tests {
         private MenuInfo GetMainMenu() {
             return new MenuInfo {
                 Text = "主菜单",
-                Group = true,
-                HideInBreadcrumb = true,
                 Children = {
                     new MenuInfo {
                         Text = "仪表盘",
@@ -53,7 +51,6 @@ namespace GreatWall.Apis.Tests {
         private MenuInfo GetDemoMenu() {
             return new MenuInfo {
                 Text = "系统菜单",
-                Group = true,
                 Children = {
                     new MenuInfo {
                         Text = "应用程序",
@@ -68,7 +65,7 @@ namespace GreatWall.Apis.Tests {
                     new MenuInfo {
                         Text = "角色",
                         Icon = "anticon anticon-team",
-                        Link = "/systems/role"
+                        Link = "/systems/role",
                     },
                     new MenuInfo {
                         Text = "模块",

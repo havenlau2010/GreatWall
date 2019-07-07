@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GreatWall.Data;
 using GreatWall.Domain.Models;
 using GreatWall.Domain.Repositories;
-using GreatWall.Domain.Services.Abstractions;
 using GreatWall.Service.Abstractions;
+using GreatWall.Service.Dtos.Extensions;
 using GreatWall.Service.Dtos.Responses;
 using Util;
 using Util.Applications;
-using Util.Maps;
 using Util.Security;
 
 namespace GreatWall.Service.Implements {
@@ -21,26 +19,13 @@ namespace GreatWall.Service.Implements {
         /// <summary>
         /// 初始化菜单服务
         /// </summary>
-        /// <param name="unitOfWork">工作单元</param>
-        /// <param name="userManager">用户服务</param>
         /// <param name="roleRepository">角色仓储</param>
         /// <param name="moduleRepository">模块仓储</param>
-        public MenuService( IGreatWallUnitOfWork unitOfWork, IUserManager userManager,
-            IRoleRepository roleRepository,IModuleRepository moduleRepository ) {
-            UnitOfWork = unitOfWork;
-            UserManager = userManager;
+        public MenuService( IRoleRepository roleRepository,IModuleRepository moduleRepository ) {
             RoleRepository = roleRepository;
             ModuleRepository = moduleRepository;
         }
 
-        /// <summary>
-        /// 工作单元
-        /// </summary>
-        public IGreatWallUnitOfWork UnitOfWork { get; set; }
-        /// <summary>
-        /// 用户服务
-        /// </summary>
-        public IUserManager UserManager { get; set; }
         /// <summary>
         /// 角色仓储
         /// </summary>
@@ -60,7 +45,7 @@ namespace GreatWall.Service.Implements {
             var roleIds = await RoleRepository.GetRoleIdsAsync( userId.ToGuid() );
             var modules = await ModuleRepository.GetModulesAsync( Session.GetApplicationId(), roleIds );
             await AddMissingParents( modules );
-            return modules.Select( t => t.MapTo<MenuResponse>() ).ToList();
+            return modules.Select( t => t.ToMenuResponse() ).ToList();
         }
 
         /// <summary>

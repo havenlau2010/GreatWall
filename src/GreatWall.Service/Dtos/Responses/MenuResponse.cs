@@ -24,6 +24,10 @@
         /// </summary>
         public string Url { get; set; }
         /// <summary>
+        /// 是否外部地址
+        /// </summary>
+        public bool External { get; set; }
+        /// <summary>
         /// 图标
         /// </summary>
         public string Icon { get; set; }

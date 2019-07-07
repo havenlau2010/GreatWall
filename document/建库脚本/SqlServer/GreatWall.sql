@@ -2006,3 +2006,63 @@ alter table Systems.Permission
    add constraint FK_Permission_Role foreign key (RoleId)
       references Systems.Role (RoleId)
 go
+
+
+/*==============================================================*/
+/* 默认数据                                                      */
+/*==============================================================*/
+
+/*==============================================================*/
+/* 应用程序                                                      */
+/*==============================================================*/
+INSERT [Systems].[Application] ([ApplicationId], [Code], [Name], [Enabled], [RegisterEnabled], [Remark], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'GreatWall-Admin', N'权限管理后台', 1, 1, NULL, NULL, CAST(N'2019-07-07 16:06:09.470' AS DateTime), NULL, CAST(N'2019-07-07 16:06:09.470' AS DateTime), NULL, 0)
+GO
+/*==============================================================*/
+/* 模块                                                         */
+/*==============================================================*/
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', N'e9138a35-a4ff-460e-ac55-b743d55b9691', NULL, N'主菜单', 1, NULL, N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f,', 1, NULL, N'zcc', 1, 1, N'{"Icon":null,"Expanded":null}', CAST(N'2019-07-07 16:31:31.963' AS DateTime), NULL, CAST(N'2019-07-07 16:31:31.963' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'd24aee38-3780-4d32-aff1-38236b348b86', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/dashboard/v1', N'仪表盘', 1, N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f,d24aee38-3780-4d32-aff1-38236b348b86,', 2, NULL, N'ybp', 1, 1, N'{"Icon":"anticon anticon-dashboard","Expanded":null}', CAST(N'2019-07-07 16:34:40.193' AS DateTime), NULL, CAST(N'2019-07-07 16:34:40.193' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'9412c649-2353-4f37-a178-21a66a7ad3bf', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/application', N'应用程序', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,9412c649-2353-4f37-a178-21a66a7ad3bf,', 2, NULL, N'yycx', 1, 1, N'{"Icon":"anticon anticon-database","Expanded":null}', CAST(N'2019-07-07 16:36:39.367' AS DateTime), NULL, CAST(N'2019-07-07 16:36:39.367' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'e9138a35-a4ff-460e-ac55-b743d55b9691', NULL, N'系统管理', 1, NULL, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,', 1, NULL, N'jtgl', 1, 2, N'{"Icon":null,"Expanded":null}', CAST(N'2019-07-07 16:35:32.610' AS DateTime), NULL, CAST(N'2019-07-07 16:35:32.610' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'f85e2381-f85f-4978-aeaa-dd0a3106d1ab', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/module', N'模块', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,f85e2381-f85f-4978-aeaa-dd0a3106d1ab,', 2, NULL, N'mk', 1, 2, N'{"Icon":"anticon anticon-menu-fold","Expanded":null}', CAST(N'2019-07-07 16:37:13.687' AS DateTime), NULL, CAST(N'2019-07-07 16:37:13.687' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'a4c32fa8-f8eb-4ce9-a517-d96d431fcb04', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/user', N'用户', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,a4c32fa8-f8eb-4ce9-a517-d96d431fcb04,', 2, NULL, N'yh', 1, 3, N'{"Icon":"anticon anticon-user","Expanded":null}', CAST(N'2019-07-07 16:37:34.693' AS DateTime), NULL, CAST(N'2019-07-07 16:37:34.693' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'1a01a8c3-1e6f-47d8-be75-b66da7f7a746', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/role', N'角色', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,1a01a8c3-1e6f-47d8-be75-b66da7f7a746,', 2, NULL, N'js', 1, 4, N'{"Icon":"anticon anticon-team","Expanded":null}', CAST(N'2019-07-07 16:37:56.583' AS DateTime), NULL, CAST(N'2019-07-07 16:37:56.583' AS DateTime), NULL, 0)
+GO
+/*==============================================================*/
+/* 用户                                                         */
+/*==============================================================*/
+INSERT [Systems].[User] ([UserId], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PhoneNumber], [PhoneNumberConfirmed], [Password], [PasswordHash], [SafePassword], [SafePasswordHash], [TwoFactorEnabled], [Enabled], [DisabledTime], [LockoutEnabled], [LockoutEnd], [AccessFailedCount], [LoginCount], [RegisterIp], [LastLoginTime], [LastLoginIp], [CurrentLoginTime], [CurrentLoginIp], [SecurityStamp], [Remark], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'55ba53a6-e482-4d9b-8d91-3fba6610b896', N'admin', N'ADMIN', NULL, NULL, 0, NULL, 0, NULL, N'AQAAAAEAACcQAAAAEP+Co27jHqc5JQ0LPfqcMbUtsrCHkZhK/oRC/xPysrV9FTT+siiMEOELuOL+LeN7Jw==', NULL, NULL, 0, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'E3LEMZVTQRBJD2GDJXDNNJ7BF3GEEUBF', NULL, CAST(N'2019-07-07 16:19:12.397' AS DateTime), NULL, CAST(N'2019-07-07 16:19:12.397' AS DateTime), NULL, 0)
+GO
+/*==============================================================*/
+/* 角色                                                         */
+/*==============================================================*/
+INSERT [Systems].[Role] ([RoleId], [Code], [Name], [NormalizedName], [Type], [IsAdmin], [ParentId], [Path], [Level], [SortId], [Enabled], [Remark], [PinYin], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'admin', N'管理员', N'管理员', N'Role', 1, NULL, N'd5c3cbde-f2be-47ac-bc85-a329f79588f8,', 1, 1, 1, NULL, N'gly', NULL, CAST(N'2019-07-07 16:21:10.497' AS DateTime), NULL, CAST(N'2019-07-07 16:21:10.497' AS DateTime), NULL, 0)
+GO
+/*==============================================================*/
+/* 角色用户                                                      */
+/*==============================================================*/
+INSERT [Systems].[UserRole] ([RoleId], [UserId]) VALUES (N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'55ba53a6-e482-4d9b-8d91-3fba6610b896')
+GO
+/*==============================================================*/
+/* 权限                                                         */
+/*==============================================================*/
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'48c5c904-efca-4a89-95ed-1df05f062c6e', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'a185255d-9432-4886-8136-0d973de4c7fd', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'd24aee38-3780-4d32-aff1-38236b348b86', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'6d7d6934-dce2-4f0e-a2d1-459dba8ea774', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'5475775f-5cb5-4f28-bdc1-bd83072649f8', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'9412c649-2353-4f37-a178-21a66a7ad3bf', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'c17d6df8-ad61-4898-a94f-0706fdf453d9', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'f85e2381-f85f-4978-aeaa-dd0a3106d1ab', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'd927d7ac-b5f5-4157-b659-945f77b5cb39', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'a4c32fa8-f8eb-4ce9-a517-d96d431fcb04', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'7a153330-86f4-4aeb-adef-41722bc50f98', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'1a01a8c3-1e6f-47d8-be75-b66da7f7a746', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
+GO
