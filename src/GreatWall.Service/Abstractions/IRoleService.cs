@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using GreatWall.Service.Dtos;
 using GreatWall.Service.Dtos.Requests;
@@ -12,6 +13,11 @@ namespace GreatWall.Service.Abstractions {
     /// 角色服务
     /// </summary>
     public interface IRoleService : IDeleteService<RoleDto, RoleQuery> {
+        /// <summary>
+        /// 获取用户的角色列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        Task<List<RoleDto>> GetRolesAsync( Guid userId );
         /// <summary>
         /// 创建角色
         /// </summary>

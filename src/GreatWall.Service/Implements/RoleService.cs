@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using GreatWall.Data;
 using GreatWall.Domain.Models;
@@ -56,6 +57,15 @@ namespace GreatWall.Service.Implements {
                 .WhereIfNotEmpty( t => t.Type.Contains( param.Type ) )
                 .WhereIfNotEmpty( t => t.IsAdmin == param.IsAdmin )
                 .WhereIfNotEmpty( t => t.Enabled == param.Enabled );
+        }
+
+        /// <summary>
+        /// 获取用户的角色列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        public async Task<List<RoleDto>> GetRolesAsync( Guid userId ) {
+            var result = await RoleRepository.GetRolesAsync( userId );
+            return result.MapToList<RoleDto>();
         }
 
         /// <summary>

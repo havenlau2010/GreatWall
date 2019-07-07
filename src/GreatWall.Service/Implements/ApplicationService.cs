@@ -9,6 +9,7 @@ using Util.Applications;
 using Util.Datas.Queries;
 using Util.Domains.Repositories;
 using Util.Exceptions;
+using Util.Maps;
 
 namespace GreatWall.Service.Implements {
     /// <summary>
@@ -75,6 +76,15 @@ namespace GreatWall.Service.Implements {
                 ThrowCodeRepeatException( entity.Code );
             if( await ApplicationRepository.ExistsAsync( t => t.Id != entity.Id && t.Name == entity.Name ) )
                 ThrowNameRepeatException( entity.Name );
+        }
+
+        /// <summary>
+        /// 通过应用程序编码查找
+        /// </summary>
+        /// <param name="code">应用程序编码</param>
+        public async Task<ApplicationDto> GetByCodeAsync( string code ) {
+            var application = await ApplicationRepository.GetByCodeAsync( code );
+            return application.MapTo<ApplicationDto>();
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace GreatWall.Menus {
+namespace GreatWall.Service.Dtos.NgAlain {
     /// <summary>
-    /// 应用程序数据
+    /// NgAlain应用程序数据
     /// </summary>
     public class AppData {
         /// <summary>
-        /// 初始化应用程序数据
+        /// 初始化NgAlain应用程序数据
         /// </summary>
         public AppData() {
             App = new AppInfo();
@@ -15,7 +15,7 @@ namespace GreatWall.Menus {
         }
 
         /// <summary>
-        /// App信息
+        /// 应用程序信息
         /// </summary>
         public AppInfo App { get; set; }
         /// <summary>

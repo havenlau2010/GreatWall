@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 
@@ -8,19 +10,29 @@ namespace GreatWall.Configs {
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile ()
             };
         }
 
         public static IEnumerable<ApiResource> GetApiResources() {
             return new List<ApiResource>
             {
-                new ApiResource("user_api", "API"),
-                new ApiResource("api", "API")
+                new ApiResource("api", "API") {
+                    UserClaims = {
+                        JwtClaimTypes.Name,
+                        JwtClaimTypes.Email,
+                        JwtClaimTypes.PhoneNumber,
+                        Util.Security.Claims.ClaimTypes.ApplicationId,
+                        Util.Security.Claims.ClaimTypes.ApplicationCode,
+                        Util.Security.Claims.ClaimTypes.ApplicationName,
+                        Util.Security.Claims.ClaimTypes.RoleIds,
+                        Util.Security.Claims.ClaimTypes.RoleName
+                    }
+                }
             };
         }
 
-        public const int AccessTokenLifetime = 90;
+        public const int AccessTokenLifetime = 90000000;
 
         public const string AdminUrl = "http://localhost:10081";
 
@@ -29,8 +41,8 @@ namespace GreatWall.Configs {
             {
                 new Client
                 {
-                    ClientId = "test1",
-                    ClientName = "test1",
+                    ClientId = "GreatWall-Admin",
+                    ClientName = "权限管理后台",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
                     AllowedCorsOrigins = { AdminUrl },
@@ -41,7 +53,6 @@ namespace GreatWall.Configs {
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "user_api",
                         "api"
                     },
                     AccessTokenLifetime = AccessTokenLifetime

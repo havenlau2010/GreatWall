@@ -10,6 +10,16 @@ namespace GreatWall.Domain.Repositories {
     /// </summary>
     public interface IRoleRepository : ITreeRepository<Role> {
         /// <summary>
+        /// 获取用户的角色列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        Task<List<Role>> GetRolesAsync( Guid userId );
+        /// <summary>
+        /// 获取用户的角色标识列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        Task<List<Guid>> GetRoleIdsAsync( Guid userId );
+        /// <summary>
         /// 获取已添加的用户标识列表
         /// </summary>
         /// <param name="roleId">角色标识</param>

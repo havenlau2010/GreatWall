@@ -20,3 +20,9 @@
 /src/GreatWall.Api/bin
 /src/GreatWall.Api/obj
 /src/GreatWall.AuthenticationServer/tempkey.rsa
+/src/GreatWall.Admin/yarn.lock
+/test/GreatWall.Tests/bin
+/test/GreatWall.Tests/obj
+/test/GreatWall.Tests.Integration/bin
+/test/GreatWall.Tests.Integration/obj
+/src/GreatWall.AuthenticationServer/*.user

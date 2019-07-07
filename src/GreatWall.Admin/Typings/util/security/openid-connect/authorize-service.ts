@@ -73,7 +73,7 @@ export class AuthorizeService {
      * 登录成功处理
      */
     private loginSuccess( options: IOidcLoginCallbackOptions, user: User ) {
-        options.handler && options.handler( user );
+        options.ok && options.ok( user );
         let redirectUrl = user.state || "/";
         util.router.navigate( [redirectUrl] );
     }
@@ -82,7 +82,7 @@ export class AuthorizeService {
      * 登录失败处理
      */
     private loginFail( options: IOidcLoginCallbackOptions ) {
-        options.failHandler && options.failHandler();
+        options.fail && options.fail();
         if ( options.failRedirectUrl )
             util.router.navigate( [options.failRedirectUrl] );
     }
@@ -118,9 +118,9 @@ export interface IOidcLoginCallbackOptions {
      * 登录成功处理函数
      * @param user 用户信息
      */
-    handler?: ( user: User ) => void;
+    ok?: ( user: User ) => void;
     /**
      * 提交失败处理函数
      */
-    failHandler?: () => void;
+    fail?: () => void;
 }

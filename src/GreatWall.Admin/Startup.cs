@@ -57,6 +57,13 @@ namespace GreatWall {
             //添加权限服务
             services.AddPermission( t => { t.Lockout.MaxFailedAccessAttempts = 2; } );
 
+            //添加认证
+            services.AddAuthentication( t => t.DefaultAuthenticateScheme = "Bearer" )
+                .AddIdentityServerAuthentication( options => {
+                    options.Authority = "http://localhost:10080";
+                    options.RequireHttpsMetadata = false;
+                } );
+
             //添加Util基础设施服务
             return services.AddUtil();
         }

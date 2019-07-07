@@ -9,7 +9,7 @@ namespace GreatWall.Service.Dtos.Extensions {
     /// <summary>
     /// 资源参数扩展
     /// </summary>
-    public static class ResourceDtoExtension {
+    public static partial class Extension {
         /// <summary>
         /// 转成模块参数
         /// </summary>

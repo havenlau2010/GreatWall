@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GreatWall.Data.Pos;
 using GreatWall.Data.Pos.Extensions;
@@ -51,6 +53,16 @@ namespace GreatWall.Data.Repositories {
         public async Task<int> GenerateSortIdAsync( Guid applicationId, Guid? parentId ) {
             var maxSortId = await _store.Find( t => t.ApplicationId == applicationId && t.ParentId == parentId ).MaxAsync( t => t.SortId );
             return maxSortId.SafeValue() + 1;
+        }
+
+        /// <summary>
+        /// 获取模块列表
+        /// </summary>
+        /// <param name="applicationId">应用程序标识</param>
+        /// <param name="roleIds">角色标识列表</param>
+        public async Task<List<Module>> GetModulesAsync( Guid applicationId, List<Guid> roleIds ) {
+            var pos = await _store.GetModulesAsync( applicationId, roleIds );
+            return pos.Select( ToEntity ).ToList();
         }
     }
 }

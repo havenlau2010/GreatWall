@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using GreatWall.Menus;
+using GreatWall.Service.Dtos.NgAlain;
 using Microsoft.AspNetCore.Mvc;
 using Util.Webs.Controllers;
 
 namespace GreatWall.Apis.Tests {
     /// <summary>
-    /// 菜单控制器
+    /// 测试菜单控制器
     /// </summary>
     public class MenuController : WebApiControllerBase {
         /// <summary>

@@ -1,6 +1,6 @@
-﻿namespace GreatWall.Menus {
+﻿namespace GreatWall.Service.Dtos.NgAlain {
     /// <summary>
-    /// App信息
+    /// NgAlain应用程序信息
     /// </summary>
     public class AppInfo {
         /// <summary>

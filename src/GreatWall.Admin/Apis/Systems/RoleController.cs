@@ -4,7 +4,6 @@ using GreatWall.Service.Dtos;
 using GreatWall.Service.Dtos.Requests;
 using GreatWall.Service.Queries;
 using Microsoft.AspNetCore.Mvc;
-using Util;
 using Util.Webs.Controllers;
 
 namespace GreatWall.Apis.Systems {

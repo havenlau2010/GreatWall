@@ -145,6 +145,32 @@ namespace GreatWall.Data.Repositories {
         }
 
         /// <summary>
+        /// 获取用户的角色列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        public async Task<List<Role>> GetRolesAsync( Guid userId ) {
+            return await GetRoleQueryable( userId ).ToListAsync();
+        }
+
+        /// <summary>
+        /// 获取角色查询对象
+        /// </summary>
+        private IQueryable<Role> GetRoleQueryable( Guid userId ) {
+            return from role in Set
+                   join userRole in UnitOfWork.Set<UserRole>() on role.Id equals userRole.RoleId
+                   where userRole.UserId == userId
+                   select role;
+        }
+
+        /// <summary>
+        /// 获取用户的角色标识列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        public async Task<List<Guid>> GetRoleIdsAsync( Guid userId ) {
+            return await GetRoleQueryable( userId ).Select( t => t.Id ).ToListAsync();
+        }
+
+        /// <summary>
         /// 获取已添加的用户标识列表
         /// </summary>
         /// <param name="roleId">角色标识</param>

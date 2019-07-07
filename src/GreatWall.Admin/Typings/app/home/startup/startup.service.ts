@@ -17,14 +17,15 @@ export class StartupService {
     }
 
     /**
-     * 加载系统配置
+     * 加载配置
      */
     load() {
-        return util.webapi.get( '/api/menu' ).handleAsync( {
+        return util.webapi.get( '/api/menu' ).handle( {
             ok: ( result: any ) => {
                 this.settingService.setApp( result.app );
                 this.settingService.setUser( result.user );
                 this.menuService.add( result.menu );
+                this.titleService.default = '';
                 this.titleService.suffix = result.app.name;
             }
         } );

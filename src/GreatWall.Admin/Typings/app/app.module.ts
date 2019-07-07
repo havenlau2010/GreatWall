@@ -1,4 +1,4 @@
-import { NgModule, Injector, APP_INITIALIZER } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 
 //Angular模块
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,11 +41,6 @@ import { LoginCallbackComponent } from "./login-callback.component";
 //启动服务
 import { StartupService } from "./home/startup/startup.service";
 
-//启动服务工厂
-export function startupServiceFactory( startupService: StartupService ) {
-    return () => startupService.load();
-}
-
 /**
  * 应用根模块
  */
@@ -61,17 +56,11 @@ export function startupServiceFactory( startupService: StartupService ) {
         AppRoutingModule
     ],
     providers: [
-        createOidcProviders(),
-        StartupService,
-        {
-            provide: APP_INITIALIZER,
-            useFactory: startupServiceFactory,
-            deps: [StartupService],
-            multi: true,
-        },
+        { provide: OidcAuthorizeConfig, useFactory: getAuthorizeConfig },
+        ...createOidcProviders(),
         { provide: NZ_ICONS, useValue: icons },
-        { provide: UploadService, useClass: LocalUploadService },
-        { provide: OidcAuthorizeConfig, useFactory: getAuthorizeConfig }
+        StartupService,
+        { provide: UploadService, useClass: LocalUploadService }
     ],
     bootstrap: [AppComponent],
 } )
@@ -91,7 +80,7 @@ export class AppModule {
 export function getAuthorizeConfig() {
     let result = new OidcAuthorizeConfig();
     result.authority = "http://localhost:10080",
-    result.clientId = "test1";
-    result.scope = "openid profile user_api api";
+    result.clientId = "GreatWall-Admin";
+    result.scope = "openid profile api";
     return result;
 }

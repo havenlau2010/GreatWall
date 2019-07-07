@@ -1,6 +1,5 @@
 ﻿import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OidcAuthorize as Authorize } from "../../util";
 import { ApplicationListComponent } from './application/application-list.component';
 import { UserListComponent } from './user/user-list.component';
 import { RoleListComponent } from './role/role-list.component';
@@ -11,7 +10,7 @@ const routes: Routes = [
     {
         path: '',
         children: [
-            { path: 'application', component: ApplicationListComponent, canActivate: [Authorize] },
+            { path: 'application', component: ApplicationListComponent },
             { path: 'user', component: UserListComponent },
             { path: 'role', component: RoleListComponent },
             { path: 'module', component: ModuleListComponent }

@@ -12,8 +12,9 @@ export class LoginCallbackComponent extends ComponentBase implements OnInit {
      * 初始化
      * @param injector 注入器
      * @param authService 授权服务
+     * @param startupService 启动服务
      */
-    constructor(injector: Injector, private authService: OidcAuthorizeService) {
+    constructor( injector: Injector, private authService: OidcAuthorizeService) {
         super(injector);
     }
 

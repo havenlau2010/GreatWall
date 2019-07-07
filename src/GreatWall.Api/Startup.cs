@@ -45,7 +45,7 @@ namespace GreatWall {
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
 
             //添加权限服务
-            services.AddPermission( t => { t.Lockout.MaxFailedAccessAttempts = 2; } );
+            services.AddPermission();
 
             //添加Swagger
             services.AddSwaggerGen( options => {

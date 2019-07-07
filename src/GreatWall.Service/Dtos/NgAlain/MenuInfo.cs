@@ -1,18 +1,22 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace GreatWall.Menus {
+namespace GreatWall.Service.Dtos.NgAlain {
     /// <summary>
-    /// 菜单信息
+    /// NgAlain菜单
     /// </summary>
     public class MenuInfo {
         /// <summary>
-        /// 初始化菜单信息
+        /// 初始化NgAlain菜单
         /// </summary>
         public MenuInfo() {
             Children = new List<MenuInfo>();
         }
 
+        /// <summary>
+        /// 标识
+        /// </summary>
+        public string Id { get; set; }
         /// <summary>
         /// 文本
         /// </summary>

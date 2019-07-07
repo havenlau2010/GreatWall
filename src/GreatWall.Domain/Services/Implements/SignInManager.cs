@@ -3,7 +3,6 @@ using GreatWall.Domain.Models;
 using GreatWall.Domain.Services.Abstractions;
 using GreatWall.Results;
 using Util;
-using Util.Exceptions;
 
 namespace GreatWall.Domain.Services.Implements {
     /// <summary>
@@ -38,7 +37,7 @@ namespace GreatWall.Domain.Services.Implements {
         /// <param name="lockoutOnFailure">达到登录失败次数是否锁定</param>
         public async Task<SignInResult> SignInAsync( User user, string password, bool isPersistent, bool lockoutOnFailure ) {
             if( user == null )
-                return new SignInResult( SignInState.Failed,null, GreatWallResource.InvalidAccountOrPassword );
+                return new SignInResult( SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword );
             return await PasswordSignIn( user, password, isPersistent, lockoutOnFailure );
         }
 
