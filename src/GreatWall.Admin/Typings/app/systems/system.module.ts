@@ -1,6 +1,8 @@
 ﻿import { NgModule } from '@angular/core';
 import { FrameworkModule } from '../framework.module';
 import { SystemRoutingModule } from './system-routing.module';
+import { ClaimListComponent } from './claim/claim-list.component';
+import { ClaimEditComponent } from './claim/claim-edit.component';
 import { ApplicationListComponent } from './application/application-list.component';
 import { ApplicationEditComponent } from './application/application-edit.component';
 import { ApplicationDetailComponent } from './application/application-detail.component';
@@ -24,6 +26,7 @@ import { ModuleSelectComponent } from './module/module-select.component';
  */
 @NgModule( {
     declarations: [
+        ClaimListComponent, ClaimEditComponent,
         ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent, ApplicationSelectComponent,
         UserListComponent, UserCreateComponent, UserDetailComponent,
         RoleListComponent, RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
@@ -34,6 +37,7 @@ import { ModuleSelectComponent } from './module/module-select.component';
         FrameworkModule, SystemRoutingModule
     ],
     entryComponents: [
+        ClaimEditComponent,
         ApplicationEditComponent, ApplicationDetailComponent,
         UserCreateComponent, UserDetailComponent,
         RoleEditComponent, RoleDetailComponent, RoleUserListComponent,

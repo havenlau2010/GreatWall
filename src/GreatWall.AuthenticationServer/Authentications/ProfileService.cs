@@ -10,6 +10,7 @@ using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Identity;
 using Util;
+using Claim = System.Security.Claims.Claim;
 
 namespace GreatWall.Authentications {
     /// <summary>

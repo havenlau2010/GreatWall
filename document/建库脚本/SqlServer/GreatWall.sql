@@ -29,6 +29,208 @@ GO
 
 if exists (select 1
             from  sysindexes
+           where  id    = object_id('Systems.Claim')
+            and   name  = 'clus_idx_creationtime'
+            and   indid > 0
+            and   indid < 255)
+   drop index Systems.Claim.clus_idx_creationtime
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('Systems.Claim')
+            and   type = 'U')
+   drop table Systems.Claim
+go
+
+/*==============================================================*/
+/* Table: Claim                                                 */
+/*==============================================================*/
+create table Systems.Claim (
+   ClaimId              uniqueidentifier     not null,
+   Name                 nvarchar(200)        not null,
+   Remark               nvarchar(500)        null,
+   CreationTime         datetime             null,
+   CreatorId            uniqueidentifier     null,
+   LastModificationTime datetime             null,
+   LastModifierId       uniqueidentifier     null,
+   IsDeleted            bit                  not null,
+   Version              timestamp            null,
+   constraint PK_CLAIM primary key nonclustered (ClaimId)
+)
+go
+
+if exists (select 1 from  sys.extended_properties
+           where major_id = object_id('Systems.Claim') and minor_id = 0)
+begin 
+   execute sp_dropextendedproperty 'MS_Description',  
+   'schema', 'Systems', 'table', 'Claim' 
+ 
+end 
+
+
+execute sp_addextendedproperty 'MS_Description',  
+   '声明', 
+   'schema', 'Systems', 'table', 'Claim'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ClaimId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'ClaimId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '声明标识',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'ClaimId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Name')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Name'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '声明名称',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Name'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Remark')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Remark'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '备注',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Remark'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CreationTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'CreationTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '创建时间',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'CreationTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CreatorId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'CreatorId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '创建人标识',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'CreatorId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'LastModificationTime')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'LastModificationTime'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后修改时间',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'LastModificationTime'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'LastModifierId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'LastModifierId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后修改人标识',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'LastModifierId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'IsDeleted')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'IsDeleted'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '是否删除',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'IsDeleted'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Version')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Version'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '版本号',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Version'
+go
+
+/*==============================================================*/
+/* Index: clus_idx_creationtime                                 */
+/*==============================================================*/
+
+
+
+
+create clustered index clus_idx_creationtime on Systems.Claim (CreationTime DESC)
+go
+
+
+if exists (select 1
+            from  sysindexes
            where  id    = object_id('Systems.Application')
             and   name  = 'clus_idx_creationtime'
             and   indid > 0
@@ -2020,19 +2222,21 @@ GO
 /*==============================================================*/
 /* 模块                                                         */
 /*==============================================================*/
-INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', N'e9138a35-a4ff-460e-ac55-b743d55b9691', NULL, N'主菜单', 1, NULL, N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f,', 1, NULL, N'zcc', 1, 1, N'{"Icon":null,"Expanded":null}', CAST(N'2019-07-07 16:31:31.963' AS DateTime), NULL, CAST(N'2019-07-07 16:31:31.963' AS DateTime), NULL, 0)
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', N'e9138a35-a4ff-460e-ac55-b743d55b9691', NULL, N'主菜单', 1, NULL, N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f,', 1, NULL, N'zcc', 1, 1, N'{"Icon":null,"Expanded":null}', CAST(N'2019-07-07T16:31:31.963' AS DateTime), NULL, CAST(N'2019-07-07T16:31:31.963' AS DateTime), NULL, 0)
 GO
-INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'd24aee38-3780-4d32-aff1-38236b348b86', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/dashboard/v1', N'仪表盘', 1, N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f,d24aee38-3780-4d32-aff1-38236b348b86,', 2, NULL, N'ybp', 1, 1, N'{"Icon":"anticon anticon-dashboard","Expanded":null}', CAST(N'2019-07-07 16:34:40.193' AS DateTime), NULL, CAST(N'2019-07-07 16:34:40.193' AS DateTime), NULL, 0)
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'd24aee38-3780-4d32-aff1-38236b348b86', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/dashboard/v1', N'仪表盘', 1, N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f,d24aee38-3780-4d32-aff1-38236b348b86,', 2, NULL, N'ybp', 1, 1, N'{"Icon":"anticon anticon-dashboard","Expanded":null}', CAST(N'2019-07-07T16:34:40.193' AS DateTime), NULL, CAST(N'2019-07-07T16:34:40.193' AS DateTime), NULL, 0)
 GO
-INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'9412c649-2353-4f37-a178-21a66a7ad3bf', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/application', N'应用程序', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,9412c649-2353-4f37-a178-21a66a7ad3bf,', 2, NULL, N'yycx', 1, 1, N'{"Icon":"anticon anticon-database","Expanded":null}', CAST(N'2019-07-07 16:36:39.367' AS DateTime), NULL, CAST(N'2019-07-07 16:36:39.367' AS DateTime), NULL, 0)
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'e9138a35-a4ff-460e-ac55-b743d55b9691', NULL, N'系统管理', 1, NULL, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,', 1, NULL, N'jtgl', 1, 2, N'{"Icon":null,"Expanded":null}', CAST(N'2019-07-07T16:35:32.610' AS DateTime), NULL, CAST(N'2019-07-07T16:35:32.610' AS DateTime), NULL, 0)
 GO
-INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'e9138a35-a4ff-460e-ac55-b743d55b9691', NULL, N'系统管理', 1, NULL, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,', 1, NULL, N'jtgl', 1, 2, N'{"Icon":null,"Expanded":null}', CAST(N'2019-07-07 16:35:32.610' AS DateTime), NULL, CAST(N'2019-07-07 16:35:32.610' AS DateTime), NULL, 0)
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'ccb74938-7e59-4532-a1ec-850ca75dd7b9', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/claim', N'声明', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,ccb74938-7e59-4532-a1ec-850ca75dd7b9,', 2, NULL, N'sm', 1, 1, N'{"Icon":"anticon anticon-tag","Expanded":true}', CAST(N'2019-07-16T15:01:15.083' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', CAST(N'2019-07-16T15:04:33.857' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', 0)
 GO
-INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'f85e2381-f85f-4978-aeaa-dd0a3106d1ab', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/module', N'模块', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,f85e2381-f85f-4978-aeaa-dd0a3106d1ab,', 2, NULL, N'mk', 1, 2, N'{"Icon":"anticon anticon-menu-fold","Expanded":null}', CAST(N'2019-07-07 16:37:13.687' AS DateTime), NULL, CAST(N'2019-07-07 16:37:13.687' AS DateTime), NULL, 0)
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'9412c649-2353-4f37-a178-21a66a7ad3bf', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/application', N'应用程序', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,9412c649-2353-4f37-a178-21a66a7ad3bf,', 2, NULL, N'yycx', 1, 1, N'{"Icon":"anticon anticon-database","Expanded":null}', CAST(N'2019-07-07T16:36:39.367' AS DateTime), NULL, CAST(N'2019-07-07T16:36:39.367' AS DateTime), NULL, 0)
 GO
-INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'a4c32fa8-f8eb-4ce9-a517-d96d431fcb04', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/user', N'用户', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,a4c32fa8-f8eb-4ce9-a517-d96d431fcb04,', 2, NULL, N'yh', 1, 3, N'{"Icon":"anticon anticon-user","Expanded":null}', CAST(N'2019-07-07 16:37:34.693' AS DateTime), NULL, CAST(N'2019-07-07 16:37:34.693' AS DateTime), NULL, 0)
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'f85e2381-f85f-4978-aeaa-dd0a3106d1ab', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/module', N'模块', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,f85e2381-f85f-4978-aeaa-dd0a3106d1ab,', 2, NULL, N'mk', 1, 2, N'{"Icon":"anticon anticon-menu-fold","Expanded":null}', CAST(N'2019-07-07T16:37:13.687' AS DateTime), NULL, CAST(N'2019-07-07T16:37:13.687' AS DateTime), NULL, 0)
 GO
-INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'1a01a8c3-1e6f-47d8-be75-b66da7f7a746', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/role', N'角色', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,1a01a8c3-1e6f-47d8-be75-b66da7f7a746,', 2, NULL, N'js', 1, 4, N'{"Icon":"anticon anticon-team","Expanded":null}', CAST(N'2019-07-07 16:37:56.583' AS DateTime), NULL, CAST(N'2019-07-07 16:37:56.583' AS DateTime), NULL, 0)
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'a4c32fa8-f8eb-4ce9-a517-d96d431fcb04', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/user', N'用户', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,a4c32fa8-f8eb-4ce9-a517-d96d431fcb04,', 2, NULL, N'yh', 1, 3, N'{"Icon":"anticon anticon-user","Expanded":null}', CAST(N'2019-07-07T16:37:34.693' AS DateTime), NULL, CAST(N'2019-07-07T16:37:34.693' AS DateTime), NULL, 0)
+GO
+INSERT [Systems].[Resource] ([ResourceId], [ApplicationId], [Uri], [Name], [Type], [ParentId], [Path], [Level], [Remark], [PinYin], [Enabled], [SortId], [Extend], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'1a01a8c3-1e6f-47d8-be75-b66da7f7a746', N'e9138a35-a4ff-460e-ac55-b743d55b9691', N'/systems/role', N'角色', 1, N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5', N'ec9c35b4-3dfd-4cee-be70-9d83993b40e5,1a01a8c3-1e6f-47d8-be75-b66da7f7a746,', 2, NULL, N'js', 1, 4, N'{"Icon":"anticon anticon-team","Expanded":null}', CAST(N'2019-07-07T16:37:56.583' AS DateTime), NULL, CAST(N'2019-07-07T16:37:56.583' AS DateTime), NULL, 0)
 GO
 /*==============================================================*/
 /* 用户                                                         */
@@ -2052,6 +2256,8 @@ GO
 /*==============================================================*/
 /* 权限                                                         */
 /*==============================================================*/
+INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'50ca7540-fd71-4767-8477-d630148635e3', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'ccb74938-7e59-4532-a1ec-850ca75dd7b9', 0, NULL, CAST(N'2019-07-16T15:01:30.767' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', CAST(N'2019-07-16T15:01:30.767' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', 0)
+GO
 INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'48c5c904-efca-4a89-95ed-1df05f062c6e', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'1b75baf9-cd60-46f6-9c37-7490d8a2fd4f', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
 GO
 INSERT [Systems].[Permission] ([PermissionId], [RoleId], [ResourceId], [IsDeny], [Sign], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'a185255d-9432-4886-8136-0d973de4c7fd', N'd5c3cbde-f2be-47ac-bc85-a329f79588f8', N'd24aee38-3780-4d32-aff1-38236b348b86', 0, NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, CAST(N'2019-07-07 16:42:45.127' AS DateTime), NULL, 0)
