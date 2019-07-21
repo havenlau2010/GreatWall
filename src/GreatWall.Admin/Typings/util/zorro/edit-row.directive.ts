@@ -2,7 +2,7 @@
 //Copyright 2019 何镇汐
 //Licensed under the MIT license
 //=======================================================
-import { Directive, Input, OnInit, HostListener } from '@angular/core';
+import { Directive, Input, Output, EventEmitter, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { EditTableDirective } from "./edit-table.directive";
 import { Util as util } from "../util";
 
@@ -13,15 +13,23 @@ import { Util as util } from "../util";
     selector: '[x-edit-row]',
     exportAs: 'utilEditRow'
 } )
-export class EditRowDirective implements OnInit {
+export class EditRowDirective implements OnInit, OnDestroy {
     /**
-     * 控件列表
+     * 编辑控件列表
      */
     controls: any[];
+    /**
+     * 是否新行
+     */
+    isNew: boolean;
     /**
      * 行数据
      */
     @Input( 'x-edit-row' ) data;
+    /**
+     * 变更事件
+     */
+    @Output() onChange = new EventEmitter<any>();
 
     /**
      * 初始化编辑行指令
@@ -35,8 +43,17 @@ export class EditRowDirective implements OnInit {
      * 初始化
      */
     ngOnInit() {
+        if ( !this.table || !this.data )
+            return;
+        this.table.register( this.data.id, this );
+    }
+
+    /**
+     * 组件销毁
+     */
+    ngOnDestroy() {
         if ( this.data )
-            this.table && this.table.register( this.data.id, this );
+            this.table && this.table.unRegister( this.data.id );
     }
 
     /**
@@ -47,6 +64,12 @@ export class EditRowDirective implements OnInit {
         if ( !control )
             return;
         this.controls.push( control );
+        if ( control.onChange && control.onChange.subscribe )
+            control.onChange.subscribe( () => {
+                if ( this.isNew )
+                    return;
+                this.onChange.emit( this.data.id );
+            } );
     }
 
     /**
@@ -57,6 +80,8 @@ export class EditRowDirective implements OnInit {
         if ( !control )
             return;
         util.helper.remove( this.controls, t => t === control );
+        if ( control.onChange && control.onChange.unsubscribe )
+            control.onChange.unsubscribe();
     }
 
     /**
@@ -70,13 +95,13 @@ export class EditRowDirective implements OnInit {
     /**
      * 处理行点击事件
      */
-    @HostListener( 'click', ['$event.target'] )
+    @HostListener( 'mousedown', ['$event.target'] )
     handleClick( element ) {
         setTimeout( () => {
             if ( this.controls.length === 0 )
                 return;
-            let control = this.controls.find( t => element.contains( t.element.nativeElement ) );
-            control && control.focus && control.focus();
+            let control = this.controls.find( t => element.contains( t.getNativeElement() ) );
+            control && control.focus();
         }, 100 );
     }
 
@@ -84,7 +109,7 @@ export class EditRowDirective implements OnInit {
      * 是否有效
      */
     isValid() {
-        return !this.controls.some( control => control && control.isValid && !control.isValid() );
+        return !this.controls.some( control => !control.isValid() );
     }
 
     /**
@@ -93,8 +118,8 @@ export class EditRowDirective implements OnInit {
     focusToInvalid() {
         if ( this.controls.length === 0 )
             return;
-        let control = this.controls.find( control => control && control.isValid && !control.isValid() );
-        control && control.focus && control.focus();
+        let control = this.controls.find( control => !control.isValid() );
+        control && control.focus();
     }
 
     /**
@@ -104,6 +129,6 @@ export class EditRowDirective implements OnInit {
         if ( this.controls.length === 0 )
             return;
         let control = this.controls[0];
-        control.focus && control.focus();
+        control.focus();
     }
 }
