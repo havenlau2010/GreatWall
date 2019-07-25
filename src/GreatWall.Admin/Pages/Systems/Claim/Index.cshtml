@@ -13,13 +13,29 @@
         已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
     </util-alert>
     @*表格*@
-    <util-table id="tableClaim" query-param="queryParam" base-url="claim" sort="CreationTime desc">
+    <util-table id="tableClaim" query-param="queryParam" base-url="claim" sort="SortId">
         <util-table-column type="Checkbox"></util-table-column>
         <util-table-column type="LineNumber"></util-table-column>
-        <util-table-column for="Name" is-edit="true">
+        <util-table-column for="Name" is-edit="true" width="30%">
             <util-textbox for="Name"></util-textbox>
         </util-table-column>
-        <util-table-column for="Remark" is-edit="true">
+        <util-table-column for="Enabled">
+            <util-table-column-display>
+                <util-tag color-type="GeekBlue" ng-if="row.enabled">
+                    启用
+                </util-tag>
+                <util-tag color-type="Red" ng-if="!row.enabled">
+                    未启用
+                </util-tag>
+            </util-table-column-display>
+            <util-table-column-control>
+                <util-checkbox for="Enabled"></util-checkbox>
+            </util-table-column-control>
+        </util-table-column>
+        <util-table-column for="SortId" is-edit="true">
+            <util-textbox for="SortId"></util-textbox>
+        </util-table-column>
+        <util-table-column for="Remark" is-edit="true" width="30%">
             <util-textbox for="Remark"></util-textbox>
         </util-table-column>
         <util-table-column title="操作">

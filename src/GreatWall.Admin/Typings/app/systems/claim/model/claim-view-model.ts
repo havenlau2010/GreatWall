@@ -9,6 +9,14 @@ export class ClaimViewModel extends ViewModel {
      */
     name;
     /**
+     * 启用
+     */
+    enabled;
+    /**
+     * 排序号
+     */
+    sortId;
+    /**
      * 备注
      */
     remark;

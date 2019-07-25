@@ -15,6 +15,16 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "声明名称" )]
         public string Name { get; set; }
         /// <summary>
+        /// 启用
+        /// </summary>
+        [Display( Name = "启用" )]
+        public bool? Enabled { get; set; }
+        /// <summary>
+        /// 排序号
+        /// </summary>
+        [Display( Name = "排序号" )]
+        public int? SortId { get; set; }
+        /// <summary>
         /// 备注
         /// </summary>
         [StringLength( 500 )]

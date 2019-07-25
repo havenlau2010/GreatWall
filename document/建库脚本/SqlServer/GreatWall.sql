@@ -49,6 +49,8 @@ go
 create table Systems.Claim (
    ClaimId              uniqueidentifier     not null,
    Name                 nvarchar(200)        not null,
+   Enabled              bit                  not null,
+   SortId               int                  null,
    Remark               nvarchar(500)        null,
    CreationTime         datetime             null,
    CreatorId            uniqueidentifier     null,
@@ -104,6 +106,38 @@ end
 execute sp_addextendedproperty 'MS_Description', 
    '声明名称',
    'schema', 'Systems', 'table', 'Claim', 'column', 'Name'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'Enabled')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Enabled'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '启用',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'Enabled'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Systems.Claim')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'SortId')
+)
+begin
+   execute sp_dropextendedproperty 'MS_Description', 
+   'schema', 'Systems', 'table', 'Claim', 'column', 'SortId'
+
+end
+
+
+execute sp_addextendedproperty 'MS_Description', 
+   '排序号',
+   'schema', 'Systems', 'table', 'Claim', 'column', 'SortId'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -227,6 +261,7 @@ go
 
 create clustered index clus_idx_creationtime on Systems.Claim (CreationTime DESC)
 go
+
 
 
 if exists (select 1
@@ -2213,6 +2248,17 @@ go
 /*==============================================================*/
 /* 默认数据                                                      */
 /*==============================================================*/
+
+
+/*==============================================================*/
+/* 声明                                                      */
+/*==============================================================*/
+INSERT [Systems].[Claim] ([ClaimId], [Name], [Enabled], [SortId], [Remark], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'fdc7ecb5-c4b3-97eb-eb16-ee2c4648a958', N'profile', 1, 3, NULL, CAST(N'2019-07-25 23:23:44.540' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', CAST(N'2019-07-25 23:23:44.540' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', 0)
+GO
+INSERT [Systems].[Claim] ([ClaimId], [Name], [Enabled], [SortId], [Remark], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'64795337-7b2c-dcb0-2242-820afe2ab66d', N'nickname', 1, 2, N'昵称', CAST(N'2019-07-25 23:23:44.540' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', CAST(N'2019-07-25 23:23:44.540' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', 0)
+GO
+INSERT [Systems].[Claim] ([ClaimId], [Name], [Enabled], [SortId], [Remark], [CreationTime], [CreatorId], [LastModificationTime], [LastModifierId], [IsDeleted]) VALUES (N'04d1c5e7-e414-4763-8cd6-7e4ad5828f35', N'name', 1, 1, N'用户名', CAST(N'2019-07-25 23:23:44.540' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', CAST(N'2019-07-25 23:23:44.540' AS DateTime), N'55ba53a6-e482-4d9b-8d91-3fba6610b896', 0)
+GO
 
 /*==============================================================*/
 /* 应用程序                                                      */

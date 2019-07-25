@@ -13,6 +13,14 @@ export class ClaimQuery extends QueryParameter {
      */
     name;
     /**
+     * 启用
+     */
+    enabled;
+    /**
+     * 排序号
+     */
+    sortId;
+    /**
      * 备注
      */
     remark;
@@ -24,20 +32,4 @@ export class ClaimQuery extends QueryParameter {
      * 结束创建时间
      */
     endCreationTime;
-    /**
-     * 创建人标识
-     */
-    creatorId;
-    /**
-     * 起始最后修改时间
-     */
-    beginLastModificationTime;
-    /**
-     * 结束最后修改时间
-     */
-    endLastModificationTime;
-    /**
-     * 最后修改人标识
-     */
-    lastModifierId;
 }

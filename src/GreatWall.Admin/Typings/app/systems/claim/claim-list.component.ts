@@ -19,4 +19,14 @@ export class ClaimListComponent extends TableEditComponentBase<ClaimViewModel, C
     constructor(injector: Injector) {
         super(injector);
     }
+
+    /**
+     * 创建参数
+     */
+    protected createModel() {
+        let result = new ClaimViewModel();
+        result.enabled = true;
+        result.sortId = 0;
+        return result;
+    }
 }
