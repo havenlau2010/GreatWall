@@ -40,13 +40,46 @@ namespace GreatWall.Data.Pos.Extensions {
         }
 
         /// <summary>
-        /// 创建扩展
+        /// 创建模块扩展对象
         /// </summary>
         private static ModuleExtend CreateExtend( Module entity ) {
             return new ModuleExtend {
                 Icon = entity.Icon,
                 Expanded = entity.Expanded
             };
+        }
+
+        /// <summary>
+        /// 转换为身份资源实体
+        /// </summary>
+        /// <param name="po">资源持久化对象</param>
+        public static IdentityResource ToIdentityResource( this ResourcePo po ) {
+            if( po == null )
+                return null;
+            var result = po.MapTo( new IdentityResource( po.Id ) );
+            var extend = Json.ToObject<IdentityResourceExtend>( po.Extend );
+            extend.MapTo( result );
+            return result;
+        }
+
+        /// <summary>
+        /// 转换为资源持久化对象
+        /// </summary>
+        /// <param name="entity">模块</param>
+        public static ResourcePo ToPo( this IdentityResource entity ) {
+            if( entity == null )
+                return null;
+            var result = entity.MapTo<ResourcePo>();
+            result.Type = ResourceType.Identity;
+            result.Extend = Json.ToJson( CreateExtend( entity ) );
+            return result;
+        }
+
+        /// <summary>
+        /// 创建身份资源扩展对象
+        /// </summary>
+        private static IdentityResourceExtend CreateExtend( IdentityResource entity ) {
+            return entity.MapTo<IdentityResourceExtend>();
         }
     }
 }

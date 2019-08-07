@@ -18,6 +18,7 @@ namespace GreatWall.Configs {
             return new List<ApiResource>
             {
                 new ApiResource("api", "API") {
+                    
                     UserClaims = {
                         JwtClaimTypes.Name,
                         JwtClaimTypes.Email,

@@ -19,6 +19,9 @@ import { ModuleListComponent } from './module/module-list.component';
 import { ModuleEditComponent } from './module/module-edit.component';
 import { ModuleDetailComponent } from './module/module-detail.component';
 import { ModuleSelectComponent } from './module/module-select.component';
+import { IdentityResourceListComponent } from './identity-resource/identityResource-list.component';
+import { IdentityResourceEditComponent } from './identity-resource/identityResource-edit.component';
+import { IdentityResourceDetailComponent } from './identity-resource/identityResource-detail.component';
 
 /**
  * 系统模块
@@ -30,7 +33,8 @@ import { ModuleSelectComponent } from './module/module-select.component';
         UserListComponent, UserCreateComponent, UserDetailComponent,
         RoleListComponent, RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
         SelectUserListComponent, PermissionComponent,
-        ModuleListComponent, ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
+        ModuleListComponent, ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent,
+        IdentityResourceListComponent, IdentityResourceEditComponent, IdentityResourceDetailComponent
     ],
     imports: [
         FrameworkModule, SystemRoutingModule
@@ -40,7 +44,8 @@ import { ModuleSelectComponent } from './module/module-select.component';
         UserCreateComponent, UserDetailComponent,
         RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
         SelectUserListComponent, PermissionComponent,
-        ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
+        ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent,
+        IdentityResourceEditComponent, IdentityResourceDetailComponent
     ]
 } )
 export class SystemModule {

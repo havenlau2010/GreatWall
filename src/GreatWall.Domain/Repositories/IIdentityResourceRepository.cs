@@ -1,0 +1,21 @@
+﻿using System.Threading.Tasks;
+using GreatWall.Domain.Models;
+using Util.Domains.Repositories;
+
+namespace GreatWall.Domain.Repositories {
+    /// <summary>
+    /// 身份资源仓储
+    /// </summary>
+    public interface IIdentityResourceRepository : ICompactRepository<IdentityResource> {
+        /// <summary>
+        /// 是否允许创建身份资源
+        /// </summary>
+        /// <param name="identityResource">身份资源</param>
+        Task<bool> CanCreateAsync( IdentityResource identityResource );
+        /// <summary>
+        /// 是否允许修改身份资源
+        /// </summary>
+        /// <param name="identityResource">身份资源</param>
+        Task<bool> CanUpdateAsync( IdentityResource identityResource );
+    }
+}

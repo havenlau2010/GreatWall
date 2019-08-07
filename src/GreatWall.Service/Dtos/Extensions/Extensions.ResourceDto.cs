@@ -29,5 +29,24 @@ namespace GreatWall.Service.Dtos.Extensions {
         public static Module ToModule( this CreateModuleRequest request ) {
             return request?.MapTo<Module>();
         }
+
+        /// <summary>
+        /// 转成身份资源参数
+        /// </summary>
+        public static IdentityResourceDto ToIdentityResourceDto( this ResourcePo po ) {
+            if( po == null )
+                return null;
+            var result = po.MapTo<IdentityResourceDto>();
+            var extend = Json.ToObject<IdentityResourceExtend>( po.Extend );
+            extend.MapTo( result );
+            return result;
+        }
+
+        /// <summary>
+        /// 转成身份资源
+        /// </summary> 
+        public static IdentityResource ToEntity( this IdentityResourceDto dto ) {
+            return dto?.MapTo<IdentityResource>();
+        }
     }
 }
