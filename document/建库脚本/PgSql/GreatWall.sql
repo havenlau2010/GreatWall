@@ -1,8 +1,9 @@
 ﻿/*========================================================== 1. 创建数据库 ===========================================================*/
-create database "GreatWall";
+/*DROP database IF EXISTS "GreatWall";
+create database "GreatWall";*/
 
 /*========================================================== 2. 创建架构 ===========================================================*/
-create schema "Systems";
+CREATE SCHEMA IF NOT EXISTS "Systems";
 
 /*========================================================== 3. 创建表 ===========================================================*/
 
@@ -80,9 +81,13 @@ COMMENT ON TABLE "Systems"."Claim" IS '声明';
 -- ----------------------------
 -- Records of Claim
 -- ----------------------------
-INSERT INTO "Systems"."Claim" VALUES ('ee612ca0-8159-9851-620a-4610cbbab13a', 'name', 't', 1, '用户名', '2019-07-26 09:33:15.845595', NULL, '2019-07-26 09:33:15.846595', NULL, 'f', E'913319c8-101d-4159-ba0c-c3b7320375cd');
-INSERT INTO "Systems"."Claim" VALUES ('91b92e54-3434-1352-60d3-d79e922d4794', 'profile', 't', 3, NULL, '2019-07-26 09:58:53.636551', NULL, '2019-07-26 09:58:53.636551', NULL, 'f', E'd10619a4-d41d-4cd9-b1da-25b581d6989e');
-INSERT INTO "Systems"."Claim" VALUES ('3d78cc4d-53dd-5f27-2020-e8c81cac0897', 'nickname', 't', 2, '昵称', '2019-07-26 09:58:53.636551', NULL, '2019-07-26 09:58:53.636551', NULL, 'f', E'a5659840-4570-45e6-9693-f29fccad1618');
+INSERT INTO "Systems"."Claim" VALUES ('3d78cc4d-53dd-5f27-2020-e8c81cac0897', 'nickname', 't', 4, '昵称', '2019-07-26 09:58:53.636551', NULL, '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'587e259d-4096-4879-a166-3ddb752b5a71');
+INSERT INTO "Systems"."Claim" VALUES ('91b92e54-3434-1352-60d3-d79e922d4794', 'profile', 't', 2, NULL, '2019-07-26 09:58:53.636551', NULL, '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'493031e9-159c-4e72-948e-0157d2c3cca9');
+INSERT INTO "Systems"."Claim" VALUES ('ee612ca0-8159-9851-620a-4610cbbab13a', 'name', 't', 3, '用户名', '2019-07-26 09:33:15.845595', NULL, '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'd53c3ed0-70da-4136-ac51-61936c90d806');
+INSERT INTO "Systems"."Claim" VALUES ('a55444ac-72f1-81f3-3a25-7dc3105f4727', 'application_id', 't', 7, '应用程序标识', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'b668b58c-8516-4a84-9cfa-1feec19befa8');
+INSERT INTO "Systems"."Claim" VALUES ('62325b3f-9753-a46a-2801-417464e697ee', 'phone_number', 't', 6, '手机号', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'0ca876e5-68c1-4b75-8ab6-0ab01c2549dc');
+INSERT INTO "Systems"."Claim" VALUES ('d8e80be9-0f86-a84c-01c5-7e621d5c24a2', 'email', 't', 5, '电子邮件', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'45fc5ca3-4bc5-4eb8-b9be-6ad63d29ebaf');
+INSERT INTO "Systems"."Claim" VALUES ('e1399420-a6c6-fc36-6520-490a13ee8064', 'sub', 't', 1, '用户标识', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'8763f3ed-4b7c-4032-aaf1-296f2fde99ba');
 
 -- ----------------------------
 -- Table structure for Permission
@@ -114,6 +119,8 @@ INSERT INTO "Systems"."Permission" VALUES ('9973ea50-0f22-469d-ae7c-4551bb36ae96
 INSERT INTO "Systems"."Permission" VALUES ('8aadcbde-4e3e-4c34-8d81-0f205ff68575', '03b7f379-404a-4659-9d1e-7a58299f6bdf', 'e2306a73-b1f4-4974-b90d-323b800e0a4a', 'f', NULL, '2019-07-26 10:21:10.75903', NULL, '2019-07-26 10:21:10.75903', NULL, 'f', E'0939a4bb-61bb-4502-9bb2-49da977b858f');
 INSERT INTO "Systems"."Permission" VALUES ('a31f1ac1-d884-4a40-8400-d11da8ace08f', '03b7f379-404a-4659-9d1e-7a58299f6bdf', '8eb03219-907b-40b3-8dd3-56f1e9a9dd30', 'f', NULL, '2019-07-26 10:21:10.75903', NULL, '2019-07-26 10:21:10.75903', NULL, 'f', E'fd55dc75-969d-4472-bcbb-170a6907c6ac');
 INSERT INTO "Systems"."Permission" VALUES ('83311f0a-c1ca-4524-885c-b6acfb52d797', '03b7f379-404a-4659-9d1e-7a58299f6bdf', '97e4b363-c448-4cb8-8c57-6bd55213fcdf', 'f', NULL, '2019-07-26 10:21:10.75903', NULL, '2019-07-26 10:21:10.75903', NULL, 'f', E'186c0ff5-a5cc-4e63-8cc7-4b72eac6f713');
+INSERT INTO "Systems"."Permission" VALUES ('dda721d2-9aab-4c85-83a5-060205c79298', '03b7f379-404a-4659-9d1e-7a58299f6bdf', 'ada8d8dc-49fb-4973-bdb1-fee1928aff73', 'f', NULL, '2019-08-08 21:23:29.337901', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:23:29.337901', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'a22da57f-9d67-4065-8832-e8a8d69db315');
+INSERT INTO "Systems"."Permission" VALUES ('357a6ec0-1466-48bd-a4bc-2ddfa2b902f2', '03b7f379-404a-4659-9d1e-7a58299f6bdf', '819d804d-b620-4a78-b847-02de9128aa11', 'f', NULL, '2019-08-08 21:23:29.338901', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:23:29.338901', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'05467020-83ad-4d56-9d9e-7dd56aa03af5');
 
 -- ----------------------------
 -- Table structure for Resource
@@ -170,9 +177,14 @@ INSERT INTO "Systems"."Resource" VALUES ('1e6ede35-bc76-40b9-aa20-8481a55281bd',
 INSERT INTO "Systems"."Resource" VALUES ('6af8de88-d22b-403a-9c2c-e8f49e24ccad', 'e9138a35-a4ff-460e-ac55-b743d55b9691', NULL, '系统管理', 1, NULL, '6af8de88-d22b-403a-9c2c-e8f49e24ccad,', 1, NULL, 'jtgl', 't', 2, '{"Icon":null,"Expanded":null}', '2019-07-26 10:13:26.661485', NULL, '2019-07-26 10:13:26.661485', NULL, 'f', E'53ae0798-01e7-4dd1-a45d-d6a644107f26');
 INSERT INTO "Systems"."Resource" VALUES ('6b7a742c-4d69-408e-9363-7edb2c2d1816', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/claim', '声明', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,6b7a742c-4d69-408e-9363-7edb2c2d1816,', 2, NULL, 'sm', 't', 1, '{"Icon":"anticon anticon-tag","Expanded":null}', '2019-07-26 10:14:04.923674', NULL, '2019-07-26 10:14:04.923674', NULL, 'f', E'be857374-756e-4ce6-b2e2-0be9d44ca871');
 INSERT INTO "Systems"."Resource" VALUES ('894dabae-aad4-4c64-a7fc-2aebfce18f0d', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/application', '应用程序', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,894dabae-aad4-4c64-a7fc-2aebfce18f0d,', 2, NULL, 'yycx', 't', 2, '{"Icon":"anticon anticon-database","Expanded":null}', '2019-07-26 10:14:32.224235', NULL, '2019-07-26 10:14:32.224235', NULL, 'f', E'84685570-44f3-44fc-b065-6ee08e226083');
-INSERT INTO "Systems"."Resource" VALUES ('e2306a73-b1f4-4974-b90d-323b800e0a4a', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/module', '模块', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,e2306a73-b1f4-4974-b90d-323b800e0a4a,', 2, NULL, 'mk', 't', 3, '{"Icon":"anticon anticon-menu-fold","Expanded":null}', '2019-07-26 10:15:02.699978', NULL, '2019-07-26 10:15:02.699978', NULL, 'f', E'01c931d4-ab39-42b0-b57b-8d989bcb04c7');
-INSERT INTO "Systems"."Resource" VALUES ('8eb03219-907b-40b3-8dd3-56f1e9a9dd30', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/user', '用户', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,8eb03219-907b-40b3-8dd3-56f1e9a9dd30,', 2, NULL, 'yh', 't', 4, '{"Icon":"anticon anticon-user","Expanded":null}', '2019-07-26 10:19:22.960865', NULL, '2019-07-26 10:19:22.960865', NULL, 'f', E'2157703c-9367-4dd8-896e-ae6d851fad6b');
-INSERT INTO "Systems"."Resource" VALUES ('97e4b363-c448-4cb8-8c57-6bd55213fcdf', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/role', '角色', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,97e4b363-c448-4cb8-8c57-6bd55213fcdf,', 2, NULL, 'js', 't', 5, '{"Icon":"anticon anticon-team","Expanded":null}', '2019-07-26 10:19:52.400548', NULL, '2019-07-26 10:19:52.400548', NULL, 'f', E'860963c2-6a18-46a9-a204-76ca30f666f6');
+INSERT INTO "Systems"."Resource" VALUES ('ada8d8dc-49fb-4973-bdb1-fee1928aff73', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/identity-resource', '身份资源', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,ada8d8dc-49fb-4973-bdb1-fee1928aff73,', 2, NULL, 'sfzy', 't', 3, '{"Icon":"anticon anticon-meh","Expanded":true}', '2019-08-08 21:22:03.806009', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:22:55.549969', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'792a783f-de43-498b-b3ce-2d5f697d3b94');
+INSERT INTO "Systems"."Resource" VALUES ('819d804d-b620-4a78-b847-02de9128aa11', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/api-resource', 'Api资源', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,819d804d-b620-4a78-b847-02de9128aa11,', 2, NULL, 'apizy', 't', 4, '{"Icon":"anticon anticon-api","Expanded":true}', '2019-08-08 21:22:26.300296', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:23:00.650261', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'c81a2de1-e6cd-4ef6-a257-b47d2aea72e9');
+INSERT INTO "Systems"."Resource" VALUES ('e2306a73-b1f4-4974-b90d-323b800e0a4a', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/module', '模块', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,e2306a73-b1f4-4974-b90d-323b800e0a4a,', 2, NULL, 'mk', 't', 5, '{"Icon":"anticon anticon-menu-fold","Expanded":true}', '2019-07-26 10:15:02.699978', NULL, '2019-08-08 21:23:05.643546', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'9d7411c3-06a6-4638-9dd3-5837c07e1a07');
+INSERT INTO "Systems"."Resource" VALUES ('8eb03219-907b-40b3-8dd3-56f1e9a9dd30', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/user', '用户', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,8eb03219-907b-40b3-8dd3-56f1e9a9dd30,', 2, NULL, 'yh', 't', 6, '{"Icon":"anticon anticon-user","Expanded":true}', '2019-07-26 10:19:22.960865', NULL, '2019-08-08 21:23:12.122917', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'dccc624d-cfb3-4119-95c0-75e6c765e976');
+INSERT INTO "Systems"."Resource" VALUES ('97e4b363-c448-4cb8-8c57-6bd55213fcdf', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/role', '角色', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,97e4b363-c448-4cb8-8c57-6bd55213fcdf,', 2, NULL, 'js', 't', 7, '{"Icon":"anticon anticon-team","Expanded":true}', '2019-07-26 10:19:52.400548', NULL, '2019-08-08 21:23:17.166205', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'cc4b6e36-e609-4a52-9d06-815e44b672d7');
+INSERT INTO "Systems"."Resource" VALUES ('736c31ce-d5c4-40a6-a2db-e3333cdaf422', NULL, 'openid', 'openid', 5, NULL, NULL, 0, '用户标识', NULL, 't', 1, '{"Required":true,"Emphasize":false,"ShowInDiscoveryDocument":true,"Claims":["sub"]}', '2019-08-08 21:28:34.558359', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:28:34.558359', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'9ce4fed4-cc51-4f3a-9813-2a9af60de3f8');
+INSERT INTO "Systems"."Resource" VALUES ('ffd48855-c0e3-416d-bfb4-30a529b70236', NULL, 'profile', 'profile', 5, NULL, NULL, 0, '用户个人信息', NULL, 't', 2, '{"Required":false,"Emphasize":true,"ShowInDiscoveryDocument":true,"Claims":["profile","name","nickname"]}', '2019-08-08 21:29:20.134966', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:29:20.134966', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'2b43b187-caa4-42f7-8a94-97ceb434c83a');
+INSERT INTO "Systems"."Resource" VALUES ('6b5a8fe9-fc93-4615-982a-753120f7c1cb', NULL, 'greatwall-api', '权限Api', 6, NULL, NULL, 0, 'GreatWall权限Api', NULL, 't', 1, '{"Claims":["email","phone_number","application_id"]}', '2019-08-08 21:30:46.067881', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:30:46.067881', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'46eb0c96-9f5c-4be2-bb7f-f53f481b1cb8');
 
 -- ----------------------------
 -- Table structure for Role
@@ -270,7 +282,7 @@ INSERT INTO "Systems"."UserRole" VALUES ('03b7f379-404a-4659-9d1e-7a58299f6bdf',
 -- ----------------------------
 -- Indexes structure for table Application
 -- ----------------------------
-CREATE INDEX "idx_application_creationtime" ON "Systems"."Application" USING btree (
+CREATE INDEX "clus_idx_application_creationti" ON "Systems"."Application" USING btree (
   "CreationTime" "pg_catalog"."timestamp_ops" ASC NULLS LAST
 );
 

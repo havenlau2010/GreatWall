@@ -30,8 +30,8 @@ namespace GreatWall.Apis.Systems {
         /// </summary>
         [HttpGet( "all" )]
         public virtual async Task<IActionResult> GetAllAsync() {
-            var claims = await ClaimService.GetAllAsync();
-            var result = claims.Select( t => new Item( t.Name, t.Name ) ).ToList();
+            var claims = await ClaimService.GetEnabledClaimsAsync();
+            var result = claims.OrderBy( t => t.SortId ).Select( t => new Item( t.Name, t.Name ) ).ToList();
             return Success( result );
         }
     }

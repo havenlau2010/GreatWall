@@ -1,4 +1,7 @@
-﻿using GreatWall.Data.Pos;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using GreatWall.Data.Pos;
 using GreatWall.Data.Stores.Abstractions;
 using GreatWall.Domain.Enums;
 using GreatWall.Service.Abstractions;
@@ -44,6 +47,27 @@ namespace GreatWall.Service.Implements {
                 .Where( t => t.Type == ResourceType.Identity )
                 .WhereIfNotEmpty( t => t.Uri.Contains( param.Uri ) )
                 .WhereIfNotEmpty( t => t.Name.Contains( param.Name ) );
+        }
+
+        /// <summary>
+        /// 获取全部
+        /// </summary>
+        public override async Task<List<IdentityResourceDto>> GetAllAsync() {
+            var entities = await ResourceStore.FindAllAsync( t => t.Type == ResourceType.Identity );
+            return entities.Select( ToDto ).ToList();
+        }
+
+        /// <summary>
+        /// 获取资源列表
+        /// </summary>
+        /// <param name="uri">资源标识列表</param>
+        public async Task<List<IdentityResourceDto>> GetResources( List<string> uri ) {
+            if( uri == null || uri.Count == 0 )
+                return new List<IdentityResourceDto>();
+            var resources = await ResourceStore.FindAllAsync( t => uri.Contains( t.Uri ) && t.Type == ResourceType.Identity );
+            if( resources == null )
+                return new List<IdentityResourceDto>();
+            return resources.Select( t => t.ToIdentityResourceDto() ).ToList();
         }
     }
 }

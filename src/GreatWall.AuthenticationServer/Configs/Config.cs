@@ -17,7 +17,7 @@ namespace GreatWall.Configs {
         public static IEnumerable<ApiResource> GetApiResources() {
             return new List<ApiResource>
             {
-                new ApiResource("api", "API") {
+                new ApiResource("greatwall-api", "API") {
                     
                     UserClaims = {
                         JwtClaimTypes.Name,
@@ -54,7 +54,7 @@ namespace GreatWall.Configs {
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "api"
+                        "greatwall-api"
                     },
                     AccessTokenLifetime = AccessTokenLifetime
                 }

@@ -12,7 +12,7 @@
         已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
     </util-alert>
     @*表格*@
-    <util-table id="tableIdentityResource" query-param="queryParam" base-url="identityResource" sort="CreationTime desc">
+    <util-table id="tableIdentityResource" query-param="queryParam" base-url="identityResource" sort="SortId">
         <util-table-column type="Checkbox"></util-table-column>
         <util-table-column type="LineNumber"></util-table-column>
         <util-table-column for="Uri"></util-table-column>
