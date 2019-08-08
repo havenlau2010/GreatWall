@@ -1,18 +1,18 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
 import { DialogEditComponentBase } from '../../../util';
-import { IdentityResourceViewModel } from './model/identityResource-view-model';
+import { ApiResourceViewModel } from './model/api-resource-view-model';
 
 /**
- * 身份资源编辑页
+ * Api资源编辑页
  */
 @Component({
-    selector: 'identityResource-edit',
-    templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/identityResource/edit'
+    selector: 'api-resource-edit',
+    templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/ApiResource/edit'
 })
-export class IdentityResourceEditComponent extends DialogEditComponentBase<IdentityResourceViewModel> {
+export class ApiResourceEditComponent extends DialogEditComponentBase<ApiResourceViewModel> {
     /**
-     * 初始化身份资源编辑页
+     * 初始化Api资源编辑页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
@@ -23,7 +23,7 @@ export class IdentityResourceEditComponent extends DialogEditComponentBase<Ident
      * 创建模型
      */
     createModel() {
-        let result = new IdentityResourceViewModel();
+        let result = new ApiResourceViewModel();
         result.enabled = true;
         return result;
     }
@@ -32,6 +32,6 @@ export class IdentityResourceEditComponent extends DialogEditComponentBase<Ident
      * 获取基地址
      */
     protected getBaseUrl() {
-        return "identityResource";
+        return "apiResource";
     }
 }

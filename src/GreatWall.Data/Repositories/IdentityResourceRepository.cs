@@ -13,14 +13,14 @@ namespace GreatWall.Data.Repositories {
     /// </summary>
     public class IdentityResourceRepository : CompactRepositoryBase<IdentityResource, ResourcePo>, IIdentityResourceRepository {
         /// <summary>
-        /// 身份资源存储器
+        /// 资源存储器
         /// </summary>
         private readonly IResourcePoStore _store;
 
         /// <summary>
         /// 初始化身份资源仓储
         /// </summary>
-        /// <param name="store">身份资源存储器</param>
+        /// <param name="store">资源存储器</param>
         public IdentityResourceRepository( IResourcePoStore store ) : base( store ) {
             _store = store;
         }

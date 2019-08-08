@@ -7,35 +7,35 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GreatWall.Apis.Systems {
     /// <summary>
-    /// 身份资源控制器
+    /// Api资源控制器
     /// </summary>
-    public class IdentityResourceController : QueryControllerBase<IdentityResourceDto, ResourceQuery> {
+    public class ApiResourceController : QueryControllerBase<ApiResourceDto, ResourceQuery> {
         /// <summary>
-        /// 初始化身份资源控制器
+        /// 初始化Api资源控制器
         /// </summary>
-        /// <param name="queryService">身份资源查询服务</param>
-        /// <param name="service">身份资源服务</param>
-        public IdentityResourceController( IQueryIdentityResourceService queryService, IIdentityResourceService service ) : base( queryService ) {
+        /// <param name="queryService">Api资源查询服务</param>
+        /// <param name="service">Api资源服务</param>
+        public ApiResourceController( IQueryApiResourceService queryService, IApiResourceService service ) : base( queryService ) {
             QueryService = queryService;
             Service = service;
         }
 
         /// <summary>
-        /// 身份资源查询服务
+        /// Api资源查询服务
         /// </summary>
-        public IQueryIdentityResourceService QueryService { get; }
+        public IQueryApiResourceService QueryService { get; }
 
         /// <summary>
-        /// 身份资源服务
+        /// Api资源服务
         /// </summary>
-        public IIdentityResourceService Service { get; }
+        public IApiResourceService Service { get; }
 
         /// <summary>
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
         [HttpPost]
-        public virtual async Task<IActionResult> CreateAsync( [FromBody] IdentityResourceDto request ) {
+        public virtual async Task<IActionResult> CreateAsync( [FromBody] ApiResourceDto request ) {
             var id = await Service.CreateAsync( request );
             return Success( id );
         }
@@ -45,7 +45,7 @@ namespace GreatWall.Apis.Systems {
         /// </summary>
         /// <param name="request">修改参数</param>
         [HttpPut]
-        public virtual async Task<IActionResult> UpdateAsync( [FromBody] IdentityResourceDto request ) {
+        public virtual async Task<IActionResult> UpdateAsync( [FromBody] ApiResourceDto request ) {
             await Service.UpdateAsync( request );
             var result = await QueryService.GetByIdAsync( request.Id );
             return Success( result );

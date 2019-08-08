@@ -5,7 +5,8 @@ import { ApplicationListComponent } from './application/application-list.compone
 import { UserListComponent } from './user/user-list.component';
 import { RoleListComponent } from './role/role-list.component';
 import { ModuleListComponent } from './module/module-list.component';
-import { IdentityResourceListComponent } from './identity-resource/identityResource-list.component';
+import { IdentityResourceListComponent } from './identity-resource/identity-resource-list.component';
+import { ApiResourceListComponent } from './api-resource/api-resource-list.component';
 
 //路由配置
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
             { path: 'user', component: UserListComponent },
             { path: 'role', component: RoleListComponent },
             { path: 'module', component: ModuleListComponent },
-            { path: 'identity-resource', component: IdentityResourceListComponent }
+            { path: 'identity-resource', component: IdentityResourceListComponent },
+            { path: 'api-resource', component: ApiResourceListComponent }
         ]
     }
 ];

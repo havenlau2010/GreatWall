@@ -19,9 +19,12 @@ import { ModuleListComponent } from './module/module-list.component';
 import { ModuleEditComponent } from './module/module-edit.component';
 import { ModuleDetailComponent } from './module/module-detail.component';
 import { ModuleSelectComponent } from './module/module-select.component';
-import { IdentityResourceListComponent } from './identity-resource/identityResource-list.component';
-import { IdentityResourceEditComponent } from './identity-resource/identityResource-edit.component';
-import { IdentityResourceDetailComponent } from './identity-resource/identityResource-detail.component';
+import { IdentityResourceListComponent } from './identity-resource/identity-resource-list.component';
+import { IdentityResourceEditComponent } from './identity-resource/identity-resource-edit.component';
+import { IdentityResourceDetailComponent } from './identity-resource/identity-resource-detail.component';
+import { ApiResourceListComponent } from './api-resource/api-resource-list.component';
+import { ApiResourceEditComponent } from './api-resource/api-resource-edit.component';
+import { ApiResourceDetailComponent } from './api-resource/api-resource-detail.component';
 
 /**
  * 系统模块
@@ -34,7 +37,8 @@ import { IdentityResourceDetailComponent } from './identity-resource/identityRes
         RoleListComponent, RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
         SelectUserListComponent, PermissionComponent,
         ModuleListComponent, ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent,
-        IdentityResourceListComponent, IdentityResourceEditComponent, IdentityResourceDetailComponent
+        IdentityResourceListComponent, IdentityResourceEditComponent, IdentityResourceDetailComponent,
+        ApiResourceListComponent, ApiResourceEditComponent, ApiResourceDetailComponent
     ],
     imports: [
         FrameworkModule, SystemRoutingModule
@@ -45,7 +49,8 @@ import { IdentityResourceDetailComponent } from './identity-resource/identityRes
         RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
         SelectUserListComponent, PermissionComponent,
         ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent,
-        IdentityResourceEditComponent, IdentityResourceDetailComponent
+        IdentityResourceEditComponent, IdentityResourceDetailComponent,
+        ApiResourceEditComponent, ApiResourceDetailComponent
     ]
 } )
 export class SystemModule {

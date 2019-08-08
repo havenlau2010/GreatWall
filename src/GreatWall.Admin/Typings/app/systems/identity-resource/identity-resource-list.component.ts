@@ -1,16 +1,16 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
 import { TableQueryComponentBase } from '../../../util';
-import { IdentityResourceQuery } from './model/identityResource-query';
-import { IdentityResourceViewModel } from './model/identityResource-view-model';
-import { IdentityResourceEditComponent } from './identityResource-edit.component';
-import { IdentityResourceDetailComponent } from './identityResource-detail.component';
+import { IdentityResourceQuery } from './model/identity-resource-query';
+import { IdentityResourceViewModel } from './model/identity-resource-view-model';
+import { IdentityResourceEditComponent } from './identity-resource-edit.component';
+import { IdentityResourceDetailComponent } from './identity-resource-detail.component';
 
 /**
  * 身份资源列表页
  */
 @Component({
-    selector: 'identityResource-list',
+    selector: 'identity-resource-list',
     templateUrl: !env.dev() ? './html/index.component.html' : '/view/systems/identityResource'
 })
 export class IdentityResourceListComponent extends TableQueryComponentBase<IdentityResourceViewModel, IdentityResourceQuery>  {

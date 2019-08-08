@@ -1,13 +1,13 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
 import { DialogEditComponentBase } from '../../../util';
-import { IdentityResourceViewModel } from './model/identityResource-view-model';
+import { IdentityResourceViewModel } from './model/identity-resource-view-model';
 
 /**
  * 身份资源详情页
  */
 @Component({
-    selector: 'identityResource-detail',
+    selector: 'identity-resource-detail',
     templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/identityResource/detail'
 })
 export class IdentityResourceDetailComponent extends DialogEditComponentBase<IdentityResourceViewModel> {

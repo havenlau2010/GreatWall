@@ -48,5 +48,24 @@ namespace GreatWall.Service.Dtos.Extensions {
         public static IdentityResource ToEntity( this IdentityResourceDto dto ) {
             return dto?.MapTo<IdentityResource>();
         }
+
+        /// <summary>
+        /// 转成Api资源参数
+        /// </summary>
+        public static ApiResourceDto ToApiResourceDto( this ResourcePo po ) {
+            if( po == null )
+                return null;
+            var result = po.MapTo<ApiResourceDto>();
+            var extend = Json.ToObject<ApiResourceExtend>( po.Extend );
+            extend.MapTo( result );
+            return result;
+        }
+
+        /// <summary>
+        /// 转成Api资源
+        /// </summary> 
+        public static ApiResource ToEntity( this ApiResourceDto dto ) {
+            return dto?.MapTo<ApiResource>();
+        }
     }
 }
