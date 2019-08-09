@@ -53,9 +53,8 @@ namespace GreatWall {
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddResourceStore<ResourceStore>()
-                //.AddInMemoryIdentityResources( Config.GetIdentityResources() )
-                //.AddInMemoryApiResources( Config.GetApiResources() )
-                .AddInMemoryClients( Config.GetClients() )
+                .AddClientStore<ClientStore>()
+                .AddCorsPolicyService<CorsPolicyService>()
                 .AddAspNetIdentity<User>()
                 .AddResourceOwnerValidator<ResourceValidator>()
                 .AddProfileService<ProfileService>();

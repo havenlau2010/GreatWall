@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using GreatWall.Domain.Models;
 using Util.Domains.Repositories;
 
@@ -17,5 +18,9 @@ namespace GreatWall.Domain.Repositories {
         /// </summary>
         /// <param name="identityResource">身份资源</param>
         Task<bool> CanUpdateAsync( IdentityResource identityResource );
+        /// <summary>
+        /// 获取已启用的身份资源列表
+        /// </summary>
+        Task<List<IdentityResource>> GetEnabledResources();
     }
 }

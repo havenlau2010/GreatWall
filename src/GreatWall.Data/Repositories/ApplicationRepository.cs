@@ -48,5 +48,31 @@ namespace GreatWall.Data.Repositories {
             var po = await _store.SingleAsync( t => t.Code == code );
             return ToEntity( po );
         }
+
+        /// <summary>
+        /// 是否允许跨域访问
+        /// </summary>
+        /// <param name="origin">来源</param>
+        public async Task<bool> IsOriginAllowedAsync( string origin ) {
+            return await _store.ExistsAsync( t => t.Extend.Contains( origin ) );
+        }
+
+        /// <summary>
+        /// 是否允许创建应用程序
+        /// </summary>
+        /// <param name="entity">应用程序</param>
+        public async Task<bool> CanCreateAsync( Application entity ) {
+            var exists = await _store.ExistsAsync( t => t.Code == entity.Code );
+            return exists == false;
+        }
+
+        /// <summary>
+        /// 是否允许修改应用程序
+        /// </summary>
+        /// <param name="entity">应用程序</param>
+        public async Task<bool> CanUpdateAsync( Application entity ) {
+            var exists = await _store.ExistsAsync( t => t.Id != entity.Id && t.Code == entity.Code );
+            return exists == false;
+        }
     }
 }

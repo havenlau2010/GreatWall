@@ -9,7 +9,7 @@ import { Config as ProdConfig } from "../config/config.prod";
 export function getAuthorizeConfig() {
     let result = new OidcAuthorizeConfig();
     result.authority = getAuthority(),
-    result.clientId = "GreatWall-Admin";
+    result.clientId = "greatwall-admin";
     result.scope = "openid profile greatwall-api";
     return result;
 }

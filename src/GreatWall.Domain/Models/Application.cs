@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using GreatWall.Domain.Enums;
 using Util.Domains;
 
 namespace GreatWall.Domain.Models {
@@ -79,6 +80,11 @@ namespace GreatWall.Domain.Models {
         [DisplayName( "是否删除" )]
         public bool IsDeleted { get; set; }
         /// <summary>
+        /// 应用程序类型
+        /// </summary>
+        [DisplayName( "应用程序类型" )]
+        public ApplicationType ApplicationType { get; set; }
+        /// <summary>
         /// 是否客户端
         /// </summary>
         [DisplayName( "是否客户端" )]
@@ -97,6 +103,8 @@ namespace GreatWall.Domain.Models {
             AddDescription( t => t.Name );
             AddDescription( t => t.Enabled );
             AddDescription( t => t.RegisterEnabled );
+            AddDescription( t => t.ApplicationType );
+            AddDescription( t => t.IsClient );
             AddDescription( t => t.Remark );
             AddDescription( t => t.CreationTime );
             AddDescription( t => t.CreatorId );
@@ -114,6 +122,8 @@ namespace GreatWall.Domain.Models {
             AddChange( t => t.Enabled, other.Enabled );
             AddChange( t => t.RegisterEnabled, other.RegisterEnabled );
             AddChange( t => t.Remark, other.Remark );
+            AddChange( t => t.ApplicationType, other.ApplicationType );
+            AddChange( t => t.IsClient, other.IsClient );
             AddChange( t => t.CreationTime, other.CreationTime );
             AddChange( t => t.CreatorId, other.CreatorId );
             AddChange( t => t.LastModificationTime, other.LastModificationTime );

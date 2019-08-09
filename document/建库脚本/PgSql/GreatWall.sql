@@ -1,11 +1,13 @@
 ﻿/*========================================================== 1. 创建数据库 ===========================================================*/
-/*DROP database IF EXISTS "GreatWall";
-create database "GreatWall";*/
-
+/*
+DROP database IF EXISTS "GreatWall";
+create database "GreatWall";
+*/
 /*========================================================== 2. 创建架构 ===========================================================*/
 CREATE SCHEMA IF NOT EXISTS "Systems";
 
 /*========================================================== 3. 创建表 ===========================================================*/
+
 
 -- ----------------------------
 -- Table structure for Application
@@ -45,7 +47,7 @@ COMMENT ON TABLE "Systems"."Application" IS '应用程序';
 -- ----------------------------
 -- Records of Application
 -- ----------------------------
-INSERT INTO "Systems"."Application" VALUES ('e9138a35-a4ff-460e-ac55-b743d55b9691', 'GreatWall-Admin', '权限管理后台', 't', 't', NULL, NULL, '2019-07-07 16:06:09.47', NULL, NULL, NULL, 'f', NULL);
+INSERT INTO "Systems"."Application" VALUES ('e9138a35-a4ff-460e-ac55-b743d55b9691', 'greatwall-admin', '权限后台', 't', 't', 'GreatWall权限管理后台', '{"ApplicationType":3,"IsClient":true,"Client":{"AllowedGrantType":1,"AllowAccessTokensViaBrowser":true,"AllowedCorsOrigins":["http://localhost:10081"],"RequireConsent":null,"RedirectUris":["http://localhost:10081/callback"],"PostLogoutRedirectUris":["http://localhost:10081"],"AllowedScopes":["openid","profile","greatwall-api"],"AccessTokenLifetime":36000}}', '2019-07-07 16:06:09.47', NULL, '2019-08-09 23:55:47.337293', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'6041cf5d-8eea-49a1-a671-acfdf5438c11');
 
 -- ----------------------------
 -- Table structure for Claim
@@ -87,7 +89,7 @@ INSERT INTO "Systems"."Claim" VALUES ('ee612ca0-8159-9851-620a-4610cbbab13a', 'n
 INSERT INTO "Systems"."Claim" VALUES ('a55444ac-72f1-81f3-3a25-7dc3105f4727', 'application_id', 't', 7, '应用程序标识', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'b668b58c-8516-4a84-9cfa-1feec19befa8');
 INSERT INTO "Systems"."Claim" VALUES ('62325b3f-9753-a46a-2801-417464e697ee', 'phone_number', 't', 6, '手机号', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'0ca876e5-68c1-4b75-8ab6-0ab01c2549dc');
 INSERT INTO "Systems"."Claim" VALUES ('d8e80be9-0f86-a84c-01c5-7e621d5c24a2', 'email', 't', 5, '电子邮件', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'45fc5ca3-4bc5-4eb8-b9be-6ad63d29ebaf');
-INSERT INTO "Systems"."Claim" VALUES ('e1399420-a6c6-fc36-6520-490a13ee8064', 'sub', 't', 1, '用户标识', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'8763f3ed-4b7c-4032-aaf1-296f2fde99ba');
+INSERT INTO "Systems"."Claim" VALUES ('e1399420-a6c6-fc36-6520-490a13ee8064', 'sub', 't', 1, '用户标识', '2019-08-08 21:26:48.396287', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 22:59:45.042557', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'1e442bed-55f1-4f57-af44-58df4a8f926d');
 
 -- ----------------------------
 -- Table structure for Permission
@@ -184,7 +186,7 @@ INSERT INTO "Systems"."Resource" VALUES ('8eb03219-907b-40b3-8dd3-56f1e9a9dd30',
 INSERT INTO "Systems"."Resource" VALUES ('97e4b363-c448-4cb8-8c57-6bd55213fcdf', 'e9138a35-a4ff-460e-ac55-b743d55b9691', '/systems/role', '角色', 1, '6af8de88-d22b-403a-9c2c-e8f49e24ccad', '6af8de88-d22b-403a-9c2c-e8f49e24ccad,97e4b363-c448-4cb8-8c57-6bd55213fcdf,', 2, NULL, 'js', 't', 7, '{"Icon":"anticon anticon-team","Expanded":true}', '2019-07-26 10:19:52.400548', NULL, '2019-08-08 21:23:17.166205', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'cc4b6e36-e609-4a52-9d06-815e44b672d7');
 INSERT INTO "Systems"."Resource" VALUES ('736c31ce-d5c4-40a6-a2db-e3333cdaf422', NULL, 'openid', 'openid', 5, NULL, NULL, 0, '用户标识', NULL, 't', 1, '{"Required":true,"Emphasize":false,"ShowInDiscoveryDocument":true,"Claims":["sub"]}', '2019-08-08 21:28:34.558359', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:28:34.558359', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'9ce4fed4-cc51-4f3a-9813-2a9af60de3f8');
 INSERT INTO "Systems"."Resource" VALUES ('ffd48855-c0e3-416d-bfb4-30a529b70236', NULL, 'profile', 'profile', 5, NULL, NULL, 0, '用户个人信息', NULL, 't', 2, '{"Required":false,"Emphasize":true,"ShowInDiscoveryDocument":true,"Claims":["profile","name","nickname"]}', '2019-08-08 21:29:20.134966', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:29:20.134966', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'2b43b187-caa4-42f7-8a94-97ceb434c83a');
-INSERT INTO "Systems"."Resource" VALUES ('6b5a8fe9-fc93-4615-982a-753120f7c1cb', NULL, 'greatwall-api', '权限Api', 6, NULL, NULL, 0, 'GreatWall权限Api', NULL, 't', 1, '{"Claims":["email","phone_number","application_id"]}', '2019-08-08 21:30:46.067881', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-08 21:30:46.067881', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'46eb0c96-9f5c-4be2-bb7f-f53f481b1cb8');
+INSERT INTO "Systems"."Resource" VALUES ('6b5a8fe9-fc93-4615-982a-753120f7c1cb', NULL, 'greatwall-api', 'greatwall-api', 6, NULL, NULL, 0, 'GreatWall权限Api', NULL, 't', 1, '{"Claims":["email","phone_number","application_id"]}', '2019-08-08 21:30:46.067881', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', '2019-08-09 23:54:42.529586', '73d29518-9b9d-45c8-a84a-c8df19d9bbd7', 'f', E'1e90d713-3c61-43b3-8eea-4e3c9f35381a');
 
 -- ----------------------------
 -- Table structure for Role

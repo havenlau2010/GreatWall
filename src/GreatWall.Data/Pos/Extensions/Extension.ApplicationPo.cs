@@ -13,10 +13,12 @@ namespace GreatWall.Data.Pos.Extensions {
         /// </summary>
         /// <param name="po">应用程序持久化对象</param>
         public static Application ToEntity( this ApplicationPo po ) {
-            if ( po == null )
+            if( po == null )
                 return null;
             var result = po.MapTo( new Application( po.Id ) );
             var extend = Json.ToObject<ApplicationExtend>( po.Extend );
+            if( extend == null )
+                return result;
             extend.MapTo( result );
             return result;
         }

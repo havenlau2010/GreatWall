@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using GreatWall.Data.Pos;
 using GreatWall.Data.Pos.Extensions;
 using GreatWall.Data.Stores.Abstractions;
@@ -57,6 +59,14 @@ namespace GreatWall.Data.Repositories {
         public async Task<bool> CanUpdateAsync( ApiResource resource ) {
             var exists = await _store.ExistsAsync( t => t.Id != resource.Id && t.Uri == resource.Uri && t.Type == ResourceType.Api );
             return exists == false;
+        }
+
+        /// <summary>
+        /// 获取已启用的Api资源列表
+        /// </summary>
+        public async Task<List<ApiResource>> GetEnabledResources() {
+            var list = await _store.FindAllAsync( t => t.Type == ResourceType.Api && t.Enabled );
+            return list.Select( ToEntity ).ToList();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Security.Claims;
 using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
@@ -17,7 +16,7 @@ namespace GreatWall.Configs {
         public static IEnumerable<ApiResource> GetApiResources() {
             return new List<ApiResource>
             {
-                new ApiResource("greatwall-api", "API") {
+                new ApiResource("greatwall-api", "权限Api") {
                     
                     UserClaims = {
                         JwtClaimTypes.Name,
@@ -42,7 +41,7 @@ namespace GreatWall.Configs {
             {
                 new Client
                 {
-                    ClientId = "GreatWall-Admin",
+                    ClientId = "greatwall-admin",
                     ClientName = "权限管理后台",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
