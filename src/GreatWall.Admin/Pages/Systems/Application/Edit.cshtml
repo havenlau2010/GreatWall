@@ -16,6 +16,10 @@
                     <util-select for="AllowedScopes" multiple="true" url="/api/application/scopes"></util-select>
                     <util-textarea for="Remark"></util-textarea>
                 </util-tab>
+                <util-tab title="客户端密钥">
+                    <util-switch for="RequireClientSecret"></util-switch>
+                    <partial name="Edit/ClientSecret" />
+                </util-tab>
                 <util-tab title="认证/注销">
                     <util-textbox for="RedirectUri"></util-textbox>
                     <util-textbox for="PostLogoutRedirectUri"></util-textbox>

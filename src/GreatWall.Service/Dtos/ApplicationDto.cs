@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using GreatWall.Domain.Enums;
+using GreatWall.Domain.Models;
 using Util;
 using Util.Applications.Dtos;
 
@@ -64,6 +65,15 @@ namespace GreatWall.Service.Dtos {
         /// </summary>
         [Display( Name = "需要同意" )]
         public bool? RequireConsent { get; set; }
+        /// <summary>
+        /// 需要客户端密钥
+        /// </summary>
+        [Display( Name = "需要客户端密钥" )]
+        public bool? RequireClientSecret { get; set; }
+        /// <summary>
+        /// 客户端密钥列表
+        /// </summary>
+        public List<ClientSecret> ClientSecrets { get; set; }
         /// <summary>
         /// 认证重定向地址
         /// </summary>

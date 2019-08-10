@@ -33,6 +33,14 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         public bool? RequireConsent { get; set; }
         /// <summary>
+        /// 需要客户端密钥
+        /// </summary>
+        public bool? RequireClientSecret { get; set; }
+        /// <summary>
+        /// 客户端密钥列表
+        /// </summary>
+        public List<ClientSecret> ClientSecrets { get; set; }
+        /// <summary>
         /// 认证重定向地址列表
         /// </summary>
         public List<string> RedirectUris { get; set; }

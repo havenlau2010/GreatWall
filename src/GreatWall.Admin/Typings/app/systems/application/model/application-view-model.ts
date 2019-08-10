@@ -41,6 +41,14 @@ export class ApplicationViewModel extends ViewModel {
      */
     requireConsent;
     /**
+     * 需要客户端密钥
+     */
+    requireClientSecret;
+    /**
+     * 客户端密钥列表
+     */
+    clientSecrets;
+    /**
      * 认证重定向地址
      */
     redirectUri;
