@@ -4,29 +4,29 @@
 <page-header title="编辑身份资源" [autoBreadcrumb]="false"></page-header>
 @*表单*@
 <util-card show-border="false">
-    <util-form id="form" gutter="16">
+    <util-form id="form" gutter="16" show-label="true" form-item-flex="true">
         <util-row gutter="42">
             <util-column span="18">
-                <util-textbox for="Uri" is-flex="true" label-span="4" span="20"></util-textbox>
+                <util-textbox for="Uri" label-span="4" span="20"></util-textbox>
             </util-column>
             <util-column span="6">
-                <util-switch for="Enabled" is-flex="true" show-label="true"></util-switch>
+                <util-switch for="Enabled"></util-switch>
             </util-column>
         </util-row>
-        <util-textbox for="Name" is-flex="true" label-span="3" span="21"></util-textbox>
-        <util-select for="Claims" url="/api/claim/all" label-span="3" span="21" is-flex="true" tags="true"></util-select>
-        <util-row >
+        <util-textbox for="Name" label-span="3" span="21"></util-textbox>
+        <util-select for="Claims" url="/api/claim/all" label-span="3" span="21" tags="true"></util-select>
+        <util-row gutter="20">
             <util-column span="6">
-                <util-switch for="Required" label-span="12" is-flex="true"></util-switch>
+                <util-switch for="Required" label-span="12"></util-switch>
             </util-column>
             <util-column span="6">
-                <util-switch for="Emphasize" show-label="true" is-flex="true"></util-switch>
+                <util-switch for="Emphasize"></util-switch>
             </util-column>
             <util-column span="6">
-                <util-switch for="ShowInDiscoveryDocument" show-label="true" is-flex="true"></util-switch>
+                <util-switch for="ShowInDiscoveryDocument"></util-switch>
             </util-column>
             <util-column span="6">
-                <util-textbox for="SortId" is-flex="true" show-label="true"></util-textbox>
+                <util-textbox for="SortId"></util-textbox>
             </util-column>
         </util-row>
         <util-textarea for="Remark" label-span="3" span="21"></util-textarea>
