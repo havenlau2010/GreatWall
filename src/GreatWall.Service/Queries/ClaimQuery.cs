@@ -12,7 +12,7 @@ namespace GreatWall.Service.Queries {
         /// </summary>
         [Display(Name="声明标识")]
         public Guid? ClaimId { get; set; }
-        
+
         private string _name = string.Empty;
         /// <summary>
         /// 声明名称
@@ -22,7 +22,19 @@ namespace GreatWall.Service.Queries {
             get => _name == null ? string.Empty : _name.Trim();
             set => _name = value;
         }
-        
+
+        /// <summary>
+        /// 启用
+        /// </summary>
+        [Display( Name = "启用" )]
+        public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// 排序号
+        /// </summary>
+        [Display( Name = "排序号" )]
+        public int? SortId { get; set; }
+
         private string _remark = string.Empty;
         /// <summary>
         /// 备注

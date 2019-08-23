@@ -2,7 +2,6 @@
 import { FrameworkModule } from '../framework.module';
 import { SystemRoutingModule } from './system-routing.module';
 import { ClaimListComponent } from './claim/claim-list.component';
-import { ClaimEditComponent } from './claim/claim-edit.component';
 import { ApplicationListComponent } from './application/application-list.component';
 import { ApplicationEditComponent } from './application/application-edit.component';
 import { ApplicationDetailComponent } from './application/application-detail.component';
@@ -20,29 +19,38 @@ import { ModuleListComponent } from './module/module-list.component';
 import { ModuleEditComponent } from './module/module-edit.component';
 import { ModuleDetailComponent } from './module/module-detail.component';
 import { ModuleSelectComponent } from './module/module-select.component';
+import { IdentityResourceListComponent } from './identity-resource/identity-resource-list.component';
+import { IdentityResourceEditComponent } from './identity-resource/identity-resource-edit.component';
+import { IdentityResourceDetailComponent } from './identity-resource/identity-resource-detail.component';
+import { ApiResourceListComponent } from './api-resource/api-resource-list.component';
+import { ApiResourceEditComponent } from './api-resource/api-resource-edit.component';
+import { ApiResourceDetailComponent } from './api-resource/api-resource-detail.component';
 
 /**
  * 系统模块
  */
 @NgModule( {
     declarations: [
-        ClaimListComponent, ClaimEditComponent,
+        ClaimListComponent,
         ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent, ApplicationSelectComponent,
         UserListComponent, UserCreateComponent, UserDetailComponent,
         RoleListComponent, RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
         SelectUserListComponent, PermissionComponent,
-        ModuleListComponent, ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
+        ModuleListComponent, ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent,
+        IdentityResourceListComponent, IdentityResourceEditComponent, IdentityResourceDetailComponent,
+        ApiResourceListComponent, ApiResourceEditComponent, ApiResourceDetailComponent
     ],
     imports: [
         FrameworkModule, SystemRoutingModule
     ],
     entryComponents: [
-        ClaimEditComponent,
         ApplicationEditComponent, ApplicationDetailComponent,
         UserCreateComponent, UserDetailComponent,
         RoleEditComponent, RoleDetailComponent, RoleUserListComponent,
         SelectUserListComponent, PermissionComponent,
-        ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent
+        ModuleEditComponent, ModuleDetailComponent, ModuleSelectComponent,
+        IdentityResourceEditComponent, IdentityResourceDetailComponent,
+        ApiResourceEditComponent, ApiResourceDetailComponent
     ]
 } )
 export class SystemModule {

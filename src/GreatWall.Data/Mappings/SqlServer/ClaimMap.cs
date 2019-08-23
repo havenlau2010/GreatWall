@@ -13,14 +13,12 @@ namespace GreatWall.Data.Mappings.SqlServer {
         protected override void MapTable( EntityTypeBuilder<Claim> builder ) {
             builder.ToTable( "Claim", "Systems" );
         }
-        
+
         /// <summary>
         /// 映射属性
         /// </summary>
         protected override void MapProperties( EntityTypeBuilder<Claim> builder ) {
-            //声明标识
-            builder.Property(t => t.Id)
-                .HasColumnName("ClaimId");
+            builder.Property( t => t.Id ).HasColumnName( "ClaimId" );
             builder.HasQueryFilter( t => t.IsDeleted == false );
         }
     }

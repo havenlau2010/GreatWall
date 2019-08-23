@@ -1,4 +1,7 @@
-﻿using GreatWall.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using GreatWall.Data;
 using GreatWall.Domain.Models;
 using GreatWall.Domain.Repositories;
 using GreatWall.Service.Abstractions;
@@ -22,20 +25,28 @@ namespace GreatWall.Service.Implements {
             : base( unitOfWork, claimRepository ) {
             ClaimRepository = claimRepository;
         }
-        
+
         /// <summary>
         /// 声明仓储
         /// </summary>
         public IClaimRepository ClaimRepository { get; set; }
-        
+
         /// <summary>
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
         protected override IQueryBase<Claim> CreateQuery( ClaimQuery param ) {
             return new Query<Claim>( param )
-                .WhereIfNotEmpty(  t => t.Name.Contains( param.Name ) )
+                .WhereIfNotEmpty( t => t.Name.Contains( param.Name ) )
                 .WhereIfNotEmpty( t => t.Remark.Contains( param.Remark ) );
+        }
+
+        /// <summary>
+        /// 获取已启用的声明列表
+        /// </summary>
+        public async Task<List<ClaimDto>> GetEnabledClaimsAsync() {
+            var entities = await ClaimRepository.FindAllAsync( t => t.Enabled );
+            return entities.Select( ToDto ).ToList();
         }
     }
 }

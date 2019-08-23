@@ -3,7 +3,8 @@
 //Licensed under the MIT license
 //================================================
 import { Injector, ViewChild, forwardRef, AfterViewInit } from '@angular/core';
-import { ViewModel, QueryParameter, Table } from '../index';
+import { ViewModel, QueryParameter } from "../core/model";
+import { Table } from "../zorro/table-wrapper.component";
 import { QueryComponentBase } from "./query-component-base";
 
 /**
@@ -59,7 +60,8 @@ export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQue
      */
     query( button?) {
         this.table.query( {
-            button: button
+            button: button,
+            pageIndex: 1
         } );
     }
 
